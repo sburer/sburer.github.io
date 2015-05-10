@@ -1,0 +1,17 @@
+.Rproj.user
+.Rhistory
+.RData
+*.Rproj
+cities.Rdata
+data.Rdata
+*.swp
+_site
+Gemfile.lock
+images/2013.11.29_16.56.07.IMG_2203.jpg
+images/profile.1.jpg
+images/profile.2.jpg
+images/profile.3.jpg
+images/profile.4.jpg
+images/profile_2013.jpg
+images/sburer_2014.04.29.jpg
+images/sburer_2015.02.19.jpeg

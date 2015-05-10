@@ -1,0 +1,48 @@
+body {background-color:#30466E; font-family: 'Dosis', sans-serif; text-align:center;}
+
+a{text-decoration:none; color:#CC5200;}
+a:link {text-decoration:none; color:#CC5200;}
+a:visited {text-decoration:none; color:#CC5200;}
+a:active {text-decoration:none; color:#CC5200;}
+a:hover {text-decoration:none; color:#CC5200;}
+
+#header{width:800px;}
+#header-left{float:left; text-align:left; font-size:2.0em; margin:10px 0px 0px 0px;}
+#header-right{float:right; text-align:right; margin:10px 0px 10px 0px;}
+#footer{width:800px; border-top:1px dotted black; text-align:center; float:left;}
+
+.banner{width:800px; height:200px; float:right; margin:10px 0px 10px 0px; border-style:solid; border-width:1px;}
+
+#navbtn_current{width:400px; float:left; font-size:1.5em; color:white; background:#CC5200; padding:10px 0px 10px 0px;}
+.nav{width:800px; float:right; text-align:center; border-top:1px dotted black; border-bottom:1px dotted black;}
+.nav a{text-decoration:none; color:black;}
+.nav a:link {text-decoration:none; color:black;}
+.nav a:visited {text-decoration:none; color:black;}
+.nav a:active {text-decoration:none; color:black;}
+.nav a:hover {text-decoration:none; color:#CC5200;}
+.navbtn{width:400px; float:left; font-size:1.5em; padding:10px 0px 10px 0px;}
+
+.content{width:800px;}
+.content-left-tallest{width:499px; float:left; text-align:left; margin:10px 0px 10px 0px; padding: 0px 10px 10px 0px; border-right:1px dotted black;}
+.content-right{width:280px; float:right; margin:10px 0px 10px 0px; text-align:right; padding:0px 0px 10px 10px;}
+.content-right-tallest{width:280px; float:right; margin:10px 0px 10px 0px; text-align:right; padding:0px 0px 10px 10px; border-left:1px dotted black;}
+.content-left{width:499px; float:left; text-align:left; margin:10px 0px 10px 0px; padding: 0px 10px 10px 0px;}
+.content-post{width:750px; float:left; text-align:left; margin:10px 0px 10px 0px; padding: 0px 10px 10px 0px;}
+
+.tabparagraph{width:574px; padding-left:15px; margin-bottom:10px;}
+.bullets{width:509px; padding-left:0px; margin-bottom:10px;}
+
+#profileimg{margin-bottom:10px; border-style:solid; border-width:1px;}
+
+#frame{
+	background-color:#FFFFFF;
+	position:absolute;
+	left:50%;
+	width:800px;
+	margin-left:-400px;
+	border:1px solid #000000;
+	padding:10px 15px 0px 15px;
+	box-shadow:1px 1px 5px black;
+	-moz-box-shadow:1px 1px 5px black;
+	-webkit-box-shadow:1px 1px 5px black;
+}

@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>{{ page.title }}</title>
+    <link href="{{ site.url }}/styles/main.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="Personal Website of Sam Burer, Professor of Management Sciences, Henry B. Tippie College of Business, University of Iowa"/>
+  </head>
+  <body>
+
+<div id="frame">
+	<div id="header">
+		<div id="header-left">	
+			Sam Burer
+		</div>
+		<div id="header-right">
+			Professor of Management Sciences<br>
+            Henry B. Tippie Research Fellow<br>
+            Tippie College of Business<br>
+            University of Iowa
+		</div>
+	</div>
+	<div class="nav">
+		<div id="navbtn_current">About</div>
+        <div class="navbtn"><a href="{{ site.url }}/projects.html">Projects and Posts</a></div>
+	</div>
+	<div class="content">
+		<div class="content-post">
+
+            {{ content }}
+
+        </div>
+    </div>
+
+	<div id="footer">
+		<h6>Last updated 2015.05.10. Template from Justin Goodson.</h6>
+	</div>
+
+</div>
+
+  </body>
+</html>
