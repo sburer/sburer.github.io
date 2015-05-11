@@ -1,7 +1,10 @@
 ---
 layout: default-post
-title: Temperature Swings
+title: Daily Temperature Swings in the United States
 ---
+
+Daily Temperature Swings in the United States
+=============================================
 
 People seem to dislike when the weather changes abruptly, as if it's a
 cruel joke played by Mother Nature, and I get the impression that
@@ -45,7 +48,7 @@ it is tiny and green.
 
 ![Average Daily Temperature Swings]({{ site.url }}/2015-05-10-temperature-swings/temperature-swings-web.png)
 
-Overall, we reach the same conclusion as Silver and Fischer-Baum: if you
+Overall, I reach the same conclusion as Silver and Fischer-Baum: if you
 like predictable weather, then head towards Florida, the west coast,
 Hawaii, and Puerto Rico. On the other hand, if you desire excitement in
 your life, then the Great Plains and Upper Midwest are where you should

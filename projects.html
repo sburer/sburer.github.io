@@ -30,7 +30,7 @@ title: Sam Burer | Department of Management Sciences | Tippie College of Busines
 
   {% for post in site.posts %}
     <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
+    <a href="{{ post.url }}">{{ post.title }} ({{ post.date | date: '%B %d, %Y' }})</a>
     </li>
   {% endfor %}
                     <li><a href="http://www.journals.elsevier.com/discrete-optimization/call-for-papers/call-for-papersspecial-issueconic-discrete-optimization/">Special issue</a> on Conic Discrete Optimization for <em>Discrete Optimization</em> with <a href="http://www.ieor.berkeley.edu/~atamturk/">Alper Atamtürk</a></li>
