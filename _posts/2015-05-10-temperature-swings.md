@@ -1,6 +1,13 @@
 ---
 layout: default-post
 title: Daily Temperature Swings in the United States
+tags:
+- R
+- ggplot2
+- ggmap
+- weather
+- USA
+- R-bloggers
 ---
 
 Daily Temperature Swings in the United States
