@@ -1,0 +1,37 @@
+2015.05.21 (Sam): http://davidsjohnson.net/TSPcourse/mac-install-concorde.txt
+
+
+Introduction: No tutorial online gives up-to-date instructions about how to install concorde on a mac. This
+document intends to fill that gap.
+
+Step 0. Make sure your mac has a working c compiler. Xcode uses clang, but tutorials online say you need gcc
+Clang is fine. Type "cc" in the terminal to make sure it is installed. If not, the computer will prompt you
+to install Xcode terminal tools. Go ahead and install it.
+
+Step 1. Download concorde from here: http://www.math.uwaterloo.ca/tsp/concorde/downloads/codes/src/co031219.tgz
+Untar it to the desired location. The directory will be called "concorde"
+
+Setp 2. Donwload the Linear Programming solver here: http://www2.isye.gatech.edu/~wcook/qsopt/beta/index.html
+you want the qsopt.a and qsopt.h files. Make sure you use the 64 bit mac verions of the files.
+Store those in a directory somewhere. For the purposes of this note, we will call the directory "QSOPT"
+
+Step 3. cd to the concorde directory
+
+Step 4. In the terminal type: 
+
+export QSOPTDIR=path/to/QSOPT
+export CFLAGS="-g -O3 -arch x86_64"
+./configure --with-qsopt=$QSOPTDIR --host=darwin
+make
+
+Step 6. To test it, download a tsp instance from here: http://www.iwr.uni-heidelberg.de/groups/comopt/software/TSPLIB95/tsp/
+
+I used d493.tsp
+
+Step 7. cd to "concorde/TSP/" then execute "./concorde path/to/d493.tsp" My macbook retina (the one that came out
+before the recent haswell processor version) uses OSX version 10.9.1 and has a dual core i7 with 8GB ram.
+It solved d493.tsp in 48.62 seconds.
+
+credits:
+http://wiki.evilmadscientist.com/Obtaining_a_TSP_solver
+http://stackoverflow.com/questions/18500923/issue-with-archive-which-is-not-the-architecture-being-linked-x86-64-in-c

@@ -1,0 +1,11 @@
+---
+title: "Leaflet Map"
+author: "Sam Burer"
+date: "May 21, 2015"
+output: html_document
+---
+
+```{r}
+source("main.R")
+m
+```

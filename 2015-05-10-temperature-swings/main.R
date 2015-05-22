@@ -110,7 +110,7 @@ meandiff <- function(df) {
 
 # Calculate the average daily temperature swing for each city
 
-adts <- sapply(data, meandiff)
+cities$adts <- sapply(data, meandiff)
 
 # Set character string for graph legend
 
