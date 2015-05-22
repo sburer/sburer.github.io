@@ -78,4 +78,4 @@ here (with corresponding table below):
 |6     |704 Raymond Dr, Solon                  |New Construction |
 |5     |Majestic Oak Ridge, Solon              |New Construction |
 
-* Download the [R source code]({{ site.url }}/2015-05-22-parade-of-homes/main.R).
+* Download the [R source code]({{ site.url }}/2015-05-20-parade-of-homes/main.R).
