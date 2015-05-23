@@ -34,8 +34,9 @@ attention from the Washington Post](http://knowmore.washingtonpost.com/2015/03/1
 I coded up a completely automated calculation of the
 fastest route using [R](http://www.r-project.org), [Google
 Maps](http://maps.google.com), [Leaflet](http://leafletjs.com), and the
-[Concorde TSP solver](http://www.math.uwaterloo.ca/tsp/concorde/). The
-minimum drive time is 3 hours and 46 minutes, and the route is depicted
+[Concorde TSP solver](http://www.math.uwaterloo.ca/tsp/concorde/). Concorde
+code just a split second, but the
+minimum drive time is 3 hours and 46 minutes. The route is depicted
 here (with corresponding table below):
 
 <p><div id="htmlwidget-6970" style="width:720px;height:480px;" class="leaflet"></div>
@@ -79,3 +80,6 @@ here (with corresponding table below):
 |5     |Majestic Oak Ridge, Solon              |New Construction |
 
 * Download the [R source code]({{ site.url }}/2015-05-20-parade-of-homes/main.R).
+* I used [these instructions](http://davidsjohnson.net/TSPcourse/mac-install-concorde.txt)
+to install Concorde on my Mac.
+
