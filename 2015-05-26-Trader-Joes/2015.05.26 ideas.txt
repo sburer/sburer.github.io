@@ -1,0 +1,2 @@
+I could extend this example by looking up demographic information about
+where Trader Joe's has actual locations.
