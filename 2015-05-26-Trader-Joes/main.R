@@ -14,7 +14,8 @@ sW <- function(arg) {
     suppressWarnings(arg)
 }
 
-# This is just so the code doesn't fail on an error
+# This is just so the code doesn't fail on an error, but otherwise this
+# is not intelligent
 my.err.handler <- function(error) {
     error
 }
@@ -250,5 +251,5 @@ p <- p + geom_point(aes(x = lon, y = lat), data = DCs,
 
 # Save plot (both low- and high-resolution)
 
-ggsave("Trader-Joes-Stores-web.png", p, dpi = 100, width = 5, height = 5)
-ggsave("Trader-Joes-Stores.png", p, dpi = 300, width = 5, height = 5)
+ggsave("TJ-DCs-web.png", p, dpi = 100, width = 5, height = 5)
+ggsave("TJ-DCs.png", p, dpi = 300, width = 5, height = 5)
