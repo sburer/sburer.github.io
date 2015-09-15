@@ -20,14 +20,25 @@ for(k = 1:num_meals)
     end
 end
 
-% Setup constraints
+% Initialize constraints and then proceed to set them up
 
 con = [];
 
+
+% At every meal...
+
 for(k = 1:num_meals)
-    con = [ con ; sum(x{k} ) == 3 ];
+
+    % Every job has exactly 3 girls assigned.
+    % Every girl has exactly 1 job.
+
+    con = [ con ; sum(x{k} ) == num_girls_per_job ];
     con = [ con ; sum(x{k}') == 1 ];
+
 end
+
+% Define aux variable that will count up how many times each (real,
+% non-ghost) girl does each job
 
 num_times_per_job = sdpvar(num_girls, num_jobs);
 
@@ -39,8 +50,14 @@ for(i = 1:num_girls)
     con = [ con ; num_times_per_job(i,:) == ntpj ];
 end
 
+% Each girl can do each job at most once.
+% Each girl gets to do job #1 (cooking)
+
 con = [ con ; num_times_per_job(:) <= 1 ];
 con = [ con ; num_times_per_job(:,1) >= 1 ];
+
+% Job #1 (cooking) always has at least 2 (real, non-ghost) girls
+% assigned to it
 
 for(k = 1:num_meals)
     con = [ con ; sum(x{k}(1:num_girls, 1)) >= 2 ];
