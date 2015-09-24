@@ -1,6 +1,6 @@
 ---
 layout: default-post
-title: Update&#58; On Assignment with the Girl Scouts
+title: YALMIP&#58; Making Optimization Easier Since 2004
 tags:
 - integer programming
 - optimization
@@ -13,10 +13,8 @@ tags:
 - fun
 ---
 
-Update: On Assignment with the Girl Scouts
-==========================================
-
-![Girl Scouts logo]({{ site.url }}/2015-05-15-girl-scouts/girl-scouts.gif)
+YALMIP: Making Optimization Easier Since 2004
+=============================================
 
 In a [previous post]({% post_url 2015-05-15-girl-scouts %}), I discussed
 an assignment problem inspired by the Girls Scouts. From the modeling
