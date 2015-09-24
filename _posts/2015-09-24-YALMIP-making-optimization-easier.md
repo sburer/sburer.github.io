@@ -35,6 +35,6 @@ One other side advantage: the model setup time decreased from
 1.1 seconds to 0.2 seconds, and the solver time decreased
 from 0.4 seconds down to (essentially) 0.0 seconds.
 
-Johan definitely deserves two free boxes of cookies!
+Thank you, Johan!
 
 * Download the updated [Matlab/YALMIP source code]({{ site.url }}/2015-05-15-girl-scouts/main_loefberg.m).
