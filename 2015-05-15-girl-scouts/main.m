@@ -98,4 +98,3 @@ con = [ con ; x{1}(8:9,4) == 1 ];
 % Solve
 
 solvesdp(con, sum(sum(Y)))
-
