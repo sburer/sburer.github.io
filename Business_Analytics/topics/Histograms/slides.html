@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Histograms</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Histograms</h1>
+  <h2 class="author">Samuel Burer</h2>
+  <h3 class="date">Last updated: July 10, 2016</h3>
+</section>
+
+<section id="histograms" class="slide level1">
+<h1>Histograms</h1>
+<ul>
+<li>See this <a href="https://www.youtube.com/watch?v=-TFZIx-ZbhM">YouTube tutorial</a> to construct histograms of the various types discussed here</li>
+</ul>
+</section>
+<section id="histograms-contd" class="slide level1">
+<h1>Histograms (cont’d)</h1>
+<ul>
+<li>A <em>histogram</em> is a graphical summary of a single column/variable of data</li>
+<li>Purpose is to show the data’s “look and feel”</li>
+<li>Depicts the <em>frequencies</em> (or <em>counts</em>) of data in various bins</li>
+<li>Most often depicted as a bar chart</li>
+</ul>
+</section>
+<section id="histograms-contd-1" class="slide level1">
+<h1>Histograms (cont’d)</h1>
+<ul>
+<li><p>To create a histogram in Excel, use a PivotTable with bar chart</p></li>
+<li><p>Example: Excel file <em>homes.xlsx</em></p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>Often will need to group data into bins manually</p></li>
+<li><p>Use the PivotTable’s <em>Field Settings &gt; Layout &amp; Print</em> to force the display of empty bins</p></li>
+</ul>
+</div>
+</section>
+<section id="histograms-contd-2" class="slide level1">
+<h1>Histograms (cont’d)</h1>
+<p><img src="graphics/scrabble1.jpg" /> </p>
+<p>Source: <a href="http://statpics.blogspot.com/2014/04/scrabble-distribution.html">statpics.blogspot.com</a></p>
+</section>
+<section id="histograms-contd-3" class="slide level1">
+<h1>Histograms (cont’d)</h1>
+<p><img src="graphics/scrabble2.jpg" /> </p>
+<p>Source: <a href="http://statpics.blogspot.com/2014/04/scrabble-distribution.html">statpics.blogspot.com</a></p>
+</section>
+<section id="cumulative-histograms" class="slide level1">
+<h1>Cumulative Histograms</h1>
+<p>A <em>cumulative histogram</em> is a variation of the regular histogram</p>
+<ul>
+<li><p>For ratio/numerical data</p></li>
+<li><p>The <em>cumulative frequency</em> for a bin is the sum of all frequencies at or below that bin</p></li>
+<li><p>Can be depicted on top of a histogram using a line graph</p></li>
+</ul>
+<p>Example: Excel file <em>homes.xlsx</em></p>
+</section>
+<section id="other-types-of-histograms" class="slide level1">
+<h1>Other Types of Histograms</h1>
+<p><img src="graphics/BA_borrowed_amounts_relative_histogram.png" /> </p>
+<p>Source: <a href="http://www.nytimes.com/2015/06/17/upshot/the-rise-of-student-debt-for-those-who-get-degrees.html">nytimes.com</a></p>
+</section>
+<section id="other-types-of-histograms-contd" class="slide level1">
+<h1>Other Types of Histograms (cont’d)</h1>
+<p><em>Relative histograms</em> and <em>cumulative relative histograms</em> are further variations</p>
+<ul>
+<li><p>Based on <em>relative frequencies</em>, i.e., percentage of data in bins</p>
+<ul>
+<li>Divide frequencies by total number of pieces of data</li>
+</ul></li>
+<li><p>Shows the exact same info, just on a standardized scale</p></li>
+<li><p>Can be created directly from frequency info</p></li>
+</ul>
+<p>Example: Excel file <em>homes.xlsx</em></p>
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

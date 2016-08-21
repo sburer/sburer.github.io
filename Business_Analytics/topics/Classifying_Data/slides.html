@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Classifying Data</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Classifying Data</h1>
+  <h2 class="author">Samuel Burer</h2>
+  <h3 class="date">Last updated: July 10, 2016</h3>
+</section>
+
+<section id="classifying-data" class="slide level2">
+<h1>Classifying Data</h1>
+<ul>
+<li><p>Imagine data in a single column/variable</p></li>
+<li><p>Two complementary classifications</p>
+<ul>
+<li>Measurement scale (ratio vs categorical)</li>
+<li>Time collection (cross-sectional vs time-series)</li>
+</ul></li>
+</ul>
+</section>
+<section id="measurement-scale" class="slide level2">
+<h1>Measurement Scale</h1>
+<p><strong>Ratio data</strong></p>
+<ul>
+<li>The most common type of data</li>
+<li>Numerical
+<ul>
+<li>Ratios, “natural zero”</li>
+<li>Differences</li>
+<li>Order</li>
+</ul></li>
+<li>E.g., sales figures, task completion times</li>
+<li>Highly amenable to statistical analysis</li>
+</ul>
+</section>
+<section id="measurement-scale-contd" class="slide level2">
+<h1>Measurement Scale (cont’d)</h1>
+<p><strong>Categorical data</strong></p>
+<ul>
+<li>Occurs frequently</li>
+<li>Sorts data into groups (usually without order)</li>
+<li>Does not make sense to talk about
+<ul>
+<li>Ratios</li>
+<li>Differences</li>
+</ul></li>
+<li>E.g., zip code, race</li>
+<li>Statistical analysis is more limited</li>
+</ul>
+</section>
+<section id="time-collection" class="slide level2">
+<h1>Time Collection</h1>
+<p><strong>Cross-sectional data</strong></p>
+<ul>
+<li>Data that is collected at one moment in time</li>
+<li>For example
+<ul>
+<li>proportion of current delinquent accounts</li>
+<li>tonight’s warehouse inventory levels</li>
+<li>customer demographic information</li>
+</ul></li>
+</ul>
+</section>
+<section id="time-collection-contd" class="slide level2">
+<h1>Time Collection (cont’d)</h1>
+<p><strong>Time-series data</strong></p>
+<ul>
+<li>Data of the same type that is collected over time (usually at equally spaced intervals)</li>
+<li>For example
+<ul>
+<li>price of strawberries over the last 12 months</li>
+<li>semester-by-semester MBA enrollment</li>
+</ul></li>
+<li>Cross-sectional data becomes time series data if it is collected more than once!</li>
+</ul>
+<!--## Classifying Data (cont'd)-->
+<!--Examples-->
+<!--* *homes.xlsx*-->
+<!--* *CPI.xlsx*-->
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
