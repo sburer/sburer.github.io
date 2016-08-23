@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Decision Analysis</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Decision Analysis</h1>
+  <h2 class="author">Samuel Burer</h2>
+  <h3 class="date">Last updated: July 11, 2016</h3>
+</section>
+
+<section><section id="decision-analysis-with-decision-trees" class="titleslide slide level1"><h1>Decision Analysis with Decision Trees</h1></section><section id="decision-analysis" class="slide level2">
+<h1>Decision Analysis</h1>
+<p><strong>Decision trees</strong> are a <em>structured tool</em> to help make <em>sequential decisions</em> in the face of <em>uncertainty</em></p>
+</section><section id="decision-analysis-contd" class="slide level2">
+<h1>Decision Analysis (cont’d)</h1>
+<p>Ingredients required for decision analysis using decision trees:</p>
+<ul>
+<li>Possible <em>decisions</em></li>
+<li>Uncertain <em>events</em> and their <em>probabilities</em></li>
+<li><em>Payoffs</em> (or <em>costs</em>) that correspond to decisions and/or events</li>
+</ul>
+</section><section id="jj-flea-market" class="slide level2">
+<h1>J&amp;J Flea Market</h1>
+<p>One day each weekend, you rent an indoor booth to sell your homemade crafts at the J&amp;J Flea Market. From your experience, you know the following:</p>
+<div class="fragment">
+<table>
+<thead>
+<tr class="header">
+<th>Profit/Weather</th>
+<th>No Rain</th>
+<th>Rain</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Saturday</td>
+<td>$1000</td>
+<td>$500</td>
+</tr>
+<tr class="even">
+<td>Sunday</td>
+<td>$700</td>
+<td>$350</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<ul>
+<li>This Saturday, there is a 70% chance of rain</li>
+<li>This Sunday, there is a 30% chance</li>
+<li>Which day do you sell at the flea market?</li>
+</ul>
+</div>
+</section><section id="jj-flea-market-contd" class="slide level2">
+<h1>J&amp;J Flea Market (cont’d)</h1>
+<ul>
+<li>Decisions = sell on Sat, sell on Sun</li>
+<li>Events = Sat weather (rain or not), Sun weather (rain or not)</li>
+<li>Payoffs = various dollar amounts</li>
+<li>Probabilities = 30%, 70%, etc</li>
+</ul>
+</section><section id="aside-probability-distributions" class="slide level2">
+<h1>Aside: Probability Distributions</h1>
+<p><img src="graphics/saturday_distribution.png" alt="Saturday probability distribution" /> </p>
+</section><section id="aside-probability-distributions-contd" class="slide level2">
+<h1>Aside: Probability Distributions (cont’d)</h1>
+<p><img src="graphics/sunday_distribution.png" alt="Sunday probability distribution" /> </p>
+</section><section id="jj-flea-market-contd-1" class="slide level2">
+<h1>J&amp;J Flea Market (cont’d)</h1>
+<p>(See book p.8 for summary of tree elements)</p>
+<p><img src="graphics/jj_tree_setup.png" alt="J&amp;J decision tree setup" /> </p>
+</section><section id="jj-flea-market-contd-2" class="slide level2">
+<h1>J&amp;J Flea Market (cont’d)</h1>
+<p>Notes</p>
+<ul>
+<li><p>A decision tree shows all possible decisions and events in a graphical format</p></li>
+<li><p>Time passes from left to right</p></li>
+<li><p>The ultimate real-world outcome will correspond to a single path through the tree (from left to right)</p></li>
+</ul>
+</section><section id="jj-flea-market-contd-3" class="slide level2">
+<h1>J&amp;J Flea Market (cont’d)</h1>
+<p>Finished tree in Excel. Explanation soon…</p>
+<p><img src="graphics/jj_tree_finished_Excel.png" alt="J&amp;J decision tree finished Excel" /> </p>
+</section></section>
+<section><section id="uncertain-events-and-probability" class="titleslide slide level1"><h1>Uncertain Events and Probability</h1></section><section id="determining-probabilities" class="slide level2">
+<h1>Determining Probabilities</h1>
+<p>Probabilities for an uncertain event can be determined:</p>
+<ul>
+<li>From the advice of expert</li>
+<li>Using past data from similar situations</li>
+<li>Analytically (e.g., flip of a coin) [not so common]</li>
+</ul>
+</section><section id="determining-probabilities-contd" class="slide level2">
+<h1>Determining Probabilities (cont’d)</h1>
+<p><img src="graphics/odds_of_depression.png" alt="odds of depression" /> </p>
+</section><section id="determining-probabilities-contd-1" class="slide level2">
+<h1>Determining Probabilities (cont’d)</h1>
+<p><img src="graphics/chance_of_drought.png" alt="chance of drought" /> </p>
+</section><section id="determining-probabilities-contd-2" class="slide level2">
+<h1>Determining Probabilities (cont’d)</h1>
+<p><img src="graphics/apple_watch.png" alt="Apple watch" /> </p>
+</section><section id="determining-probabilities-contd-3" class="slide level2">
+<h1>Determining Probabilities (cont’d)</h1>
+<p>Wall Street Journal, “U.S. Rolled Dice in bin Laden Raid,” May 3 2011</p>
+<blockquote>
+<p>Some of the analysts who assessed the intelligence put the chances [of Osama bin Laden being in the compound] as low as 60%</p>
+</blockquote>
+</section><section id="determining-probabilities-contd-4" class="slide level2">
+<h1>Determining Probabilities (cont’d)</h1>
+<p><img src="graphics/nato_probabilities.png" alt="NATO probabilities" /> </p>
+</section></section>
+<section><section id="choosing-a-best-decision" class="titleslide slide level1"><h1>Choosing a Best Decision</h1></section><section id="expected-value" class="slide level2">
+<h1>Expected Value</h1>
+<p>What metric should we use to determine the best decision?</p>
+<ul>
+<li><p>One of the most common ways to evaluate a decision (like in the J&amp;J example) is to calculate the decision’s … <strong>E</strong>xpected <strong>V</strong>alue</p></li>
+<li><p>The book calls this “EMV”</p></li>
+</ul>
+</section><section id="expected-value-contd" class="slide level2">
+<h1>Expected Value (cont’d)</h1>
+<p>You like to play Pick 3 Lotto. For $1, you choose a number between 0 and 999. If you choose correctly, you win $500. If you choose incorrectly, you win nothing</p>
+<div class="fragment">
+<ul>
+<li>EV = 0.001($499) + 0.999(-$1) = -$0.50</li>
+</ul>
+</div>
+</section><section id="expected-value-contd-1" class="slide level2">
+<h1>Expected Value (cont’d)</h1>
+<p>You are in sales, and 20% of your customers buy the low-price product (at $100), 55% the medium-price (at $450), and 25% the high-price (at $1100). What is the average revenue from a customer purchase?</p>
+<div class="fragment">
+<ul>
+<li>EV = 0.2($100) + 0.55($450) + 0.25($1100) = $542.50</li>
+</ul>
+</div>
+</section><section id="expected-value-contd-2" class="slide level2">
+<h1>Expected Value (cont’d)</h1>
+<p>You do odd jobs in your home town, and you can accept one of two jobs this week. The first job pays $500, and the second pays $650.</p>
+<div class="fragment">
+<ul>
+<li>EV = max($500, $650) = $650</li>
+</ul>
+</div>
+</section><section id="expected-value-contd-3" class="slide level2">
+<h1>Expected Value (cont’d)</h1>
+<p>Two contractors have put in bids for laying the asphalt at your company’s new office building construction site. The first is for $75,000, and the second is for $68,000.</p>
+<div class="fragment">
+<ul>
+<li>EV = min($75,000, $68,000) = $68,000</li>
+</ul>
+</div>
+</section><section id="expected-value-contd-4" class="slide level2">
+<h1>Expected Value (cont’d)</h1>
+<p>Technical definition of EV:</p>
+<div class="fragment">
+<ul>
+<li>For an uncertain event, EV is the weighted average of all possible numerical outcomes, with the probabilities of each of the outcomes used as the weights</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>For a decision, EV is the max of all possible numerical outcomes (or min, as appropriate)</li>
+</ul>
+</div>
+</section><section id="working-with-decision-trees" class="slide level2">
+<h1>Working with Decision Trees</h1>
+<p>There are two stages to evaluating a decision tree:</p>
+<div class="fragment">
+<ol type="1">
+<li><p><strong>Setup</strong>: Draw a decision tree that lays out all possible sequences of decisions and events, along with the payoffs/costs and probabilities; also include final payoffs (“terminal values”)</p></li>
+<li><p><strong>Fold Back</strong>: Calculate EV’s from end to beginning to find overall value of the tree</p></li>
+</ol>
+</div>
+<div class="fragment">
+<p>The best sequence of decisions is then found by following the path that maximizes (or minimizes, as appropriate) the overall value</p>
+</div>
+</section><section id="working-with-decision-trees-contd" class="slide level2">
+<h1>Working with Decision Trees (cont’d)</h1>
+<p>Starting with the terminal values at the ends of the paths…</p>
+<div class="fragment">
+<ul>
+<li><p>The value of an event [circle] is the EV of the values of the branches</p></li>
+<li><p>The value of a decision [square] is the max (or min, as appropriate) of the values of the decisions branches</p></li>
+</ul>
+</div>
+</section><section id="jj-decision-tree-contd" class="slide level2">
+<h1>J&amp;J Decision Tree (cont’d)</h1>
+<p><img src="graphics/jj_tree_finished.png" alt="J&amp;J decision tree finished" /> </p>
+</section><section id="jj-decision-tree-contd-1" class="slide level2">
+<h1>J&amp;J Decision Tree (cont’d)</h1>
+<ul>
+<li><em>TreePlan</em> is an Excel add-in for decision trees
+<ul>
+<li>Student version available at <a href="http://www.treeplan.com">treeplan.com</a></li>
+<li>On campus: also available on ITC computers</li>
+</ul></li>
+<li><a href="https://www.youtube.com/watch?v=pXginet_leg">YouTube tutorial</a></li>
+<li>Also see Excel file <em>flea_market.xlsx</em></li>
+</ul>
+</section></section>
+<section><section id="more-examples" class="titleslide slide level1"><h1>More Examples</h1></section><section id="example-from-past-student" class="slide level2">
+<h1>Example from Past Student</h1>
+<p><img src="graphics/past_student_1.png" alt="past student 1" /> </p>
+</section><section id="example-from-past-student-contd" class="slide level2">
+<h1>Example from Past Student (cont’d)</h1>
+<p><img src="graphics/past_student_2.png" alt="past student 2" /> </p>
+</section><section id="to-build-or-not-to-build" class="slide level2">
+<h1>To Build or Not to Build</h1>
+<ul>
+<li><p>Your business is located in a region that is somewhat prone to mud slides — each rainy season there is a 1% chance of a mud slide occurring. You estimate that a mud slide would do $1,000,000 damage</p></li>
+<li><p>You have the option of building a retaining wall that would help reduce the chance of a devastating mud slide. The wall costs $40,000 to build, and if a slide occurs, the wall will hold with a 95% probability</p></li>
+<li><p>Based on min EV, should you build this wall?</p></li>
+</ul>
+</section><section id="to-build-or-not-to-build-contd" class="slide level2">
+<h1>To Build or Not to Build (cont’d)</h1>
+<ul>
+<li>EV analysis says, “Don’t build wall”</li>
+<li>Still a 1% chance of losing $1,000,000</li>
+<li>Are you comfortable with that risk?</li>
+<li>Comparing strategies…</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Strategy</th>
+<th>EV</th>
+<th>Risk</th>
+<th>Risk Fraction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Don’t build</td>
+<td>$10,000</td>
+<td>0.0100</td>
+<td>1 out of 100</td>
+</tr>
+<tr class="even">
+<td>Build</td>
+<td>$40,500</td>
+<td>0.0005</td>
+<td>1 out of 2,000</td>
+</tr>
+</tbody>
+</table>
+</section><section id="to-build-or-not-to-build-contd-1" class="slide level2">
+<h1>To Build or Not to Build (cont’d)</h1>
+<ul>
+<li><p>This is called a <em>negative outcome</em> analysis</p></li>
+<li><p>By considering risk of different decisions, you can balance the EV metric against other considerations</p></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
