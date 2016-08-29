@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Binomial Distribution</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Binomial Distribution</h1>
+  <h2 class="author">Samuel Burer</h2>
+  <h3 class="date">Last updated: August 29, 2016</h3>
+</section>
+
+<section id="binomial-distribution" class="slide level2">
+<h1>Binomial Distribution</h1>
+<p>The <em>binomial distribution</em> is one of the most commonly encountered DRVs. It has the following characteristics…</p>
+</section>
+<section id="binomial-distribution-contd" class="slide level2">
+<h1>Binomial Distribution (cont’d)</h1>
+<ol type="1">
+<li><p>One experiment is repeated <span class="math inline">\(n\)</span> times</p></li>
+<li><p>In each experiment, only two outcomes are possible—either “success” or “failure”</p></li>
+<li><p>The experiments are independent, that is, knowing the outcome of one gives you no information about the outcomes of the others</p></li>
+<li><p>In each experiment, the probability of success is <span class="math inline">\(p\)</span> (and so the probability of failure is <span class="math inline">\(1-p\)</span>)</p></li>
+<li><p>The random variable <span class="math inline">\(X\)</span> is “number of successes in <span class="math inline">\(n\)</span> trials”</p></li>
+</ol>
+</section>
+<section id="binomial-distribution-contd-1" class="slide level2">
+<h1>Binomial Distribution (cont’d)</h1>
+<p>Equivalently:</p>
+<ol type="1">
+<li><p>One experiment is repeated <span class="math inline">\(n\)</span> times; <span class="math inline">\(X_i\)</span> represents <span class="math inline">\(i\)</span>-th experiment</p></li>
+<li><p><span class="math inline">\(X_i = 1\)</span> or <span class="math inline">\(X_i = 0\)</span></p></li>
+<li><p><span class="math inline">\(X_i\)</span> is independent of <span class="math inline">\(X_j\)</span></p></li>
+<li><p><span class="math inline">\(P(X_i = 1) = p\)</span> and <span class="math inline">\(P(X_i = 0) = 1-p\)</span></p></li>
+<li><p><span class="math inline">\(X = X_1 + X_2 + \cdots + X_n\)</span></p></li>
+</ol>
+</section>
+<section id="binomial-distribution-contd-2" class="slide level2">
+<h1>Binomial Distribution (cont’d)</h1>
+<ul>
+<li><p>The values of <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> are called the <em>binomial parameters</em></p></li>
+<li><p>If you think you have a binomial situation you must identify</p>
+<ol type="1">
+<li>Fundamental success/failure experiment</li>
+<li>Value of <span class="math inline">\(n\)</span></li>
+<li>Value of <span class="math inline">\(p\)</span></li>
+</ol></li>
+</ul>
+</section>
+<section id="binomial-distribution-contd-3" class="slide level2">
+<h1>Binomial Distribution (cont’d)</h1>
+<p>Hockey example:</p>
+<blockquote>
+<p>The Chicago Blackhawks score about 3.6 goals per (home) game. So they have a 1/1000 chance of scoring a goal at time 10:00 in the second period (since each game last 3600 seconds) If the Blackhawks play 41 home games, what is the probability that at least one such well-timed goal will occur during the season?</p>
+</blockquote>
+<div class="fragment">
+<ul>
+<li>Fundamental success/failure experiment?</li>
+<li>Values of <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>?</li>
+</ul>
+</div>
+</section>
+<section id="binomial-probabilities" class="slide level2">
+<h1>Binomial Probabilities</h1>
+<!--*¡Book shows math formulas, but I show Excel formulas!*-->
+<p>If you have a binomial situation with <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>, the Excel formula for the probability of <em>exactly</em> <span class="math inline">\(k\)</span> successes in <span class="math inline">\(n\)</span> trials is:</p>
+<div class="fragment">
+<table>
+<thead>
+<tr class="header">
+<th># Successes</th>
+<th>Math</th>
+<th>Excel</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>exactly <span class="math inline">\(k\)</span></td>
+<td><span class="math inline">\(P(X = k)\)</span></td>
+<td><code>BINOM.DIST</code>(<span class="math inline">\(k\)</span>, <span class="math inline">\(n\)</span>, <span class="math inline">\(p\)</span>, <code>0</code>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="binomial-probabilities-contd" class="slide level2">
+<h1>Binomial Probabilities (cont’d)</h1>
+<p>Given <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>, the Excel formula for the probability of <em>at most</em> <span class="math inline">\(k\)</span> successes:</p>
+<div class="fragment">
+<table>
+<thead>
+<tr class="header">
+<th># Successes</th>
+<th>Math</th>
+<th>Excel</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>at most <span class="math inline">\(k\)</span></td>
+<td><span class="math inline">\(P(X \le k)\)</span></td>
+<td><code>BINOM.DIST</code>(<span class="math inline">\(k\)</span>, <span class="math inline">\(n\)</span>, <span class="math inline">\(p\)</span>, <code>1</code>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="binomial-probabilities-contd-1" class="slide level2">
+<h1>Binomial Probabilities (cont’d)</h1>
+<p>Important fact:</p>
+<p><span class="math display">\[P(X &gt; k) = P(X \ge k+1) = 1 - P(X \le k)\]</span></p>
+</section>
+<section id="binomial-probabilities-contd-2" class="slide level2">
+<h1>Binomial Probabilities (cont’d)</h1>
+<table>
+<thead>
+<tr class="header">
+<th># Succ.</th>
+<th>Math</th>
+<th>Excel</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>at least <span class="math inline">\(k\)</span></td>
+<td><span class="math inline">\(P(X \ge k)\)</span></td>
+<td><code>1-BINOM.DIST</code>(<span class="math inline">\(k\)</span>-1, <span class="math inline">\(n\)</span>, <span class="math inline">\(p\)</span>, <code>1</code>)</td>
+</tr>
+<tr class="even">
+<td>fewer than <span class="math inline">\(k\)</span></td>
+<td><span class="math inline">\(P(X &lt; k)\)</span></td>
+<td><code>BINOM.DIST</code>(<span class="math inline">\(k\)</span>-1, <span class="math inline">\(n\)</span>, <span class="math inline">\(p\)</span>, <code>1</code>)</td>
+</tr>
+<tr class="odd">
+<td>more than <span class="math inline">\(k\)</span></td>
+<td><span class="math inline">\(P(X &gt; k)\)</span></td>
+<td><code>1-BINOM.DIST</code>(<span class="math inline">\(k\)</span>, <span class="math inline">\(n\)</span>, <span class="math inline">\(p\)</span>, <code>1</code>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>See tab <em>hockey</em> in Excel file <em>discrete_examples.xlsx</em></li>
+</ul>
+</section>
+<section id="binomial-probabilities-contd-3" class="slide level2">
+<h1>Binomial Probabilities (cont’d)</h1>
+<img src="graphics/applications.png" alt="applications" class="stretch" /> 
+</section>
+<section id="binomial-probabilities-contd-4" class="slide level2">
+<h1>Binomial Probabilities (cont’d)</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Excel</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>1 - BINOM.DIST</code>(0, 18, 0.15, <code>1</code>)</td>
+<td>94.6%</td>
+</tr>
+<tr class="even">
+<td><code>1 - BINOM.DIST</code>(0, 18, 0.10, <code>1</code>)</td>
+<td>85.0%</td>
+</tr>
+<tr class="odd">
+<td><code>1 - BINOM.DIST</code>(0, 18, 0.05, <code>1</code>)</td>
+<td>60.3%</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="binomial-mean-and-std-dev" class="slide level2">
+<h1>Binomial Mean and Std Dev</h1>
+<p>Suppose <span class="math inline">\(X\)</span> is binomial with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>:</p>
+<div class="fragment">
+<p><span class="math display">\[E(X) = n \cdot p\]</span> <span class="math display">\[\sigma_X = \sqrt{n \cdot p \cdot (1 - p)}\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>Does the formula for <span class="math inline">\(E(X)\)</span> make sense?</li>
+<li>What happens to <span class="math inline">\(\sigma_X\)</span> when <span class="math inline">\(p\)</span> gets close to 0? Or close to 1?</li>
+<li>See Excel file <em>binomial_demo.xlsm</em></li>
+</ul>
+</div>
+</section>
+<section id="binomial-example" class="slide level2">
+<h1>Binomial Example</h1>
+<img src="graphics/banks_hold_capital_cushions.png" class="stretch" /> 
+<p>Source: Wall Street Journal, Nov 10 2014</p>
+</section>
+<section id="binomial-example-contd" class="slide level2">
+<h1>Binomial Example (cont’d)</h1>
+<p>A study by one automobile manufacturer indicated that one out of every four new cars required repairs under the company’s new-car warranty. The manufacturer must keep money on hand to handle warranty repairs</p>
+<ul>
+<li>See tab <em>cars</em> of Excel file <em>discrete_examples.xlsx</em></li>
+</ul>
+</section>
+<section id="binomial-example-contd-1" class="slide level2">
+<h1>Binomial Example (cont’d)</h1>
+<ol type="1">
+<li><p>For 100 new cars, what is the expected number needing repairs? What is the standard deviation?</p></li>
+<li><p>Provide a reasonable, worst-case estimate of the number of cars needing repair for a specified group of 100 cars. (Hint: What number of repairs is there only a 5% chance of exceeding?)</p></li>
+<li><p>If each repair costs you an average of $50, how much money should you set aside for warranty repairs?</p></li>
+</ol>
+</section>
+<section id="example-churn" class="slide level2">
+<h1>Example: Churn</h1>
+<p>Analysts of the wireless industry estimate that, every month, 0.5% of all wireless customers churn, i.e., 0.5% of customers switch carriers</p>
+<ul>
+<li><p>How many times per year does the average customer churn?</p></li>
+<li><p>What proportion of customers are “high churners,” i.e., churn 2+ times per year?</p></li>
+</ul>
+</section>
+<section id="example-churn-contd" class="slide level2">
+<h1>Example: Churn (cont’d)</h1>
+<ul>
+<li><p>For a given customer, let <span class="math inline">\(X\)</span> be the number of times the customer churns in 12 months</p></li>
+<li><p>What assumption is necessary to apply the binomial model? Is this a reasonable assumption?</p></li>
+<li><p>Parameters n = 12 and p = 0.005</p></li>
+<li><p><span class="math inline">\(E(X) = n \cdot p = 12 \cdot 0.005 = 0.06\)</span></p></li>
+<li><p><span class="math inline">\(P(X \ge 2) = 1 - \text{BINOM.DIST}(1,12,0.005,1) =\)</span> 0.16%</p></li>
+</ul>
+</section>
+<section id="example-mud-slides" class="slide level2">
+<h1>Example: Mud Slides</h1>
+<p>Suppose the chance of a mud slide occurring in a given rainy season is 1%. What is the chance of having at least one mud slide in the next 20 rainy seasons?</p>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(n = 20\)</span>, <span class="math inline">\(p = 0.01\)</span>, <span class="math inline">\(P(X \ge 1)\)</span></li>
+<li><span class="math inline">\(1 - \text{BINOM.DIST}(0, 20, 0.01, 1) \approx 0.182\)</span></li>
+</ul>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Discrete Probability</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Discrete Probability</h1>
+  <h2 class="author">Samuel Burer</h2>
+  <h3 class="date">Last updated: August 29, 2016</h3>
+</section>
+
+<section id="outcomes-and-probability" class="slide level1">
+<h1>Outcomes and Probability</h1>
+<p>Imagine an uncertain situation with a number of possible outcomes, e.g.:</p>
+<ul>
+<li>Rolling a fair die
+<ul>
+<li>outcomes 1, 2, 3, 4, 5, 6</li>
+</ul></li>
+<li>Calling a random person as part of a political poll
+<ul>
+<li>outcomes Republican, Democrat, age 18-64, age 65+</li>
+</ul></li>
+</ul>
+</section>
+<section id="outcomes-and-probability-contd" class="slide level1">
+<h1>Outcomes and Probability (cont’d)</h1>
+<p>The <em>probability</em> of a particular outcome is the likelihood that the outcome will occur</p>
+<ul>
+<li>Measured on a scale from 0 to 1 (or 0% to 100%)</li>
+<li>0 means definitely will not happen</li>
+<li>1 means definitely will happen</li>
+</ul>
+<div class="fragment">
+<p>E.g., for a fair die…</p>
+<ul>
+<li>Probability of getting a 1 is 1/6</li>
+<li>Probability of getting a 2 is 1/6</li>
+<li>Etc.</li>
+</ul>
+</div>
+</section>
+<section id="outcomes-and-probability-contd-1" class="slide level1">
+<h1>Outcomes and Probability (cont’d)</h1>
+<p>To simplify, we will only investigate situations having <em>MECE</em> outcomes</p>
+<div class="fragment">
+<ul>
+<li><em>ME</em> = <em>mutually exclusive</em> = no two outcomes can occur together</li>
+<li><em>CE</em> = <em>collectively exhaustive</em> = at least one must occur</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Probabilities of MECE outcomes add to 100%</p>
+</div>
+</section>
+<section id="outcomes-and-probability-contd-2" class="slide level1">
+<h1>Outcomes and Probability (cont’d)</h1>
+<p>Examples:</p>
+<ul>
+<li>Rolling a fair die
+<ul>
+<li>1, 2, 3, 4, 5, 6 are MECE</li>
+</ul></li>
+<li>Calling a random person as part of a political poll
+<ul>
+<li>Republican and Age 65+ are not ME</li>
+<li>Republican and Democrat are not CE</li>
+</ul></li>
+</ul>
+</section>
+<section id="random-variables" class="slide level1">
+<h1>Random Variables</h1>
+<ul>
+<li><p>When an uncertain situation leads to numerical MECE outcomes, the uncertain quantity is called a <em>random variable</em></p></li>
+<li><p>The random variable is often denoted by a capital letter such as <span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span></p></li>
+</ul>
+</section>
+<section id="random-variables-contd" class="slide level1">
+<h1>Random Variables (cont’d)</h1>
+<ul>
+<li>Every random variable <span class="math inline">\(X\)</span> is either <em>discrete</em> or <em>continuous</em>
+<ul>
+<li>discrete = <span class="math inline">\(X\)</span> has distinct and separate outcomes</li>
+<li>continuous = <span class="math inline">\(X\)</span> can take on any value within some range of numbers</li>
+</ul></li>
+<li>For now, we focus on DRVs (discrete random variables)</li>
+</ul>
+</section>
+<section id="random-variables-contd-1" class="slide level1">
+<h1>Random Variables (cont’d)</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Example</th>
+<th>Random Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Heads and Tails</td>
+<td><span class="math inline">\(X = 1\)</span> if Heads, <span class="math inline">\(X = 0\)</span> if Tails</td>
+</tr>
+<tr class="even">
+<td>Heads and Tails</td>
+<td><span class="math inline">\(Y = 0\)</span> if Heads, <span class="math inline">\(Y = 1\)</span> if Tails</td>
+</tr>
+<tr class="odd">
+<td>Rolling Two Dice</td>
+<td><span class="math inline">\(X =\)</span> sum of two rolls</td>
+</tr>
+<tr class="even">
+<td>Random Home</td>
+<td><span class="math inline">\(X =\)</span> # of bedrooms</td>
+</tr>
+<tr class="odd">
+<td>Sick Leave</td>
+<td><span class="math inline">\(X =\)</span> # of employees sick tomorrow</td>
+</tr>
+<tr class="even">
+<td>Stock</td>
+<td><span class="math inline">\(X =\)</span> price of stock at end of today</td>
+</tr>
+<tr class="odd">
+<td>Call Center</td>
+<td><span class="math inline">\(X =\)</span> # of unresolved calls today</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="probability-distribution" class="slide level1">
+<h1>Probability Distribution</h1>
+<p>Let <span class="math inline">\(X\)</span> be a DRV with <span class="math inline">\(n\)</span> MECE outcomes</p>
+<ul>
+<li><p>Each outcome is denoted <span class="math inline">\(x_i\)</span> for <span class="math inline">\(i = 1,\ldots,n\)</span></p></li>
+<li><p><span class="math inline">\(P(X = x_i)\)</span> equals the probability that <span class="math inline">\(X\)</span> takes on value <span class="math inline">\(x_i\)</span></p></li>
+<li><p>Taken together, the probabilities are called the <em>probability distribution function</em> (or <em>PDF</em>) of <span class="math inline">\(X\)</span></p></li>
+</ul>
+<div class="fragment">
+<p>The PDF is often shown as a bar chart</p>
+</div>
+</section>
+<section id="probability-distribution-contd" class="slide level1">
+<h1>Probability Distribution (cont’d)</h1>
+<img src="graphics/coin_pdf.png" alt="coin PDF" class="stretch" /> 
+</section>
+<section id="probability-distribution-contd-1" class="slide level1">
+<h1>Probability Distribution (cont’d)</h1>
+<img src="graphics/dice_pdf.png" alt="dice PDF" class="stretch" /> 
+</section>
+<section id="probability-distribution-contd-2" class="slide level1">
+<h1>Probability Distribution (cont’d)</h1>
+<p>Recall:</p>
+<ul>
+<li>Relative histograms show the “look and feel” of data on a standardized scale</li>
+<li>Can be interpreted as probabilities</li>
+</ul>
+<p>A relative histogram is a type of PDF</p>
+</section>
+<section id="probability-distribution-contd-3" class="slide level1">
+<h1>Probability Distribution (cont’d)</h1>
+<img src="graphics/beds_relative_histogram.png" alt="beds relative histogram" class="stretch" /> 
+</section>
+<section id="cumulative-distribution" class="slide level1">
+<h1>Cumulative Distribution</h1>
+<p>Let <span class="math inline">\(X\)</span> be a DRV with <span class="math inline">\(n\)</span> MECE outcomes</p>
+<ul>
+<li><p><span class="math inline">\(P(X \le x_i)\)</span> equals the probability that <span class="math inline">\(X\)</span> takes on any value less than or equal to <span class="math inline">\(x_i\)</span></p></li>
+<li><p>Taken together, these probabilities are called the <em>cumulative distribution function</em> (or <em>CDF</em>) of <span class="math inline">\(X\)</span></p></li>
+</ul>
+<div class="fragment">
+<p>The CDF is best shown as a line chart overlaid on the PDF</p>
+<ul>
+<li>starts at 0, increases left to right, ends at 1</li>
+</ul>
+</div>
+</section>
+<section id="cumulative-distribution-contd" class="slide level1">
+<h1>Cumulative Distribution (cont’d)</h1>
+<img src="graphics/dice_cdf.png" alt="dice CDF" class="stretch" /> 
+</section>
+<section id="cumulative-distribution-contd-1" class="slide level1">
+<h1>Cumulative Distribution (cont’d)</h1>
+<p>Recall:</p>
+<ul>
+<li>For relative histograms, the cumulative relative frequency shows the accumulation of relative frequency from left to right</li>
+</ul>
+<p>Cumulative relative frequency is a type of CDF</p>
+</section>
+<section id="cumulative-distribution-contd-2" class="slide level1">
+<h1>Cumulative Distribution (cont’d)</h1>
+<img src="graphics/beds_cumulative_histogram.png" alt="beds cumulative histogram" class="stretch" /> 
+</section>
+<section id="why-bother-with-random-variables" class="slide level1">
+<h1>Why bother with random variables?</h1>
+<ul>
+<li>Random variables are the “language of randomness”</li>
+<li>Every DRV has a its own PDF and CDF</li>
+<li>We can use these to answer questions about the probability of certain events</li>
+</ul>
+</section>
+<section id="why-bother-contd" class="slide level1">
+<h1>Why bother? (cont’d)</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Coin</td>
+<td><span class="math inline">\(X = 1\)</span> if Heads, <span class="math inline">\(X = 0\)</span> if Tails</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(P(X = 1) = 0.5\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(P(X = 0) = 0.5\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Two Dice</td>
+<td><span class="math inline">\(X =\)</span> sum of two rolls</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(P(X = 2) = 1/36\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(P(X = 12) = 1/36\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="why-bother-contd-1" class="slide level1">
+<h1>Why bother? (cont’d)</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Random Home</td>
+<td><span class="math inline">\(X =\)</span> # of bedrooms</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(P(X &gt; 2) = 0.58\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(P(X \le 4) = 0.98\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(P(2 &lt; X \le 4) = 0.57\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Sick Leave</td>
+<td><span class="math inline">\(X =\)</span> # of employees sick tomorrow</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(P(X = 0) =\)</span> ???</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="why-bother-contd-2" class="slide level1">
+<h1>Why bother? (cont’d)</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Stock</td>
+<td><span class="math inline">\(X\)</span> = price of stock at end of today</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(P(X \le\)</span> purchase threshold) = ???</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Call Center</td>
+<td><span class="math inline">\(X =\)</span> # of unresolved calls today</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(P(X &gt;\)</span> 110% of average) = ???</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="summary-measures-for-drvs" class="slide level1">
+<h1>Summary Measures for DRVs</h1>
+<p>When talking about a DRV <span class="math inline">\(X\)</span>, we often describe two key characteristics of <span class="math inline">\(X\)</span>:</p>
+<div class="fragment">
+<ol type="1">
+<li><p><em>Centrality</em> = what are the most common/frequent/probable values of X, i.e., what is the “center” of <span class="math inline">\(X\)</span>?</p></li>
+<li><p><em>Dispersion</em> = how widely do the values of <span class="math inline">\(X\)</span> deviate from its center?</p></li>
+</ol>
+</div>
+</section>
+<section id="expected-value" class="slide level1">
+<h1>Expected Value</h1>
+<p>The <em>expected value</em> <span class="math inline">\(E(X)\)</span> of <span class="math inline">\(X\)</span> is the average of all the possible values for <span class="math inline">\(X\)</span>, weighted by their probabilities:</p>
+<p><span class="math display">\[E(X) = \sum_{i=1}^n P(X = x_i) \cdot x_i\]</span></p>
+<div class="fragment">
+<ul>
+<li>Also called the <em>mean</em></li>
+<li>The most common measure of centrality</li>
+</ul>
+</div>
+</section>
+<section id="expected-value-contd" class="slide level1">
+<h1>Expected Value (cont’d)</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Expected Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Coin</td>
+<td><span class="math inline">\(E(X) = 0 \cdot 0.5 + 1 \cdot 0.5 = 0.5\)</span></td>
+</tr>
+<tr class="even">
+<td>Two Dice</td>
+<td><span class="math inline">\(E(X) = \ldots = 7\)</span></td>
+</tr>
+<tr class="odd">
+<td>Random Home</td>
+<td><span class="math inline">\(E(X) = 2.70\)</span> (mean of data)</td>
+</tr>
+<tr class="even">
+<td>Sick Leave</td>
+<td><span class="math inline">\(E(X) =\)</span> ???</td>
+</tr>
+<tr class="odd">
+<td>Stock</td>
+<td><span class="math inline">\(E(X) =\)</span> ???</td>
+</tr>
+<tr class="even">
+<td>Call Center</td>
+<td><span class="math inline">\(E(X) =\)</span> ???</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="expected-value-contd-1" class="slide level1">
+<h1>Expected Value (cont’d)</h1>
+<p>A common interpretation of expected value:</p>
+<blockquote>
+<p>Expected value is the long-run average of the random variable.</p>
+<p>That is, if <span class="math inline">\(X\)</span> is repeated <em>ad infinitum</em>, then <span class="math inline">\(E(X)\)</span> equals the average of the actual observed values of X</p>
+</blockquote>
+</section>
+<section id="expected-value-contd-2" class="slide level1">
+<h1>Expected Value (cont’d)</h1>
+<table>
+<thead>
+<tr class="header">
+<th>A Payoff</th>
+<th>A Prob</th>
+<th></th>
+<th>B Payoff</th>
+<th>B Prob</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-$2,000</td>
+<td>0.05</td>
+<td></td>
+<td>-$2,000</td>
+<td>0.05</td>
+</tr>
+<tr class="even">
+<td>-$1,000</td>
+<td>0.35</td>
+<td></td>
+<td>-$1,000</td>
+<td>0.35</td>
+</tr>
+<tr class="odd">
+<td>$0</td>
+<td>0.20</td>
+<td></td>
+<td>$0</td>
+<td>0.20</td>
+</tr>
+<tr class="even">
+<td>$1,000</td>
+<td>0.30</td>
+<td></td>
+<td>$1,000</td>
+<td>0.30</td>
+</tr>
+<tr class="odd">
+<td>$2,000</td>
+<td>0.10</td>
+<td></td>
+<td>$2,000</td>
+<td>0.10</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<ul>
+<li>Which investment, A or B, do you prefer?</li>
+<li>See also tab <em>investments</em> of Excel file <em>discrete_examples.xlsx</em></li>
+</ul>
+</div>
+</section>
+<section id="standard-deviation" class="slide level1">
+<h1>Standard Deviation</h1>
+<p>The <em>standard deviation</em> <span class="math inline">\(\sigma_X\)</span> of <span class="math inline">\(X\)</span> is a measure of how far, on average, the values of <span class="math inline">\(X\)</span> deviate from its expected value, <span class="math inline">\(E(X)\)</span></p>
+<p><span class="math display">\[\sigma_X = \sqrt{ \sum_{i=1}^n P(X = x_i) \cdot (x_i - E(X))^2 }\]</span></p>
+<div class="fragment">
+<ul>
+<li>The bigger <span class="math inline">\(\sigma_X\)</span>, the bigger the deviation</li>
+<li>The most common measure of dispersion</li>
+<li>Variance: VAR(<span class="math inline">\(X\)</span>) = <span class="math inline">\(\sigma_X^2\)</span></li>
+</ul>
+</div>
+</section>
+<section id="standard-deviation-contd" class="slide level1">
+<h1>Standard Deviation (cont’d)</h1>
+<ul>
+<li><p>Std dev is in the same units as <span class="math inline">\(X\)</span>, and so we often talk about std dev rather than variance</p></li>
+<li><p>By itself, however, std dev is sometimes difficult on its own</p></li>
+<li><p>Often, we compare the std devs of two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> as a measure of which has more “risk”</p></li>
+</ul>
+</section>
+<section id="standard-deviation-contd-1" class="slide level1">
+<h1>Standard Deviation (cont’d)</h1>
+<table>
+<thead>
+<tr class="header">
+<th>A Payoff</th>
+<th>A Prob</th>
+<th></th>
+<th>B Payoff</th>
+<th>B Prob</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-$2,000</td>
+<td>0.05</td>
+<td></td>
+<td>-$2,000</td>
+<td>0.05</td>
+</tr>
+<tr class="even">
+<td>-$1,000</td>
+<td>0.35</td>
+<td></td>
+<td>-$1,000</td>
+<td>0.35</td>
+</tr>
+<tr class="odd">
+<td>$0</td>
+<td>0.20</td>
+<td></td>
+<td>$0</td>
+<td>0.20</td>
+</tr>
+<tr class="even">
+<td>$1,000</td>
+<td>0.30</td>
+<td></td>
+<td>$1,000</td>
+<td>0.30</td>
+</tr>
+<tr class="odd">
+<td>$2,000</td>
+<td>0.10</td>
+<td></td>
+<td>$2,000</td>
+<td>0.10</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<ul>
+<li>Which investment, A or B, has a higher standard deviation?</li>
+<li>See also tab <em>investments</em> of Excel file <em>discrete_examples.xlsx</em></li>
+</ul>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
