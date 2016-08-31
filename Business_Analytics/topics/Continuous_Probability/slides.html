@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Continuous Probability</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Continuous Probability</h1>
+  <h2 class="author">Samuel Burer</h2>
+  <h3 class="date">Last updated: August 31, 2016</h3>
+</section>
+
+<section id="continuous-random-variables" class="slide level1">
+<h1>Continuous Random Variables</h1>
+<ul>
+<li><p>Continuous random variables (CRVs) have many similarities with discrete random variables (DRVs)</p></li>
+<li><p>Our discussion will lead to one of the most important distributions in statistics…the normal distribution</p></li>
+</ul>
+</section>
+<section id="continuous-random-variables-contd" class="slide level1">
+<h1>Continuous Random Variables (cont’d)</h1>
+<img src="graphics/normal.png" alt="normal distribution" class="stretch" /> 
+</section>
+<section id="normal-example-1" class="slide level1">
+<h1>Normal Example #1</h1>
+<p>Otis Elevator in Bloomington, Indiana, reported that the number of hours lost per week last year due to employees’ illnesses was approximately normally distributed, with a mean of 60 hours and a standard deviation of 15 hours. Determine, for a given week, the following probabilities:</p>
+<ol type="1">
+<li><p>The number of hours lost will exceed 85 hours.</p></li>
+<li><p>The number of hours lost will be between 45 and 55 hours.</p></li>
+</ol>
+<p>Will solve later</p>
+</section>
+<section id="normal-example-2" class="slide level1">
+<h1>Normal Example #2</h1>
+<p>A mail-order company has estimated one-year demand for a popular item to be normally distributed with a mean of 180,000 units and a standard deviation of 15,000 units.</p>
+<ol type="1">
+<li><p>What is the probability of selling all of the stock on hand if inventory equals 200,000 units?</p></li>
+<li><p>What inventory should the company have on hand if they want the probability of running out of stock to be 5%?</p></li>
+</ol>
+<p>Will solve later</p>
+</section>
+<section id="continuous-random-variables-contd-1" class="slide level1">
+<h1>Continuous Random Variables (cont’d)</h1>
+<p>Recall:</p>
+<ul>
+<li>A RV is the numerical outcome of a random event</li>
+<li>A DRV takes on values that are distinct and separate</li>
+</ul>
+<p>In contrast to DRVs:</p>
+<ul>
+<li><p>A <em>continuous RV</em> can take on any value within a specified interval</p></li>
+<li><p>The outcomes of a CRV cannot be counted or listed, like those of a DRV, but instead are measured</p></li>
+</ul>
+</section>
+<section id="continuous-random-variables-contd-2" class="slide level1">
+<h1>Continuous Random Variables (cont’d)</h1>
+<p>Examples:</p>
+<ul>
+<li><span class="math inline">\(X =\)</span> precise time that a train arrives (on schedule or not)</li>
+<li><span class="math inline">\(X =\)</span> residual chemical levels in the blood 24 hours after taking a specific medication</li>
+<li><span class="math inline">\(X =\)</span> precise amount of pop placed in a bottle by a filling machine</li>
+<li><span class="math inline">\(X =\)</span> amount of energy used in a home during one hour</li>
+<li><span class="math inline">\(X =\)</span> time between the arrival of two customers</li>
+</ul>
+</section>
+<section id="probability-density-function" class="slide level1">
+<h1>Probability Density Function</h1>
+<p>A <em>probability density function</em> (PDF) of a CRV <span class="math inline">\(X\)</span> is a curve on a graph such that:</p>
+<ul>
+<li>the horizontal axis lists the possible values <span class="math inline">\(x\)</span> of <span class="math inline">\(X\)</span></li>
+<li>the total area under the curve is 1</li>
+</ul>
+<p>Also:</p>
+<ul>
+<li>Every CRV has a probability density function</li>
+<li>The PDF is analogous to the PDF for a DRV</li>
+</ul>
+</section>
+<section id="probability-density-function-contd" class="slide level1">
+<h1>Probability Density Function (cont’d)</h1>
+<p>Example: A delivery truck</p>
+<ul>
+<li><p>The warehouse says that the delivery truck will arrive sometime “between 10 AM and 2 PM.”</p></li>
+<li><p>What is the probability that the truck will arrive between 11 AM and 12 PM?</p></li>
+</ul>
+</section>
+<section id="probability-density-function-contd-1" class="slide level1">
+<h1>Probability Density Function (cont’d)</h1>
+<img src="graphics/uniform.png" alt="uniform distribution" class="stretch" /> 
+<p>Probability evenly (“uniformly”) distributed between 10 and 14</p>
+</section>
+<section id="probability-density-function-contd-2" class="slide level1">
+<h1>Probability Density Function (cont’d)</h1>
+<p><img src="graphics/uniform2.png" alt="uniform distribution" /> </p>
+<p>Probability between 11 and 12 is <span class="math inline">\(P(11 \le X \le 12) = 0.25 = 25\)</span>%</p>
+</section>
+<section id="probability-density-function-contd-3" class="slide level1">
+<h1>Probability Density Function (cont’d)</h1>
+<img src="graphics/nonuniform.png" alt="nonuniform distribution" class="stretch" />{.stretch} 
+<p>Could this be reality??</p>
+</section>
+<section id="how-to-talk-about-crvs" class="slide level1">
+<h1>How to Talk About CRVs</h1>
+<ul>
+<li><p>Since a CRV has so many possible outcomes, we do not consider things like:</p>
+<ul>
+<li><span class="math inline">\(P(X = 1.0)\)</span>, <span class="math inline">\(P(X = 0.3349)\)</span>, <span class="math inline">\(P(X = -0.5)\)</span></li>
+</ul></li>
+<li><p>Instead, we consider intervals:</p>
+<ul>
+<li><span class="math inline">\(P(X \ge 1.0)\)</span>, <span class="math inline">\(P(X \le 0.3349)\)</span>, <span class="math inline">\(P(-0.5 \le X \le 0.3349)\)</span></li>
+</ul></li>
+<li><p>In fact, <span class="math inline">\(P(X = x) = 0\)</span> for any value <span class="math inline">\(x\)</span></p></li>
+</ul>
+</section>
+<section id="cumulative-distribution-function" class="slide level1">
+<h1>Cumulative Distribution Function</h1>
+<p>We have talked about CDFs for DRVs. Same idea for CRVs…</p>
+<ul>
+<li>The <em>cumulative density function</em> (CDF) for a CRV <span class="math inline">\(X\)</span> accumulates probability from left to right, i.e., it shows <span class="math inline">\(P(X \le x)\)</span> for every value <span class="math inline">\(x\)</span></li>
+</ul>
+<p>We will see a demo of the CDF for the normal distribution</p>
+</section>
+<section id="cumulative-dist.func.contd" class="slide level1">
+<h1>Cumulative Dist.<sub>Func.</sub>(cont’d)</h1>
+<ul>
+<li><p>The CDF is important because it helps us calculate probabilities associated with <span class="math inline">\(X\)</span></p></li>
+<li><p>Important facts (see p.117)</p>
+<ul>
+<li><span class="math inline">\(P(X &gt; a) = 1.0 - P(X \le a)\)</span></li>
+<li><span class="math inline">\(P(a \le X \le b) = P(X \le b) - P(X \le a)\)</span></li>
+<li>We can interchange <span class="math inline">\(\le\)</span> for <span class="math inline">\(&lt;\)</span> (or <span class="math inline">\(\ge\)</span> for <span class="math inline">\(&gt;\)</span>) in any probability calculations (but does not work for DRVs)</li>
+</ul></li>
+</ul>
+</section>
+<section id="expected-value-of-a-crv" class="slide level1">
+<h1>Expected Value of a CRV</h1>
+<p>The <em>expected value</em> <span class="math inline">\(E[X]\)</span> of a CRV <span class="math inline">\(X\)</span> is the average of all the possible values for X, weighted by the probabilities</p>
+</section>
+<section id="std-dev-of-a-crv" class="slide level1">
+<h1>Std Dev of a CRV</h1>
+<p>The <em>standard deviation</em> <span class="math inline">\(\sigma\)</span> is a measure of how far the values of <span class="math inline">\(X\)</span> differ from (or deviate from) its expected value, <span class="math inline">\(E[X]\)</span></p>
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
