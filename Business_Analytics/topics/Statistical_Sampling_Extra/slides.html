@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Comparing Two Populations</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Comparing Two Populations</h1>
+  <h2 class="author">Samuel Burer</h2>
+  <h3 class="date">Last updated: September 14, 2016</h3>
+</section>
+
+<section id="comparing-two-populations-means" class="slide level1">
+<h1>Comparing Two Populations: Means</h1>
+<ul>
+<li><p>Suppose you want to estimate the difference <span class="math inline">\(\mu_1 - \mu_2\)</span> of the means of two separate populations</p></li>
+<li><p>You have obtained a random sample of each population</p>
+<ul>
+<li><span class="math inline">\(n_1 \ge 30\)</span>, <span class="math inline">\(\bar x_1\)</span>, <span class="math inline">\(s_1\)</span></li>
+<li><span class="math inline">\(n_2 \ge 30\)</span>, <span class="math inline">\(\bar x_2\)</span>, <span class="math inline">\(s_2\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="comparing-two-populations-means-contd" class="slide level1">
+<h1>Comparing Two Populations: Means (cont’d)</h1>
+<p>A <span class="math inline">\(\beta\)</span>% CI for <span class="math inline">\(\mu_1 - \mu_2\)</span> is <span class="math display">\[(\bar x_1 - \bar x_2) \pm c
+\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}\]</span> where <span class="math inline">\(c\)</span> is the same as in the large-sample-size case</p>
+</section>
+<section id="comparing-two-populations-proportions" class="slide level1">
+<h1>Comparing Two Populations: Proportions</h1>
+<ul>
+<li><p>Suppose you want to estimate the difference <span class="math inline">\(p_1 - p_2\)</span> of the proportions of two separate populations</p></li>
+<li><p>You have obtained a random sample of each population</p>
+<ul>
+<li><span class="math inline">\(\bar p_1\)</span>, <span class="math inline">\(n_1 \bar p_1 \ge 5\)</span>, <span class="math inline">\(n_1 (1 - \bar p_1) \ge 5\)</span></li>
+<li><span class="math inline">\(\bar p_2\)</span>, <span class="math inline">\(n_2 \bar p_2 \ge 5\)</span>, <span class="math inline">\(n_2 (1 - \bar p_2) \ge 5\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="comparing-two-populations-proportions-contd" class="slide level1">
+<h1>Comparing Two Populations: Proportions (cont’d)</h1>
+<p>A <span class="math inline">\(\beta\)</span>% CI for <span class="math inline">\(p_1 - p_2\)</span> is <span class="math display">\[(\bar p_1 - \bar p_2) \pm c
+\sqrt{\frac{\bar p_1 (1 - \bar p_1)}{n_1} + \frac{\bar p_2 (1 - \bar
+p_2)}{n_2}}\]</span> where <span class="math inline">\(c\)</span> is the same as in the large-sample-size case</p>
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Statistical Sampling</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Statistical Sampling</h1>
+  <h2 class="author">Samuel Burer</h2>
+  <h3 class="date">Last updated: September 14, 2016</h3>
+</section>
+
+<section id="the-statistical-point-of-view" class="slide level1">
+<h1>The Statistical Point of View</h1>
+<ul>
+<li>What is the average level of education in Iowa?</li>
+<li>What is United Airlines’ on-time percentage?</li>
+<li>What proportion of 25-34 year-old males enjoy “reality” shows like <em>American Idol</em> and <em>Survivor</em>?</li>
+</ul>
+<p>These are questions about the underlying probability distributions</p>
+</section>
+<section id="the-statistical-point-of-view-contd" class="slide level1">
+<h1>The Statistical Point of View (cont’d)</h1>
+<p>Something to think about…</p>
+<ul>
+<li>You flip a coin 10 times</li>
+<li>It comes up Heads each time</li>
+<li>What is the probability that it will be Heads on the 11th flip?</li>
+</ul>
+</section>
+<section id="the-statistical-point-of-view-contd-1" class="slide level1">
+<h1>The Statistical Point of View (cont’d)</h1>
+<ul>
+<li><p>We assume that, in any given situation, there is an underlying probability distribution (or random variable <span class="math inline">\(X\)</span>) that determines the outcomes we’re interested in.</p></li>
+<li><p>Statistics deduces properties of <span class="math inline">\(X\)</span> from empirical knowledge of the real world.</p></li>
+</ul>
+</section>
+<section id="populations-and-samples" class="slide level1">
+<h1>Populations and Samples</h1>
+<ul>
+<li><p><em>Population</em> = all items of interest for a particular situation, investigation, or decision</p>
+<ul>
+<li>all adult males (height)</li>
+<li>all incoming calls to call-center (call length)</li>
+<li>all citizens (voting)</li>
+<li>all white blood cells in your body (medical condition)</li>
+<li>all light bulbs from manufacturing process (burn time)</li>
+</ul></li>
+<li><p>Definition depends on situation</p>
+<ul>
+<li>Up to you to define relevant population</li>
+</ul></li>
+</ul>
+</section>
+<section id="populations-and-samples-contd" class="slide level1">
+<h1>Populations and Samples (cont’d)</h1>
+<ul>
+<li><p><em>Sample</em> = a subset of the population</p>
+<ul>
+<li>adult males in this class</li>
+<li>randomly monitored call-center calls</li>
+<li>citizens who vote by absentee ballot</li>
+<li>a blood sample used for medical analysis</li>
+<li>sample of 20 light bulbs used for testing</li>
+</ul></li>
+</ul>
+</section>
+<section id="populations-and-samples-contd-1" class="slide level1">
+<h1>Populations and Samples (cont’d)</h1>
+<ul>
+<li><p>Usually want a random sample</p>
+<ul>
+<li>I.e., a sample collected such that every member of the population is equally likely to be selected</li>
+</ul></li>
+<li><p>Sample design involves specifying a procedure for collecting a sample</p>
+<ul>
+<li>E.g., subjective sampling, probabilistic sampling</li>
+<li>It is a real challenge to get a truly representative sample</li>
+</ul></li>
+</ul>
+</section>
+<section id="populations-and-samples-contd-2" class="slide level1">
+<h1>Populations and Samples (cont’d)</h1>
+<ul>
+<li><p>Why work with samples?</p>
+<ul>
+<li>Often, it is inconvenient (or impossible) to deal with the entire population</li>
+<li>Samples are more manageable</li>
+</ul></li>
+</ul>
+</section>
+<section id="populations-and-samples-contd-3" class="slide level1">
+<h1>Populations and Samples (cont’d)</h1>
+<img src="graphics/blood_sample.png" alt="blood sample" class="stretch" /> 
+</section>
+<section id="populations-and-samples-contd-4" class="slide level1">
+<h1>Populations and Samples (cont’d)</h1>
+<p>“If you don’t believe in random sampling, next time you go to the doctor for a blood test, have them take it all.” – ABCNEWS.com web site on polling</p>
+</section>
+<section id="the-setup" class="slide level1">
+<h1>The Setup</h1>
+<ul>
+<li><p>Let <span class="math inline">\(X\)</span> be the random variable that underlies your population of interest</p></li>
+<li><p>You would like to learn as much about <span class="math inline">\(X\)</span> as possible</p></li>
+<li><p>For example, <span class="math inline">\(X\)</span> has its own PDF, CDF, mean, standard deviation, etc. What are they?</p>
+<ul>
+<li>Define <span class="math inline">\(\mu = E(X)\)</span> = expected value of X</li>
+<li>Define <span class="math inline">\(\sigma\)</span> = standard deviation of X</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-setup-contd" class="slide level1">
+<h1>The Setup (cont’d)</h1>
+<p>Examples</p>
+<ul>
+<li><span class="math inline">\(X\)</span> = height of an adult male</li>
+<li><span class="math inline">\(X\)</span> = length of call to call center</li>
+<li><span class="math inline">\(X\)</span> = 1 if citizen votes Republican, 0 otherwise</li>
+<li><span class="math inline">\(X\)</span> = 1 if white blood cell has medical condition, 0 otherwise</li>
+<li><span class="math inline">\(X\)</span> = burn time of light bulb</li>
+</ul>
+</section>
+<section id="the-setup-contd-1" class="slide level1">
+<h1>The Setup (cont’d)</h1>
+<p>Examples</p>
+<ul>
+<li><p>What is the average adult male height? What is the standard deviation? If Joe Smith is 71.5 inches tall, what percentage of adult males are taller than Joe?</p>
+<ul>
+<li><span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(P(X \ge 71.5)\)</span>?</li>
+</ul></li>
+<li><p>What proportion of citizens vote Republican?</p>
+<ul>
+<li><span class="math inline">\(\mu\)</span>? (Note: <span class="math inline">\(\mu\)</span> often called <span class="math inline">\(p\)</span> to indicate proportion)</li>
+</ul></li>
+<li><p>Government rule: The advertised burn time must hold for 95% of all light bulbs</p>
+<ul>
+<li>What <span class="math inline">\(x\)</span> gives <span class="math inline">\(P(X \ge x)\)</span> = 0.95?</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-setup-contd-2" class="slide level1">
+<h1>The Setup (cont’d)</h1>
+<ul>
+<li><p>Imagine that you</p>
+<ul>
+<li><p>randomly sample <span class="math inline">\(n\)</span> members of the population, i.e., your sample size is <span class="math inline">\(n\)</span></p></li>
+<li><p>measure <span class="math inline">\(X\)</span> for each member</p></li>
+</ul></li>
+<li><p>Let <span class="math inline">\(x_i\)</span> = the <span class="math inline">\(i\)</span>-th member’s observed numerical value</p></li>
+<li><p>Do the <span class="math inline">\(x_i\)</span>’s tell you much about <span class="math inline">\(X\)</span>?</p>
+<ul>
+<li>PDF or CDF?</li>
+<li><span class="math inline">\(\mu\)</span> or <span class="math inline">\(\sigma\)</span>?</li>
+<li>As a matter of fact, yes…</li>
+</ul></li>
+</ul>
+</section>
+<section id="analyzing-the-sample" class="slide level1">
+<h1>Analyzing the Sample</h1>
+<p>Once you have observed a random sample of size <span class="math inline">\(n\)</span>, how can you make conclusions about <span class="math inline">\(X\)</span>? Recall:</p>
+<ul>
+<li>Relative histogram</li>
+<li>Cumulative relative histogram</li>
+</ul>
+</section>
+<section id="analyzing-the-sample-contd" class="slide level1">
+<h1>Analyzing the Sample (cont’d)</h1>
+<p>Recall:</p>
+<ul>
+<li><p>Observed sample mean <span class="math inline">\(\bar x = (x_1 + x_2 + \cdots + x_n)/n\)</span></p></li>
+<li><p>Observed sample standard deviation <span class="math display">\[s = \sqrt{ \frac{(x_1 - \bar x)^2 + (x_2 - \bar x)^2 + \cdots + (x_n - \bar x)^2}{n-1} }\]</span></p></li>
+</ul>
+</section>
+<section id="analyzing-the-sample-contd-1" class="slide level1">
+<h1>Analyzing the Sample (cont’d)</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Characteristic of <span class="math inline">\(X\)</span></th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PDF</td>
+<td>Relative histogram</td>
+</tr>
+<tr class="even">
+<td>CDF</td>
+<td>Cumulative relative histogram</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mu\)</span></td>
+<td>Observed sample mean <span class="math inline">\(\bar x\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sigma\)</span></td>
+<td>Observed sample std dev <span class="math inline">\(s\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="theory-of-sampling" class="slide level1">
+<h1>Theory of Sampling</h1>
+<p>Key theoretical point:</p>
+<ul>
+<li><p>Our intuition suggests that the bigger <span class="math inline">\(n\)</span> is, the better the estimates of <span class="math inline">\(X\)</span> will be</p></li>
+<li><p>Theory confirms this is true</p></li>
+</ul>
+</section>
+<section id="theory-of-sampling-contd" class="slide level1">
+<h1>Theory of Sampling (cont’d)</h1>
+<p>For example…</p>
+<ul>
+<li>Assume <span class="math inline">\(n\)</span> is large (say, <span class="math inline">\(n \ge 30\)</span>)</li>
+<li>The sample mean <span class="math inline">\(\bar x\)</span> follows a normal distribution (even if <span class="math inline">\(X\)</span> is not normal itself)
+<ul>
+<li>Its mean is <span class="math inline">\(\mu\)</span></li>
+<li>Its std dev is <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="theory-of-sampling-contd-1" class="slide level1">
+<h1>Theory of Sampling (cont’d)</h1>
+<p>Standard error of the mean = <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span></p>
+<ul>
+<li><p>The standard error tells us how far <span class="math inline">\(\bar x\)</span> is from the <span class="math inline">\(\mu\)</span></p></li>
+<li><p>E.g.</p>
+<ul>
+<li>We can say, “95% of the time, <span class="math inline">\(\bar x\)</span> falls within 1.960 std errors of <span class="math inline">\(\mu\)</span>”</li>
+<li>We know that, as <span class="math inline">\(n\)</span> goes up, error goes down</li>
+</ul></li>
+</ul>
+</section>
+<section id="confidence-intervals" class="slide level1">
+<h1>Confidence Intervals</h1>
+<ul>
+<li><span class="math inline">\(\bar x\)</span> is an estimate of <span class="math inline">\(\mu\)</span></li>
+<li>But how good an estimate is it?</li>
+<li>Confidence intervals help us answer this question…</li>
+</ul>
+</section>
+<section id="confidence-intervals-contd" class="slide level1">
+<h1>Confidence Intervals (cont’d)</h1>
+<p>Given random sample with</p>
+<ul>
+<li>large sample size <span class="math inline">\(n \ge 30\)</span></li>
+<li>observed sample mean <span class="math inline">\(\bar x\)</span></li>
+<li>observed sample std dev <span class="math inline">\(s\)</span></li>
+</ul>
+<p>A 95% confidence interval for <span class="math inline">\(\mu\)</span> is <span class="math display">\[
+\bar x \pm 1.96 \frac{s}{\sqrt{n}}
+\quad \text{or} \quad
+\left[ \bar x - 1.96 \frac{s}{\sqrt{n}}, \bar x + 1.96 \frac{s}{\sqrt{n}} \right]
+\]</span></p>
+</section>
+<section id="confidence-intervals-contd-1" class="slide level1">
+<h1>Confidence Intervals (cont’d)</h1>
+<p>More generally, a <span class="math inline">\(\beta\)</span>% confidence interval for <span class="math inline">\(\mu\)</span> is <span class="math display">\[
+\bar x \pm c \cdot \frac{s}{\sqrt{n}}
+\quad \text{or} \quad
+\left[ \bar x - c \cdot \frac{s}{\sqrt{n}}, \bar x + c \cdot \frac{s}{\sqrt{n}} \right]
+\]</span></p>
+<p>where <span class="math inline">\(c = \text{NORM.S.INV}(1-(1- \beta/100)/2)\)</span></p>
+</section>
+<section id="confidence-intervals-contd-2" class="slide level1">
+<h1>Confidence Intervals (cont’d)</h1>
+<p>Most common <span class="math inline">\(c\)</span> values</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\beta\)</span>%</th>
+<th><span class="math inline">\(c\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>90%</td>
+<td>1.645</td>
+</tr>
+<tr class="even">
+<td>95%</td>
+<td>1.960</td>
+</tr>
+<tr class="odd">
+<td>98%</td>
+<td>2.326</td>
+</tr>
+<tr class="even">
+<td>99%</td>
+<td>2.576</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="confidence-intervals-contd-3" class="slide level1">
+<h1>Confidence Intervals (cont’d)</h1>
+<ul>
+<li><p>Technical interpretation of a <span class="math inline">\(\beta\)</span>% CI</p>
+<ul>
+<li>If we take many samples of size <span class="math inline">\(n\)</span> and construct all the corresponding <span class="math inline">\(\beta\)</span>% CI’s, then about <span class="math inline">\(\beta\)</span>% of those CI’s will contain <span class="math inline">\(\mu\)</span></li>
+</ul></li>
+<li><p>Common interpretation of a <span class="math inline">\(\beta\)</span>% CI</p>
+<ul>
+<li>“We are <span class="math inline">\(\beta\)</span>% sure that <span class="math inline">\(\mu\)</span> is contained in the CI.”</li>
+</ul></li>
+</ul>
+</section>
+<section id="exercise-heights" class="slide level1">
+<h1>Exercise: Heights</h1>
+<p>The corresponding Excel file contains the heights (in inches) of a random sample of 50 adult females.</p>
+<ul>
+<li><p>Calculate the observed sample mean, observed sample standard deviation, and observed standard error of the 50 values.</p></li>
+<li><p>Construct 95% and 99% confidence intervals (CIs) for the population mean.</p></li>
+</ul>
+</section>
+<section id="cis-for-small-sample-size" class="slide level1">
+<h1>CI’s for Small Sample Size</h1>
+<p>Given random sample with</p>
+<ul>
+<li>small sample size <span class="math inline">\(n &lt; 30\)</span></li>
+<li>observed sample mean <span class="math inline">\(\bar x\)</span></li>
+<li>observed sample std dev <span class="math inline">\(s\)</span></li>
+</ul>
+<p>We can still construct a CI for <span class="math inline">\(\mu\)</span>, but we need an additional assumption</p>
+<ul>
+<li>underlying distribution of <span class="math inline">\(X\)</span> is normally distributed</li>
+</ul>
+</section>
+<section id="cis-for-small-sample-size-contd" class="slide level1">
+<h1>CI’s for Small Sample Size (cont’d)</h1>
+<p>A <span class="math inline">\(\beta\)</span>% confidence interval for <span class="math inline">\(\mu\)</span> is <span class="math display">\[
+\bar x \pm c \cdot \frac{s}{\sqrt{n}}
+\]</span></p>
+<p>where <span class="math inline">\(c = \text{T.INV}(1-(1-\beta/100)/2, n-1)\)</span></p>
+</section>
+<section id="cis-for-proportions" class="slide level1">
+<h1>CI’s for Proportions</h1>
+<ul>
+<li><p>Imagine that <span class="math inline">\(X\)</span> is a “0 or 1” random variable</p>
+<ul>
+<li>yes or no, success or failure</li>
+</ul></li>
+<li><p>We are are often interested in <span class="math inline">\(p\)</span>, the proportion of the population having value 1</p>
+<ul>
+<li>Interpretation: <span class="math inline">\(P(X = 1) = p\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(p\)</span> is the population proportion</p></li>
+<li><p><span class="math inline">\(\bar p\)</span> is the observed sample proportion</p></li>
+</ul>
+<p><span class="math display">\[
+\bar p = \frac{\text{number of successes}}{n}
+\]</span></p>
+</section>
+<section id="cis-for-proportions-contd" class="slide level1">
+<h1>CI’s for Proportions (cont’d)</h1>
+<p>If <span class="math inline">\(n \bar p \ge 5\)</span> and <span class="math inline">\(n(1 - \bar p) \ge 5\)</span>, then a <span class="math inline">\(\beta\)</span>% CI for <span class="math inline">\(p\)</span> is <span class="math display">\[
+\bar p \pm c \sqrt{\frac{\bar p(1 - \bar p)}{n}}
+\]</span> where <span class="math inline">\(c\)</span> is the same as in the large-sample-size case</p>
+</section>
+<section id="exercise-heights-contd" class="slide level1">
+<h1>Exercise: Heights (cont’d)</h1>
+<ul>
+<li>Estimate the population proportion of adult females that exceed 66 inches. Construct a 90% CI for this proportion.</li>
+</ul>
+</section>
+<section id="experimental-design-means" class="slide level1">
+<h1>Experimental Design: Means</h1>
+<ul>
+<li><p>Consider estimating <span class="math inline">\(\mu\)</span>. How many observations <span class="math inline">\(n\)</span> are needed to obtain a <span class="math inline">\(\beta\)</span>% confidence interval for a specified tolerance level <span class="math inline">\(L\)</span>?</p></li>
+<li><p>I.e., what <span class="math inline">\(n\)</span> will give a CI of the form <span class="math inline">\(\bar x \pm L\)</span>?</p></li>
+</ul>
+</section>
+<section id="experimental-design-means-contd" class="slide level1">
+<h1>Experimental Design: Means (cont’d)</h1>
+<ul>
+<li><p>Suppose you have an observed sample std dev <span class="math inline">\(s\)</span> gotten from a small pilot sample</p></li>
+<li><p>Then the required sample size <span class="math inline">\(n\)</span> to achieve a <span class="math inline">\(\beta\)</span>% CI for <span class="math inline">\(\mu\)</span> with tolerance level <span class="math inline">\(L\)</span> is <span class="math display">\[n = \frac{c^2 s^2}{L^2}\]</span> where <span class="math inline">\(c\)</span> is the same as in the large-sample-size case</p></li>
+</ul>
+</section>
+<section id="experimental-design-means-contd-1" class="slide level1">
+<h1>Experimental Design: Means (cont’d)</h1>
+<p>Also</p>
+<ul>
+<li><p>If <span class="math inline">\(n\)</span> is fractional, then round up to the nearest whole number</p></li>
+<li><p>If <span class="math inline">\(n &lt; 30\)</span>, then increase <span class="math inline">\(n\)</span> to 30</p></li>
+</ul>
+</section>
+<section id="exercise-heights-contd-1" class="slide level1">
+<h1>Exercise: Heights (cont’d)</h1>
+<ul>
+<li><p>Consider the sample of 50 as a pilot sample. Find the minimal sample size to yield a 95% CI for the true mean with tolerance level <span class="math inline">\(L = 0.5\)</span> inches. What about for 99% confidence?</p></li>
+<li><p>Which CI in requires a larger sample size? Why?</p></li>
+</ul>
+</section>
+<section id="experimental-design-proportions" class="slide level1">
+<h1>Experimental Design: Proportions</h1>
+<ul>
+<li><p>Consider estimating <span class="math inline">\(p\)</span>. How many observations <span class="math inline">\(n\)</span> are needed to obtain a <span class="math inline">\(\beta\)</span>% confidence interval for a specified tolerance level <span class="math inline">\(L\)</span>?</p></li>
+<li><p>I.e., what <span class="math inline">\(n\)</span> will give a CI of the form <span class="math inline">\(\bar p \pm L\)</span>?</p></li>
+<li><p>In this case, <span class="math inline">\(L\)</span> is a decimal between 0 and 1</p></li>
+</ul>
+</section>
+<section id="experimental-design-proportions-contd" class="slide level1">
+<h1>Experimental Design: Proportions (cont’d)</h1>
+<ul>
+<li>The required sample size <span class="math inline">\(n\)</span> to achieve a <span class="math inline">\(\beta\)</span>% CI for <span class="math inline">\(p\)</span> with tolerance level <span class="math inline">\(L\)</span> is <span class="math display">\[n = \frac{c^2}{4 L^2}\]</span> where <span class="math inline">\(c\)</span> is the same as in the large-sample-size case</li>
+</ul>
+</section>
+<section id="polling-example" class="slide level1">
+<h1>Polling Example</h1>
+<ul>
+<li><p>In estimating the proportion of the population that approves of the President’s performance, how many people should be polled to provide a 95% confidence interval with error of 3 percentage points?</p></li>
+<li><p>Want to be able to say something like: “44% of Americans approve of the job the President is doing, plus or minus 3 percentage points”</p></li>
+<li><p>Apply formula with <span class="math inline">\(c = 1.960\)</span> and <span class="math inline">\(L = 0.03\)</span>: <span class="math display">\[n = 1.960^2 / (4
+\cdot 0.03^2 ) = 1067.1 \approx 1068\]</span></p></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
