@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Regression (Basics)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Regression (Basics)</h1>
+  <h2 class="author">Samuel Burer</h2>
+  <h3 class="date">Last updated: September 21, 2016</h3>
+</section>
+
+<section id="disclaimer" class="slide level1">
+<h1>Disclaimer</h1>
+<ul>
+<li>Book and I present same information in slightly differently ways</li>
+<li>It is safe to follow just these lecture slides if you like</li>
+</ul>
+</section>
+<section id="introduction-relationship-between-two-variables" class="slide level1">
+<h1>Introduction: Relationship Between Two Variables</h1>
+</section>
+<section id="relationship-between-two-variables" class="slide level1">
+<h1>Relationship Between Two Variables</h1>
+<p>Imagine a situation that simultaneously gives rise to two populations, each with its own underlying random variables (say, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>). I.e., <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be measured together.</p>
+</section>
+<section id="relationship-between-two-variables-contd" class="slide level1">
+<h1>Relationship Between Two Variables (cont’d)</h1>
+<p>Examples:</p>
+<ul>
+<li><span class="math inline">\(X\)</span> = fertilizer quantity per plant, <span class="math inline">\(Y\)</span> = yield quantity per plant</li>
+<li><span class="math inline">\(X\)</span> = monthly income, <span class="math inline">\(Y\)</span> = monthly entertainment expenses</li>
+<li><span class="math inline">\(X\)</span> = # of Toyotas per city, <span class="math inline">\(Y\)</span> = # of Fords per city</li>
+<li><span class="math inline">\(X\)</span> = % favoring renewable energy, <span class="math inline">\(Y\)</span> = % who recycle</li>
+</ul>
+</section>
+<section id="relationship-between-two-variables-contd-1" class="slide level1">
+<h1>Relationship Between Two Variables (cont’d)</h1>
+<p>Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> related? If so, how?</p>
+<ul>
+<li>For example, are high values of <span class="math inline">\(X\)</span> associated with high values of <span class="math inline">\(Y\)</span>?</li>
+<li>Does <span class="math inline">\(Y\)</span> increase as <span class="math inline">\(X\)</span> decreases?</li>
+<li>Are they slightly, or strongly, related?</li>
+<li>Is there a formula that relates the two?</li>
+<li>Perhaps they’re not related at all?</li>
+</ul>
+</section>
+<section id="relationship-between-two-variables-contd-2" class="slide level1">
+<h1>Relationship Between Two Variables (cont’d)</h1>
+<img src="./graphics/soda.png" title="soda" alt="soda" class="stretch" /> 
+</section>
+<section id="relationship-between-two-variables-contd-3" class="slide level1">
+<h1>Relationship Between Two Variables (cont’d)</h1>
+<ul>
+<li>Is the (linear) relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> positive or negative, weak or strong?
+<ul>
+<li>Covariance and correlation</li>
+</ul></li>
+<li>Is there a (linear) formula that relates <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>?
+<ul>
+<li>Simple linear regression</li>
+</ul></li>
+</ul>
+</section>
+<section id="covariance-and-correlation" class="slide level1">
+<h1>Covariance and Correlation</h1>
+</section>
+<section id="what-is-a-line" class="slide level1">
+<h1>What is a line?</h1>
+<p>See Excel file <em>demo_1_line.xlsm</em></p>
+</section>
+<section id="covariance-and-correlation-1" class="slide level1">
+<h1>Covariance and Correlation</h1>
+<p>The <em>covariance</em> cov(<span class="math inline">\(X,Y\)</span>) of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a measurement of the degree of association between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<ul>
+<li>cov(<span class="math inline">\(X,Y\)</span>) &gt; 0: a positive relationship</li>
+<li>cov(<span class="math inline">\(X,Y\)</span>) &lt; 0: a negative relationship</li>
+<li>cov(<span class="math inline">\(X,Y\)</span>) = 0: neither positive nor negative</li>
+</ul>
+</section>
+<section id="covariance-and-correlation-contd" class="slide level1">
+<h1>Covariance and Correlation (cont’d)</h1>
+<p>The <em>correlation coefficient</em> <span class="math inline">\(\rho_{XY}\)</span> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a scaled version of the covariance (between <span class="math inline">\(-1\)</span> and <span class="math inline">\(+1\)</span>).</p>
+<p><span class="math display">\[
+\rho_{XY} = \frac{ \text{cov}(X,Y) }{ \sigma_X \sigma_Y }
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\rho_{XY} = +1\)</span>: a perfect positive, linear relationship</li>
+<li><span class="math inline">\(\rho_{XY} = -1\)</span>: a perfect negative, linear relationship</li>
+<li><span class="math inline">\(\rho_{XY} = 0\)</span>: no linear relationship</li>
+</ul>
+</section>
+<section id="covariance-and-correlation-contd-1" class="slide level1">
+<h1>Covariance and Correlation (cont’d)</h1>
+<p>The <em>coefficient of determination</em> between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> <span class="math inline">\(\rho_{XY}^2\)</span>, i.e., the square of the correlation coefficient:</p>
+<ul>
+<li>a number between 0 and 1</li>
+<li><span class="math inline">\(\rho_{XY}^2 = 1\)</span>: a perfect linear relationship</li>
+<li><span class="math inline">\(\rho_{XY}^2 = 0\)</span>: no linear relationship</li>
+</ul>
+<p>Often interpreted as “the proportion of variation in <span class="math inline">\(Y\)</span> explained by <span class="math inline">\(X\)</span>” (and vice versa)</p>
+</section>
+<section id="covariance-and-correlation-contd-2" class="slide level1">
+<h1>Covariance and Correlation (cont’d)</h1>
+<p>When you have sample data for <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the relevant Excel commands are</p>
+<ul>
+<li><code>COVAR</code></li>
+<li><code>CORREL</code></li>
+<li>Tools &gt; Data Analysis &gt; Covariance</li>
+<li>Tools &gt; Data Analysis &gt; Correlation</li>
+</ul>
+<p>See Excel file <em>demo_2_correlation.xlsm</em></p>
+</section>
+<section id="covariance-and-correlation-contd-3" class="slide level1">
+<h1>Covariance and Correlation (cont’d)</h1>
+<p>Keep in mind that, as with means and proportions, there are true values for cov(<span class="math inline">\(X,Y\)</span>), <span class="math inline">\(\rho_{XY}\)</span>, and <span class="math inline">\(\rho_{XY}^2\)</span> and then there are observed sample values.</p>
+</section>
+<section id="covariance-and-correlation-contd-4" class="slide level1">
+<h1>Covariance and Correlation (cont’d)</h1>
+<p>“Beyond Options” <em>BusinessWeek</em> July 28, 2003</p>
+<blockquote>
+<p>Companies with significant employee ownership do better on a wide range of performance metrics, including productivity, profit margins, and return on equity, according to the studies.</p>
+</blockquote>
+</section>
+<section id="covariance-and-correlation-contd-5" class="slide level1">
+<h1>Covariance and Correlation (cont’d)</h1>
+<img src="./graphics/equifax.png" title="equifax" alt="equifax" class="stretch" /> 
+<p>Source: Equifax</p>
+</section>
+<section id="covariance-and-correlation-contd-6" class="slide level1">
+<h1>Covariance and Correlation (cont’d)</h1>
+<p>An Important Point:</p>
+<ul>
+<li><p>When describing the relationship between two variables, we focus on <em>correlation</em>, not <em>causation</em>.</p></li>
+<li><p>Even though you may have in mind that one variable causes another, the statistical tools we use are not precise enough to detect this.</p></li>
+</ul>
+</section>
+<section id="covariance-and-correlation-contd-7" class="slide level1">
+<h1>Covariance and Correlation (cont’d)</h1>
+<p>A nationwide study in the 1940s found a high correlation between polio and ice cream consumption. A careful re-examination of the data showed that the high values of both variables occurred in communities where data was collected in the summertime, and vice versa. We now know Polio spreads more easily when children gather in groups in relatively unsanitary conditions, i.e., it spreads more easily during summer vacation than when the children are in school.</p>
+</section>
+<section id="covariance-and-correlation-contd-8" class="slide level1">
+<h1>Covariance and Correlation (cont’d)</h1>
+<p>Okay, so how do you determine causation?</p>
+<ul>
+<li>Reasonable explanation for cause and effect</li>
+<li>Connection happens under varying conditions</li>
+<li>Potential confounding variables are ruled out</li>
+<li>Only designed experiments show causation</li>
+</ul>
+</section>
+<section id="simple-linear-regression" class="slide level1">
+<h1>Simple Linear Regression</h1>
+<p>See Excel file <em>cpi_1.xlsx</em></p>
+</section>
+<section id="basic-steps-of-any-regression" class="slide level1">
+<h1>Basic Steps of (Any) Regression</h1>
+<ol type="1">
+<li><p>Specify a model, which gives a formula for Y in terms of X</p>
+<ul>
+<li>Y is called dependent, X is called independent</li>
+</ul></li>
+<li><p>Fit the data to the model</p>
+<ul>
+<li>Excel does the number crunching</li>
+</ul></li>
+<li><p>Evaluate whether the fit is “good” or not</p>
+<ul>
+<li>This is your judgment; we will do this later</li>
+</ul></li>
+<li><p>If good, then use the fitted model to explain or forecast. If bad, then “back to the drawing board.”</p></li>
+</ol>
+</section>
+<section id="step-1-linear-model" class="slide level1">
+<h1>Step 1: Linear Model</h1>
+<p>The simplest type of relationship that can exist between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a simple linear relationship:</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1*X
+\]</span></p>
+</section>
+<section id="step-1-linear-model-contd" class="slide level1">
+<h1>Step 1: Linear Model (cont’d)</h1>
+<p>The number <span class="math inline">\(\beta_1\)</span> is called the <em>slope coefficient</em> and is related to the correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>:</p>
+<ul>
+<li><span class="math inline">\(\beta_1\)</span> is the change in <span class="math inline">\(Y\)</span> given a <span class="math inline">\(+1\)</span> change in <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\(\beta_1 &gt; 0\)</span>: a positive relationship</li>
+<li><span class="math inline">\(\beta_1 &lt; 0\)</span>: a negative relationship</li>
+<li><span class="math inline">\(\beta_1 = 0\)</span>: no relationship (i.e., independent)</li>
+</ul>
+<p>The number <span class="math inline">\(\beta_0\)</span> is called the <em>intercept</em> and represents the value of <span class="math inline">\(Y\)</span> corresponding to <span class="math inline">\(X=0\)</span>.</p>
+</section>
+<section id="step-1-linear-model-contd-1" class="slide level1">
+<h1>Step 1: Linear Model (cont’d)</h1>
+<ul>
+<li><p>If the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is (exactly) linear and <span class="math inline">\(\beta_1 \ne 0\)</span>, then <span class="math inline">\(\rho_{XY}^2 = 1\)</span>, i.e., <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> explain each other 100%.</p></li>
+<li><p>However, in real applications, an exact linear relationship never holds. Instead, an “almost” linear relationship holds: <span class="math display">\[
+Y = \beta_0 + \beta_1*X + \epsilon
+\]</span></p></li>
+<li><p>We think of <span class="math inline">\(\epsilon\)</span> as an “error term” that accounts for anything that the linear part does not explain.</p></li>
+</ul>
+</section>
+<section id="step-1-linear-model-contd-2" class="slide level1">
+<h1>Step 1: Linear Model (cont’d)</h1>
+<p>The Simple Linear Model: <span class="math inline">\(Y = \beta_0 + \beta_1*X + \epsilon\)</span></p>
+<ul>
+<li><p>Ingredients: <span class="math inline">\(X, Y, \beta_0, \beta_1, \epsilon\)</span></p></li>
+<li><p>Assumptions</p>
+<ul>
+<li>Discounting <span class="math inline">\(\epsilon\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a linear relationship</li>
+<li><span class="math inline">\(\beta_1 \ne 0\)</span></li>
+<li><span class="math inline">\(\epsilon\)</span> is a random variable that is normally distributed with mean <span class="math inline">\(\mu_\epsilon = 0\)</span> and std dev <span class="math inline">\(\sigma_\epsilon\)</span></li>
+<li><span class="math inline">\(\epsilon\)</span> is independent of <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\(\epsilon\)</span> is “relatively small” compared to <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="step-2-fitting-the-data" class="slide level1">
+<h1>Step 2: Fitting the Data</h1>
+<p>Suppose you have a data sample of <span class="math inline">\(n\)</span> observations relating <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<ul>
+<li><p>Fitting the data to the model is done by a technique called the <em>least squares method</em>.</p></li>
+<li><p>Tries to choose a line <span class="math inline">\(\hat Y = b_0 + b_1*X\)</span> that minimizes the “total size” of the residuals.</p></li>
+<li><p><em>Residuals</em> are the difference between the sample data and the fitted line; also called <em>errors</em></p></li>
+</ul>
+<p>See Excel file <em>demo_3_least_squares.xlsm</em>.</p>
+</section>
+<section id="step-2-fitting-the-data-contd" class="slide level1">
+<h1>Step 2: Fitting the Data (cont’d)</h1>
+<p>What does the fit give you?</p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Observed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(Y = \beta_0 + \beta_1 X + \epsilon\)</span></td>
+<td><span class="math inline">\(\hat Y = b_0 + b_1 X\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_0\)</span></td>
+<td><span class="math inline">\(b_0\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\beta_1\)</span></td>
+<td><span class="math inline">\(b_1\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mu_\epsilon\)</span></td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\sigma_\epsilon\)</span></td>
+<td><span class="math inline">\(S_{XY}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\rho_{XY}^2\)</span></td>
+<td><span class="math inline">\(R^2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(\hat Y = b_0 + b_1 X\)</span> is “what we tell the boss”.</p>
+</section>
+<section id="step-2-fitting-the-data-contd-1" class="slide level1">
+<h1>Step 2: Fitting the Data (cont’d)</h1>
+<p>What does the fit give you?</p>
+<ul>
+<li><p><span class="math inline">\(R^2\)</span> = percentage of variability in <span class="math inline">\(Y\)</span> that is explained by <span class="math inline">\(X\)</span> via the regression</p></li>
+<li><p><span class="math inline">\(S_{XY}\)</span> = standard deviation of the residuals/errors</p></li>
+</ul>
+</section>
+<section id="step-2-fitting-the-data-contd-2" class="slide level1">
+<h1>Step 2: Fitting the Data (cont’d)</h1>
+<p>Excel calculates all of these things via <em>Tools &gt; Data Analysis &gt; Regression</em>:</p>
+<img src="./graphics/regression_via_Excel_1.png" title="regression_via_Excel_1" alt="regression_via_Excel_1" class="stretch" /> 
+</section>
+<section id="step-2-fitting-the-data-contd-3" class="slide level1">
+<h1>Step 2: Fitting the Data (cont’d)</h1>
+<img src="./graphics/regression_via_Excel_2.png" title="regression_via_Excel_2" alt="regression_via_Excel_2" class="stretch" /> 
+</section>
+<section id="multiple-linear-regression" class="slide level1">
+<h1>Multiple Linear Regression</h1>
+</section>
+<section id="multiple-linear-regression-1" class="slide level1">
+<h1>Multiple Linear Regression</h1>
+<p>Multiple linear regression is an extension of simple linear regression in which the variable <span class="math inline">\(Y\)</span> is described by <span class="math inline">\(m\)</span> variables <span class="math inline">\(X_1, \ldots, X_m\)</span></p>
+</section>
+<section id="correlation-matrix" class="slide level1">
+<h1>Correlation Matrix</h1>
+<ul>
+<li><p>Before running a multiple regression, get a correlation matrix by running <em>Tools &gt; Data Analysis &gt; Correlation</em> on all columns in your data</p>
+<ul>
+<li>Shows pair-wise correlations</li>
+<li>Gives a sense of which <span class="math inline">\(X_i\)</span> are most strongly correlated with <span class="math inline">\(Y\)</span></li>
+<li>Just exploring the data</li>
+</ul></li>
+</ul>
+</section>
+<section id="correlation-matrix-contd" class="slide level1">
+<h1>Correlation Matrix (cont’d)</h1>
+<ul>
+<li><p>Keep in mind that this is only a snapshot of the relationships in the data</p>
+<ul>
+<li>Will still want to do MLR</li>
+<li>MLR is a more powerful tool because it shows how all variables are related simultaneously</li>
+</ul></li>
+</ul>
+</section>
+<section id="multiple-linear-regression-contd" class="slide level1">
+<h1>Multiple Linear Regression (cont’d)</h1>
+<p>A lot of similarites between MLR and SLR…</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_m X_m + \epsilon
+\]</span></p>
+<p><span class="math display">\[
+\hat Y = b_0 + b_1 X_1 + \cdots + b_m X_m
+\]</span></p>
+</section>
+<section id="multiple-linear-regression-contd-1" class="slide level1">
+<h1>Multiple Linear Regression (cont’d)</h1>
+<img src="./graphics/soccer_formula.png" title="soccer_formula" alt="soccer_formula" class="stretch" /> 
+<img src="./graphics/civics_formula.png" title="civics_formula" alt="civics_formula" class="stretch" /> 
+</section>
+<section id="multiple-linear-regression-contd-2" class="slide level1">
+<h1>Multiple Linear Regression (cont’d)</h1>
+<ul>
+<li><p>The idea of <em>best fit</em> still applies</p>
+<ul>
+<li>errors/residuals</li>
+</ul></li>
+<li><p>Intercept <span class="math inline">\(\beta_0\)</span>/<span class="math inline">\(b_0\)</span></p>
+<ul>
+<li>the value of <span class="math inline">\(Y\)</span> when all <span class="math inline">\(X_i\)</span> are equal to 0 at the same time</li>
+</ul></li>
+<li><p>Slopes <span class="math inline">\(\beta_i\)</span>/<span class="math inline">\(b_i\)</span></p>
+<ul>
+<li><p>change in <span class="math inline">\(Y\)</span> given a <span class="math inline">\(+1\)</span> change in <span class="math inline">\(X_i\)</span>—while holding all other variables constant</p></li>
+<li><p>95% CIs</p></li>
+</ul></li>
+<li><p><span class="math inline">\(R^2\)</span> and <span class="math inline">\(S_{XY}\)</span> have the same meaning</p>
+<ul>
+<li>However, it is better to look at <em>Adjusted <span class="math inline">\(R^2\)</span></em> because it is “unbiased”</li>
+</ul></li>
+</ul>
+</section>
+<section id="multiple-linear-regression-contd-3" class="slide level1">
+<h1>Multiple Linear Regression (cont’d)</h1>
+<img src="./graphics/regression_via_Excel_3.png" title="regression_via_Excel_3" alt="regression_via_Excel_3" class="stretch" /> 
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
