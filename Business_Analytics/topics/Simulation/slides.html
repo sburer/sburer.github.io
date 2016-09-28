@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Monte Carlo Simulation</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Monte Carlo Simulation</h1>
+  <h2 class="author">Samuel Burer</h2>
+  <h3 class="date">Last updated: September 28, 2016</h3>
+</section>
+
+<section id="motivating-example" class="slide level1">
+<h1>Motivating Example</h1>
+<ul>
+<li>Your company manufactures and sells a particular product.</li>
+<li>How many units should you plan to produce this month for sale next month?</li>
+<li>Complicating factors:
+<ul>
+<li>Next month’s demand is uncertain
+<ul>
+<li>Normally distributed (<span class="math inline">\(\mu = 50000\)</span>, <span class="math inline">\(\sigma = 1000\)</span>)</li>
+</ul></li>
+<li>Raw material costs are uncertain
+<ul>
+<li>Per-unit raw material costs somewhere between $22 and $25</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="decisions-and-uncertainty" class="slide level1">
+<h1>Decisions and Uncertainty</h1>
+<ul>
+<li>Most decisions are made in the face of uncertain / random events</li>
+<li><p>Said differently…</p>
+<ul>
+<li><p>If we could see into the future, the best course of action would be easy to choose</p></li>
+<li><p>But because we can’t predict the future, we make our best guess based on whatever partial information we have about the future</p></li>
+</ul></li>
+<li><p>Recall: Decision analysis and decision trees</p></li>
+</ul>
+</section>
+<section id="decisions-and-uncertainty-contd" class="slide level1">
+<h1>Decisions and Uncertainty (cont’d)</h1>
+<ul>
+<li><p>Decision trees</p>
+<ul>
+<li>Use fairly simple models of uncertainty</li>
+<li>Are based on a sequence of decisions and events over time</li>
+<li>Are built with the intent of choosing the best decision strategy</li>
+</ul></li>
+<li><p>In contrast, Monte Carlo simulation is a tool to describe the uncertainty in complex situations (which may or may not be sequenced over time)</p></li>
+</ul>
+</section>
+<section id="simulation" class="slide level1">
+<h1>Simulation</h1>
+<p><em>simulation</em>:</p>
+<blockquote>
+<p>the representation of the operation or features of one process or system through the use of another</p>
+</blockquote>
+</section>
+<section id="simulation-contd" class="slide level1">
+<h1>Simulation (cont’d)</h1>
+<ul>
+<li>Your company simulates a fire evacuation procedure</li>
+<li>Kodak simulates how its digital photo paper performs after years of exposure to light</li>
+<li>A new amusement park uses software to simulate lines before opening day</li>
+<li>A meteorologist simulates a thunderstorm on his/her computer</li>
+</ul>
+</section>
+<section id="monte-carlo-simulation" class="slide level1">
+<h1>Monte Carlo Simulation</h1>
+<p>Imagine a situation having uncertain inputs with known probability distributions…</p>
+<ul>
+<li><p><em>MCS</em> simulates the uncertain inputs (and their consequences) via repeated random sampling</p></li>
+<li><p>Shows the effect of uncertain inputs in a statistical setting</p></li>
+</ul>
+<p>Random sampling is using a computer to generate a number from a given probability distribution</p>
+</section>
+<section id="examples" class="slide level1">
+<h1>Examples</h1>
+<p>See Excel files</p>
+<ul>
+<li><em>1_random_numbers.xlsx</em></li>
+<li><em>2_birthdays.xlsx</em></li>
+</ul>
+</section>
+<section id="generating-random-numbers" class="slide level1">
+<h1>Generating Random Numbers</h1>
+<p>Single random number from continuous uniform distribution between <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>:</p>
+<pre><code>L + RAND()*(U - L)</code></pre>
+</section>
+<section id="generating-random-numbers-contd" class="slide level1">
+<h1>Generating Random Numbers (cont’d)</h1>
+<p>Single random integer from discrete uniform distribution between <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> (inclusive):</p>
+<pre><code>RANDBETWEEN(L, U)</code></pre>
+</section>
+<section id="generating-random-numbers-contd-1" class="slide level1">
+<h1>Generating Random Numbers (cont’d)</h1>
+<p>Single random number from normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>:</p>
+<pre><code>NORM.INV(RAND(), mu, sigma)</code></pre>
+</section>
+<section id="generating-random-numbers-contd-2" class="slide level1">
+<h1>Generating Random Numbers (cont’d)</h1>
+<p>From specified discrete distribution:</p>
+<img src="graphics/discrete.png" class="stretch" /> 
+</section>
+<section id="example" class="slide level1">
+<h1>Example</h1>
+<p>See Excel file</p>
+<ul>
+<li><em>3_production.xlsx</em></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
