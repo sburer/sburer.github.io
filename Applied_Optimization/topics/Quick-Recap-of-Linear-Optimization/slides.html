@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Quick Recap of Linear Optimization</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Quick Recap of Linear Optimization</h1>
+  <p class="author">Samuel Burer</p>
+  <p class="date">Last updated: December 21, 2016</p>
+</section>
+
+<section id="iphone-6-vs-iphone-6-plus" class="slide level1">
+<h1>iPhone 6 vs iPhone 6 Plus</h1>
+<img src="graphics/phones.png" class="stretch" /> 
+</section>
+<section id="iphone-6-vs-iphone-6-plus-contd" class="slide level1">
+<h1>iPhone 6 vs iPhone 6 Plus (cont’d)</h1>
+<img src="graphics/sizes.png" class="stretch" /> 
+</section>
+<section id="iphone-6-vs-iphone-6-plus-contd-1" class="slide level1">
+<h1>iPhone 6 vs iPhone 6 Plus (cont’d)</h1>
+<img src="graphics/teardown.png" class="stretch" /> 
+</section>
+<section id="iphone-6-vs-iphone-6-plus-contd-2" class="slide level1">
+<h1>iPhone 6 vs iPhone 6 Plus (cont’d)</h1>
+<img src="graphics/bom.png" class="stretch" /> 
+<p>Source: IHS Inc.</p>
+</section>
+<section id="iphone-6-vs-iphone-6-plus-contd-3" class="slide level1">
+<h1>iPhone 6 vs iPhone 6 Plus (cont’d)</h1>
+<img src="graphics/sales.png" class="stretch" /> 
+<p>Source: Time Inc.</p>
+</section>
+<section id="iphone-6-vs-iphone-6-plus-contd-4" class="slide level1">
+<h1>iPhone 6 vs iPhone 6 Plus (cont’d)</h1>
+<img src="graphics/apple-data.png" class="stretch" /> 
+<p>Source: Apple</p>
+</section>
+<section id="iphone-6-vs-iphone-6-plus-contd-5" class="slide level1">
+<h1>iPhone 6 vs iPhone 6 Plus (cont’d)</h1>
+<p><em>A fundamental question for Apple:</em></p>
+<p>How many of each to make?</p>
+</section>
+<section id="how-many-of-each" class="slide level1">
+<h1>How Many of Each?</h1>
+<img src="graphics/bom2.png" class="stretch" /> 
+<ul>
+<li>Regular = $649 - $200.10 = $448.90 profit/unit</li>
+<li>Plus = $749 - $215.60 = $533.40 profit/unit</li>
+</ul>
+</section>
+<section id="how-many-of-each-contd" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<p>Let</p>
+<pre><code>r = # of Regular to make
+p = # of Plus to make</code></pre>
+<p>Then Apple wants to</p>
+<pre><code>max  448.90*r + 533.40*p</code></pre>
+</section>
+<section id="how-many-of-each-contd-1" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<!-- ![](graphics/excel01.png) -->
+<!-- ![](graphics/excel02.png) -->
+<p><img src="graphics/excel01.png" width="40%"> <img src="graphics/excel02.png" width="50%"></p>
+<p>Model suggests to make an infinite number of units, which is clearly impossible. What are we missing?</p>
+</section>
+<section id="how-many-of-each-contd-2" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<p>Even if we could make an infinite number, we couldn’t sell them all because of limited demand.</p>
+<img src="graphics/apple-data-crop.png" class="stretch" /> <img src="graphics/sales-crop.png" class="stretch" /> 
+</section>
+<section id="how-many-of-each-contd-3" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<p>Companies such as Apple always forecast demand. Let us say that demand will be 74,500,000 units with a 3:1 split between Regular and Plus.</p>
+<pre><code>max     448.90*r + 533.40*p
+s.t.    r &lt;= 55,875,000
+        p &lt;= 18,625,000</code></pre>
+</section>
+<section id="how-many-of-each-contd-4" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<img src="graphics/excel03.png" class="stretch" /> 
+</section>
+<section id="how-many-of-each-contd-5" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<p>The best solution is to make as many as you can sell. Makes sense, but what if…</p>
+<img src="graphics/foxconn.png" class="stretch" /> 
+<p>Source: PC Magazine</p>
+</section>
+<section id="how-many-of-each-contd-6" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<img src="graphics/sizes.png" class="stretch" /> 
+<ul>
+<li>Glass usage
+<ul>
+<li>Regular = 9.4 sq in</li>
+<li>Plus = 12.9 sq in</li>
+</ul></li>
+<li>Apple’s glass supplier has only 650,000,000 sq in of glass available</li>
+</ul>
+</section>
+<section id="how-many-of-each-contd-7" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<pre><code>max     448.90*r + 533.40*p
+s.t.    r &lt;= 55,875,000
+        p &lt;= 18,625,000
+        9.4*r + 12.9*p &lt;= 650,000,000</code></pre>
+</section>
+<section id="how-many-of-each-contd-8" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<img src="graphics/excel04.png" class="stretch" />  <img src="graphics/excel05.png" class="stretch" /> 
+</section>
+<section id="how-many-of-each-contd-9" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<p>But what if Apple’s supplier loses one of its two factories due to an earthquake? (Seriously.)</p>
+<img src="graphics/excel06.png" class="stretch" /> 
+<p>But it doesn’t make sense to make a negative number of units. How to fix?</p>
+</section>
+<section id="how-many-of-each-contd-10" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<pre><code>max     448.90*r + 533.40*p
+s.t.    r &lt;= 55,875,000
+        p &lt;= 18,625,000
+        9.4*r + 12.9*p &lt;= 325,000,000
+        r &gt;= 0, p &gt;= 0</code></pre>
+</section>
+<section id="how-many-of-each-contd-11" class="slide level1">
+<h1>How Many of Each? (cont’d)</h1>
+<img src="graphics/excel07.png" class="stretch" /> 
+</section>
+<section id="what-is-optimization" class="slide level1">
+<h1>What is Optimization?</h1>
+<p>Recall:</p>
+<ul>
+<li><em>Descriptive analytics</em> = describing what has happened</li>
+<li><em>Predicitive analytics</em> = predicting what will happen</li>
+<li><em>Prescriptive analytics</em> = deciding what should happen</li>
+</ul>
+<p>Optimization is an important tool within prescriptive analytics</p>
+</section>
+<section id="what-is-optimization-contd" class="slide level1">
+<h1>What is Optimization? (cont’d)</h1>
+<p>An optimization model requires four things:</p>
+<ol type="1">
+<li><p>A specific situation with decisions that must be made in order to optimize some objective. Constraints on those decisions</p></li>
+<li><p>A logical model describing the relationship between the decisions, objective, and constraints</p></li>
+<li><p>Data to link the logical model to the specific situation</p></li>
+<li><p>Software to process the model and data together to arrive at a specific decision that can be implemented in the specific situation</p></li>
+</ol>
+</section>
+<section id="what-is-optimization-contd-1" class="slide level1">
+<h1>What is Optimization? (cont’d)</h1>
+<ul>
+<li><p>We will focus on #2 and #4 (building the logical model and using the software)</p></li>
+<li><p>Less emphasis will be placed on #1 and #3 (the specific situation and the data), although these are <em>extremely</em> important, too</p>
+<ul>
+<li>Note: Predictive analytics often helps with getting the data for an optimization model</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-is-optimization-contd-2" class="slide level1">
+<h1>What is Optimization (cont’d)</h1>
+<ul>
+<li><p>Optimization is also a tool in a field called <em>operations research</em>, which intersects with business analytics</p></li>
+<li><p>This <a href="http://mat.tepper.cmu.edu/blog/?p=1454">blog post</a> provides a nice background</p></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+              { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
