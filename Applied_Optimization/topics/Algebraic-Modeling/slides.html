@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Algebraic Modeling</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Algebraic Modeling</h1>
+  <p class="author">Samuel Burer</p>
+  <p class="date">Last updated: January 20, 2017</p>
+</section>
+
+<section id="what-is-algebraic-modeling" class="slide level1">
+<h1>What is Algebraic Modeling?</h1>
+<p><em>Algebraic modeling</em> of optimization problems uses algebraic expressions to specify the variables, constraints, and objective function in a manner that clearly separates the <em>logical model</em> from the <em>data</em></p>
+<ul>
+<li><p><em>logical model</em> = high-level mathematical relationships between variables, constraints, and objective function</p></li>
+<li><p><em>data</em> = the numbers/parameters that connect the logical model to the real-world</p></li>
+</ul>
+</section>
+<section id="concept-index-sets" class="slide level1">
+<h1>Concept: Index Sets</h1>
+<p>An <em>index set</em> (or just <em>set</em>) is a collection of objects over which variables, constraints, and data/numbers/parameters can be defined. E.g.:</p>
+<ul>
+<li><p>You make three phone sizes: small, medium, and large</p></li>
+<li><p>The corresponding set is the collection of words/strings <code>{small, medium, large}</code></p></li>
+<li><p>Or <code>{s, m, l}</code></p></li>
+</ul>
+</section>
+<section id="concept-index-sets-contd" class="slide level1">
+<h1>Concept: Index Sets (cont’d)</h1>
+<p>E.g.:</p>
+<ul>
+<li><p>You are planning for the months of July, August, September, and October</p></li>
+<li><p><code>{July, August, September, October}</code>…</p></li>
+<li><p>Or <code>{Jul, Aug, Sep, Oct}</code></p></li>
+<li><p>Or <code>{7, 8, 9, 10}</code></p></li>
+</ul>
+</section>
+<section id="concept-index-over-a-set" class="slide level1">
+<h1>Concept: Index Over a Set</h1>
+<ul>
+<li><p>Let <span class="math inline">\(S\)</span> represent a set</p></li>
+<li><p>An <em>index</em> over <span class="math inline">\(S\)</span> is a symbol used to represent looping over the elements of <span class="math inline">\(S\)</span></p></li>
+<li><p>Usually denote as a letter such as <span class="math inline">\(i\)</span> or <span class="math inline">\(j\)</span></p></li>
+</ul>
+<p>E.g.:</p>
+<ul>
+<li><span class="math inline">\(i\)</span> loops over <code>{small, medium, large}</code></li>
+<li><span class="math inline">\(j\)</span> loops over <code>{7, 8, 9, 10}</code></li>
+</ul>
+</section>
+<section id="concept-index-over-a-set-contd" class="slide level1">
+<h1>Concept: Index Over a Set (cont’d)</h1>
+<p>We also sometimes write:</p>
+<ul>
+<li><span class="math inline">\(i \in\)</span> <code>{small, medium, large}</code></li>
+<li><span class="math inline">\(j \in\)</span> <code>{7, 8, 9, 10}</code></li>
+</ul>
+<p>The mathematical symbol <span class="math inline">\(\in\)</span> means “in”</p>
+</section>
+<section id="concept-index-over-a-set-contd-1" class="slide level1">
+<h1>Concept: Index Over a Set (cont’d)</h1>
+<p>We can define variables over a set:</p>
+<ul>
+<li><span class="math inline">\(x_i\)</span> for all <span class="math inline">\(i \in\)</span> <code>{small, medium, large}</code></li>
+<li><span class="math inline">\(y_j\)</span> for all <span class="math inline">\(j \in\)</span> <code>{7, 8, 9, 10}</code></li>
+</ul>
+<p>Or data/numbers/parameters:</p>
+<ul>
+<li>profit <span class="math inline">\(p_i\)</span> for all <span class="math inline">\(i \in\)</span> <code>{small, medium, large}</code></li>
+<li>demand <span class="math inline">\(d_j\)</span> for all <span class="math inline">\(j \in\)</span> <code>{7, 8, 9, 10}</code></li>
+</ul>
+<p>Or constraints, etc.</p>
+</section>
+<section id="concept-summation" class="slide level1">
+<h1>Concept: Summation</h1>
+<ul>
+<li><p>Let <span class="math inline">\(S\)</span> represent a set</p></li>
+<li><p>A <em>summation</em> over a set is a loop that multiplies variables with data and adds everything up</p></li>
+<li><p>Mathematically, a linear combination of variables with data as the coefficients</p></li>
+<li><p>Similar to Excel’s <code>SUMPRODUCT</code> command</p></li>
+</ul>
+<p>E.g., with set <span class="math inline">\(S\)</span>, index <span class="math inline">\(i\)</span>, variables <span class="math inline">\(x_i\)</span>, and data <span class="math inline">\(a_i\)</span>: <span class="math display">\[\sum_{i \in S} a_i x_i\]</span></p>
+</section>
+<section id="concept-summation-contd" class="slide level1">
+<h1>Concept: Summation (cont’d)</h1>
+<p>E.g.:</p>
+<p><span class="math display">\[\sum_{i \in {\tt \{s, m, l\}}} p_i x_i
+=
+p_{\tt s} x_{\tt s} + p_{\tt m} x_{\tt m} + p_{\tt l} x_{\tt l}\]</span></p>
+<p><span class="math display">\[\sum_{j \in {\tt \{7, 8, 9, 10\}}} d_j y_j
+=
+d_7 y_7 + d_8 y_8 + d_9 y_9 + d_{10} y_{10}\]</span></p>
+</section>
+<section id="concept-summation-contd-1" class="slide level1">
+<h1>Concept: Summation (cont’d)</h1>
+<ul>
+<li><p>Summations can be included in constraints and in the objective function</p></li>
+<li><p>Are convenient because:</p>
+<ul>
+<li><p>they are compact</p></li>
+<li><p>they help us keep the logical model separate from the data/numbers/parameters</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="double-sets-and-summations" class="slide level1">
+<h1>Double Sets and Summations</h1>
+<ul>
+<li><p>Let <span class="math inline">\(S\)</span> and <span class="math inline">\(T\)</span> be two sets</p></li>
+<li><p>We often consider the <em>Cartesian product</em> of <span class="math inline">\(S\)</span> and <span class="math inline">\(T\)</span>, which is denoted as <span class="math inline">\(S \times T\)</span></p></li>
+<li><p><span class="math inline">\(S \times T\)</span> consists of all pairs <span class="math inline">\((i,j)\)</span>, where <span class="math inline">\(i \in S\)</span> and <span class="math inline">\(j \in T\)</span></p></li>
+</ul>
+</section>
+<section id="double-sets-and-summations-contd" class="slide level1">
+<h1>Double Sets and Summations (cont’d)</h1>
+<p>E.g.:</p>
+<p><code>{ (small, 7), (small, 8), (small, 9), (small, 10),  (medium, 7), (medium, 8), (medium, 9), (medium, 10),  (large, 7), (large, 8), (large, 9), (large, 10) }</code></p>
+</section>
+<section id="double-sets-and-summations-contd-1" class="slide level1">
+<h1>Double Sets and Summations (cont’d)</h1>
+<ul>
+<li><p>Variables, constraints, and data can all be defined relative to <span class="math inline">\(S \times T\)</span></p></li>
+<li><p>Summations as well, e.g.: <span class="math display">\[\sum_{i \in S} \sum_{j \in T} a_{ij} x_{ij}\]</span></p></li>
+<li><p>All of this can be extended to triple sets, quadruple sets, etc.</p></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+              { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

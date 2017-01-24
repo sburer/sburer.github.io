@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Reduced Costs and Dual Prices</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Reduced Costs and Dual Prices</h1>
+  <p class="author">Samuel Burer</p>
+  <p class="date">Last updated: January 20, 2017</p>
+</section>
+
+<section id="variables-bounds" class="slide level1">
+<h1>Variables: Bounds</h1>
+<p>In a LP, each variable <span class="math inline">\(x\)</span> has a <em>lower bound</em> <span class="math inline">\(L\)</span> and an <em>upper bound</em> <span class="math inline">\(U\)</span>: <span class="math display">\[L \le x \le U\]</span></p>
+<p>Special cases:</p>
+<ul>
+<li>If <span class="math inline">\((L,U) = (0,+\infty)\)</span>, then <span class="math inline">\(x\)</span> is <em>nonnegative</em></li>
+<li>If <span class="math inline">\((L,U) = (-\infty,+\infty)\)</span>, then <span class="math inline">\(x\)</span> is <em>free</em></li>
+</ul>
+<p>Note: Bounds <span class="math inline">\(-\infty\)</span> and <span class="math inline">\(\infty\)</span> are usually implicit</p>
+</section>
+<section id="variables-objective-coefficient" class="slide level1">
+<h1>Variables: Objective Coefficient</h1>
+<p>When <span class="math inline">\(x\)</span> appears within the term <span class="math inline">\(c \cdot x\)</span> in the objective, the value <span class="math inline">\(c\)</span> is called the <em>objective coefficient</em> for <span class="math inline">\(x\)</span></p>
+<ul>
+<li>If <span class="math inline">\(x\)</span> does not appear in the objective explicitly, it just means that <span class="math inline">\(c = 0\)</span></li>
+</ul>
+</section>
+<section id="variables-at-optimality" class="slide level1">
+<h1>Variables: At Optimality</h1>
+<p>Suppose you solve the LP</p>
+<ul>
+<li><p>If <span class="math inline">\(x^* = U\)</span>, then, in a sense, the LP would like more of <span class="math inline">\(x\)</span> in order to further optimize the objective</p></li>
+<li><p>If <span class="math inline">\(x^* = L\)</span>, then the LP would like less of <span class="math inline">\(x\)</span></p></li>
+<li><p>If <span class="math inline">\(L &lt; x^* &lt; U\)</span>, then the LP is content having <span class="math inline">\(x\)</span> in the middle</p></li>
+</ul>
+</section>
+<section id="variables-at-optimality-contd" class="slide level1">
+<h1>Variables: At Optimality (cont’d)</h1>
+<p>The <em>reduced cost</em> of <span class="math inline">\(x\)</span> is…</p>
+<ul>
+<li><p>When <span class="math inline">\(x^* = U\)</span>, the (smallest) change in <span class="math inline">\(c\)</span> that will induce the LP to start decreasing <span class="math inline">\(x^*\)</span></p></li>
+<li><p>When <span class="math inline">\(x^* = L\)</span>, the (smallest) change in <span class="math inline">\(c\)</span> that will induce the LP to start increasing <span class="math inline">\(x^*\)</span></p></li>
+<li><p>When <span class="math inline">\(L &lt; x^* &lt; U\)</span>, the <em>reduced cost</em> is 0, meaning that the LP is already content with <span class="math inline">\(x^*\)</span></p></li>
+</ul>
+</section>
+<section id="variables-at-optimality-contd-1" class="slide level1">
+<h1>Variables: At Optimality (cont’d)</h1>
+<ul>
+<li><p>LP software can report the RC after solving</p></li>
+<li><p>Do not worry about the sign (positive or negative) of the RC; just interpret it ``in the right direction’’</p></li>
+<li><p>RC’s are interpreted one at a time (<em>ceteris paribus</em>) and work ``locally’’</p></li>
+</ul>
+</section>
+<section id="example-1-reduced-costs" class="slide level1">
+<h1>Example 1: Reduced Costs</h1>
+<pre><code>max   x + 2*y
+s.t.  1 &lt;= x + y &lt;= 2
+      0 &lt;= x &lt;= 1.5
+      0 &lt;= y &lt;= 1.5</code></pre>
+<ul>
+<li>Optimal solution is <span class="math inline">\((x^*,y^*) = (0.5, 1.5)\)</span> with value 3.5</li>
+<li>RC for <span class="math inline">\(x\)</span> is 0</li>
+<li>RC for <span class="math inline">\(y\)</span> is 1</li>
+</ul>
+</section>
+<section id="example-1-reduced-costs-contd" class="slide level1">
+<h1>Example 1: Reduced Costs (cont’d)</h1>
+<ul>
+<li><p>The objective coefficient for <span class="math inline">\(y\)</span> is <span class="math inline">\(c = 2\)</span></p></li>
+<li><p>Since <span class="math inline">\(y\)</span> has hit its upper bound at <span class="math inline">\(y^* = 1.5\)</span>, the LP is essentially asking for more of <span class="math inline">\(y\)</span></p></li>
+<li><p>But if <span class="math inline">\(c\)</span> were reduced from <span class="math inline">\(2\)</span> to <span class="math inline">\(1\)</span> (corresponding to a RC of 1), then <span class="math inline">\(y\)</span> would no longer be so valuable</p></li>
+<li><p>If <span class="math inline">\(c\)</span> were reduced further (below 1), then the LP would want to decrease <span class="math inline">\(y^*\)</span></p></li>
+</ul>
+</section>
+<section id="example-1-reduced-costs-contd-1" class="slide level1">
+<h1>Example 1: Reduced Costs (cont’d)</h1>
+<ul>
+<li><p>For <span class="math inline">\(x\)</span>, the objective coefficient is <span class="math inline">\(c = 1\)</span></p></li>
+<li><p>Since <span class="math inline">\(x\)</span> is between at <span class="math inline">\(x^* = 0.5\)</span>, no change in the objective coefficient is required to make the LP content with <span class="math inline">\(x\)</span>, i.e., the RC is 0</p></li>
+</ul>
+</section>
+<section id="example-2-reduced-costs" class="slide level1">
+<h1>Example 2: Reduced Costs</h1>
+<pre><code>max   -3*x + 2*y
+s.t.  (same constraints)</code></pre>
+<ul>
+<li>Opt soln is <span class="math inline">\((x^*,y^*) = (0.0, 1.5)\)</span> with value 3.0</li>
+<li>RC for <span class="math inline">\(x\)</span> is -3</li>
+<li>RC for <span class="math inline">\(y\)</span> is 2</li>
+</ul>
+</section>
+<section id="example-2-reduced-costs-contd" class="slide level1">
+<h1>Example 2: Reduced Costs (cont’d)</h1>
+<ul>
+<li><p>LP wants less of <span class="math inline">\(x\)</span></p></li>
+<li><p>But if <span class="math inline">\(x\)</span>’s objective coefficient were larger than <span class="math inline">\(-3 + 3 = 0\)</span>, then the LP would actually want more of <span class="math inline">\(x\)</span></p></li>
+<li><p><em>Ceteris paribus</em> the LP would decrease <span class="math inline">\(y\)</span> if its objective coefficient fell below 0</p></li>
+</ul>
+</section>
+<section id="constraints-bounds" class="slide level1">
+<h1>Constraints: Bounds</h1>
+<p>Each constraint has a <em>lower bound</em> <span class="math inline">\(L\)</span> and an <em>upper bound</em> <span class="math inline">\(U\)</span>, e.g.: <span class="math display">\[L \le a \cdot x + b \cdot y \le U\]</span></p>
+<ul>
+<li><p>The quantity between the bounds, e.g., <span class="math inline">\(a \cdot x + b \cdot y\)</span>, is called the <em>body</em> of the constraint</p></li>
+<li><p>Let’s use the letter <span class="math inline">\(B\)</span> to indicate the body</p></li>
+</ul>
+</section>
+<section id="constraints-bounds-contd" class="slide level1">
+<h1>Constraints: Bounds (cont’d)</h1>
+<p>Special cases:</p>
+<ul>
+<li><p>If <span class="math inline">\(L = -\infty\)</span>, then <em>less-than-or-equal-to</em></p></li>
+<li><p>If <span class="math inline">\(U = +\infty\)</span>, then <em>greater-than-or-equal-to</em></p></li>
+<li><p>If <span class="math inline">\(L = U\)</span>, then <em>equality</em></p></li>
+<li><p>If <span class="math inline">\((L,U) = (-\infty,+\infty)\)</span>, then actually not a constraint</p></li>
+</ul>
+</section>
+<section id="constraints-at-optimality" class="slide level1">
+<h1>Constraints: At Optimality</h1>
+<p>Suppose you solve the LP…</p>
+<ul>
+<li><p>If <span class="math inline">\(B^* = U\)</span>, then, in a sense, the LP would like to increase <span class="math inline">\(U\)</span></p></li>
+<li><p>If <span class="math inline">\(B^* = L\)</span>, then the LP would like to decrease <span class="math inline">\(L\)</span></p></li>
+<li><p>If <span class="math inline">\(L &lt; B^* &lt; U\)</span>, then the LP has no incentive to change <span class="math inline">\(L\)</span> or <span class="math inline">\(U\)</span></p></li>
+</ul>
+</section>
+<section id="constraints-at-optimality-contd" class="slide level1">
+<h1>Constraints: At Optimality (cont’d)</h1>
+<p>The <em>dual price</em> of the constraint is…</p>
+<ul>
+<li><p>When <span class="math inline">\(B^* = U\)</span>, the predicted change in the optimal value if <span class="math inline">\(U\)</span> is increased to <span class="math inline">\(U + 1\)</span></p></li>
+<li><p>When <span class="math inline">\(B^* = L\)</span>, the predicted change in the optimal value if <span class="math inline">\(L\)</span> is increased to <span class="math inline">\(L + 1\)</span></p></li>
+<li><p>When <span class="math inline">\(L &lt; B^* &lt; U\)</span>, the <em>dual price</em> is 0, meaning that changes to <span class="math inline">\(L\)</span> or <span class="math inline">\(U\)</span> are not predicted to have an impact on the optimal value</p></li>
+</ul>
+</section>
+<section id="constraints-at-optimality-contd-1" class="slide level1">
+<h1>Constraints: At Optimality (cont’d)</h1>
+<ul>
+<li>For an equality constraint, i.e., <span class="math inline">\(L = B^* = U\)</span>, the DP is the predicted change in the objective when <span class="math inline">\((L,U) \to (L+1,U+1)\)</span></li>
+</ul>
+</section>
+<section id="constraints-at-optimality-contd-2" class="slide level1">
+<h1>Constraints: At Optimality (cont’d)</h1>
+<ul>
+<li><p>LP software can report the DP’s after solving</p></li>
+<li><p>DP’s are interpreted one at a time (<em>ceteris paribus</em>) and have only a local effect</p></li>
+<li><p>To be precise: DP’s should be interpreted as predicted rates of change</p></li>
+</ul>
+</section>
+<section id="example-3-dual-prices" class="slide level1">
+<h1>Example 3: Dual Prices</h1>
+<pre><code>max   x + 2*y
+s.t.  1 &lt;= x + y &lt;= 2
+      0 &lt;= x &lt;= 1.5
+      0 &lt;= y &lt;= 1.5</code></pre>
+<ul>
+<li>Optimal solution is <span class="math inline">\((x^*,y^*) = (0.5, 1.5)\)</span> with value 3.5</li>
+<li><span class="math inline">\(B^* = 2\)</span> and DP is 1</li>
+</ul>
+</section>
+<section id="example-3-dual-prices-contd" class="slide level1">
+<h1>Example 3: Dual Prices (cont’d)</h1>
+<ul>
+<li><p>If constraint is changed to <span class="math inline">\(1 \le x + y \le 3\)</span>, then the opt val changes from 3.5 to 4.5</p></li>
+<li><p>But keep in mind this is a local effect, e.g., if you keep increasing <span class="math inline">\(U\)</span>, eventually the effect of the dual price will break down</p></li>
+<li><p>Also, if <span class="math inline">\(U\)</span> is changed to <span class="math inline">\(2 - 0.5 = 1.5\)</span>, then the opt val will change from 3.5 to 3.0</p></li>
+</ul>
+</section>
+<section id="example-4-dual-prices" class="slide level1">
+<h1>Example 4: Dual Prices</h1>
+<pre><code>min   (same objective)
+s.t.  (same constraints)</code></pre>
+<ul>
+<li>Opt soln is <span class="math inline">\((x^*,y^*) = (0.5, 1.5)\)</span> with opt val 1</li>
+<li><span class="math inline">\(B^* = 1\)</span> and dual price is 1</li>
+<li>Changing to <span class="math inline">\(0 \le x + y \le 2\)</span> gives opt val 0</li>
+</ul>
+</section>
+<section id="caveat" class="slide level1">
+<h1>Caveat</h1>
+<ul>
+<li><p>Keep in mind</p>
+<ul>
+<li><p>Reduced costs are changes that will cause the LP to want to change its optimal solution</p></li>
+<li><p>Dual prices are predicted changes in the opt val</p></li>
+</ul></li>
+<li><p>However, if the LP is ``overly constrained,’’ the LP may not be able to realize the effects predicted by the reduced costs and dual prices</p>
+<ul>
+<li>How do you tell if the LP is overly constrained? If, at optimality, lots of variables and constraint bodies hit their lower and upper bounds</li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+              { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
