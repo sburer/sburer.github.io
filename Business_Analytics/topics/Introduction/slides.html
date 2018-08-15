@@ -9,7 +9,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
   <!-- Printing and PDF exports -->
@@ -28,14 +33,14 @@
   <div class="reveal">
     <div class="slides">
 
-<section>
+<section id="title-slide">
   <h1 class="title">Data and Analytics</h1>
-  <h2 class="author">Samuel Burer</h2>
-  <h3 class="date">Last updated: July 10, 2016</h3>
+  <p class="author">Samuel Burer</p>
+  <p class="date">Last updated: August 10, 2018</p>
 </section>
 
 <section id="numbers-everywhere" class="slide level2">
-<h1>Numbers Everywhere!</h1>
+<h2>Numbers Everywhere!</h2>
 <p>Data is a fact of modern-day life</p>
 <div class="fragment">
 <ul>
@@ -50,18 +55,18 @@
 <p>And there is lots of it!</p>
 </div>
 </section>
-<section id="more-than-just-business" class="slide level2">
-<h1>More Than Just Business</h1>
+<section id="section" class="slide level2">
+<h2></h2>
 <ul>
 <li>Science</li>
 <li>Government</li>
 <li>Sports</li>
 <li>Healthcare</li>
-<li>(And the list goes on and on…)</li>
+<li>(The list goes on and on…)</li>
 </ul>
 </section>
-<section id="structured-use-of-data" class="slide level2">
-<h1>Structured Use of Data</h1>
+<section id="section-1" class="slide level2">
+<h2></h2>
 <ul>
 <li>The intent of this course is to teach the correct, structured use of data</li>
 <li>E.g., DMAIC methodology of Six Sigma
@@ -75,47 +80,52 @@
 </ul>
 </section>
 <section id="correct-use-of-data" class="slide level2">
-<h1>Correct Use of Data?</h1>
-<p><img src="graphics/us_post_causes_global_warming_lrg.jpg" /> </p>
+<h2>Correct Use of Data?</h2>
+<p><img data-src="graphics/us_post_causes_global_warming_lrg.jpg" /> </p>
 <p>Source: <a href="http://joannenova.com.au/2009/05/shock-global-temperatures-driven-by-us-postal-charges/">joannenova.com.au</a></p>
 </section>
-<section id="correct-use-of-data-contd" class="slide level2">
-<h1>Correct Use of Data? (cont’d)</h1>
-<p><img src="graphics/divorce_vs_margarine.png" /><br />
-Source: <a href="http://www.tylervigen.com/view_correlation?id=1703">tylervigen.com</a></p>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/divorce_vs_margarine.png" /><br />
+</p>
+<p>Source: <a href="http://www.tylervigen.com/view_correlation?id=1703">tylervigen.com</a></p>
 </section>
-<section id="correct-use-of-data-contd-1" class="slide level2">
-<h1>Correct Use of Data? (cont’d)</h1>
-<p><img src="graphics/autism_vs_organic_food_sales.png" /> </p>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/autism_vs_organic_food_sales.png" /> </p>
 </section>
-<section id="correct-use-of-data-contd-2" class="slide level2">
-<h1>Correct Use of Data? (cont’d)</h1>
-<p><img src="graphics/device_sales_over_time.png" style="height:70.0%" /> </p>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/device_sales_over_time.png" style="height:70.0%" /> </p>
 <p>Source: ArsTechnica.com (2012-08-14)</p>
 </section>
 <section id="discussion" class="slide level2">
-<h1>Discussion</h1>
+<h2>Discussion</h2>
 <ul>
 <li><p>How are business using data these days?</p></li>
 <li><p>Are there any businesses in which data is definitely <em>not</em> useful?</p></li>
 </ul>
 </section>
-<section id="discussion-contd" class="slide level2">
-<h1>Discussion (cont’d)</h1>
+<section id="section-5" class="slide level2">
+<h2></h2>
 <p>MIT study as reported in the New York Times on April 23, 2011:</p>
+<div class="fragment">
 <blockquote>
 <p>[Companies] that adopted ‘data-driven decision making’ achieved productivity that was 5 to 6 percent higher than could be explained by other factors, including how much the companies invested in technology.</p>
 </blockquote>
+</div>
 </section>
-<section id="discussion-contd-1" class="slide level2">
-<h1>Discussion (cont’d)</h1>
+<section id="section-6" class="slide level2">
+<h2></h2>
 <p>“The Risks of Quantification” by Dr. W. Byers at Concordia University (via <a href="http://www.hbr.org">hbr.org</a> on May 18, 2011):</p>
+<div class="fragment">
 <ul>
-<li><p>Statistical models are based on randomness, but we cannot understand randomness</p></li>
-<li><p>Mathematical models screen out ambiguity</p></li>
-<li><p>Putting a situation into numbers enforces the belief that things are linear and events are necessarily comparable</p></li>
-<li><p>Any system that involves human behavior, like economics or finance, is inherently self-referential</p></li>
+<li>Statistical models are based on randomness, but we cannot understand randomness</li>
+<li>Mathematical models screen out ambiguity</li>
+<li>Putting a situation into numbers enforces the belief that things are linear and events are necessarily comparable</li>
+<li>Any system that involves human behavior, like economics or finance, is inherently self-referential</li>
 </ul>
+</div>
 </section>
     </div>
   </div>
@@ -128,11 +138,30 @@ Source: <a href="http://www.tylervigen.com/view_correlation?id=1703">tylervigen.
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
           { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
         ]
       });

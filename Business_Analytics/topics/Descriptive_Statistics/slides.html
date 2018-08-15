@@ -9,7 +9,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
   <!-- Printing and PDF exports -->
@@ -23,82 +28,78 @@
   <!--[if lt IE 9]>
   <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
   <![endif]-->
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
-<section>
+<section id="title-slide">
   <h1 class="title">Descriptive Statistics</h1>
-  <h2 class="author">Samuel Burer</h2>
-  <h3 class="date">Last updated: July 10, 2016</h3>
+  <p class="author">Samuel Burer</p>
+  <p class="date">Last updated: August 10, 2018</p>
 </section>
 
 <section id="descriptive-statistics" class="slide level2">
-<h1>Descriptive Statistics</h1>
+<h2>Descriptive Statistics</h2>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
 <p>For <em>descriptive statistics</em>, we will use Excel’s <em>Data Analysis Toolpak</em>:</p>
 <ol type="1">
 <li><p><a href="http://www.youtube.com/watch?v=HuMVe9_ZFZY">YouTube tutorial</a> to enable the Toolpak</p></li>
 <li><p><a href="http://www.youtube.com/watch?v=pmOvcSHKm3A">YouTube tutorial</a> demonstrating its use</p></li>
 </ol>
 </section>
-<section id="descriptive-statistics-contd" class="slide level2">
-<h1>Descriptive Statistics (cont’d)</h1>
+<section id="section-1" class="slide level2">
+<h2></h2>
 <p>What are <em>descriptive statistics</em>?</p>
-<ul>
-<li><p>Numbers to summarize a single numerical variable/column of data</p></li>
-<li><p>A complement to the information provided by histograms</p></li>
-</ul>
 <div class="fragment">
 <ul>
-<li><p>In Excel, calculated via <em>Data &gt; Data Analysis… &gt; Descriptive Statistics</em></p></li>
-<li><p>Example: Excel file <em>homes.xlsx</em></p></li>
+<li>Numbers to summarize a single numerical variable/column of data</li>
+<li>A complement to the information provided by histograms</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>In Excel, calculated via <em>Data &gt; Data Analysis… &gt; Descriptive Statistics</em></li>
+<li>Example: Excel file <em>homes.xlsx</em></li>
 </ul>
 </div>
 <div class="fragment">
 <p>Note: Descriptive statistics do not really make sense for non-numerical data</p>
 </div>
 </section>
-<section id="descriptive-statistics-contd-1" class="slide level2">
-<h1>Descriptive Statistics (cont’d)</h1>
+<section id="section-2" class="slide level2">
+<h2></h2>
 <p>The most important statistics:</p>
 <div class="fragment">
 <ul>
 <li>Mean = arithmetic average (i.e., sum divided by count)</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
 <li>Median = middle data value when data is arranged from smallest to largest</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
 <li>Mode = most frequently occurring data value</li>
 </ul>
 </div>
 </section>
-<section id="descriptive-statistics-contd-2" class="slide level2">
-<h1>Descriptive Statistics (cont’d)</h1>
+<section id="section-3" class="slide level2">
+<h2></h2>
 <ul>
-<li><p>Min = smallest value; Max = largest value</p></li>
-<li><p>Range = Max <span class="math inline">\(-\)</span> Min</p></li>
-<li><p>Standard deviation</p>
+<li>Min = smallest value; Max = largest value</li>
+<li>Range = Max <span class="math inline">\(-\)</span> Min</li>
+<li>Standard deviation
 <ul>
 <li>measure of how spread out the data values are</li>
 <li>[more details shortly…]</li>
 </ul></li>
-<li><p>Variance = (standard deviation)<span class="math inline">\(^2\)</span></p></li>
-<li><p>Standard error = [to be discussed later…]</p></li>
+<li>Variance = (standard deviation)<span class="math inline">\(^2\)</span></li>
+<li>Standard error = [to be discussed later…]</li>
 </ul>
 </section>
-<section id="descriptive-statistics-contd-3" class="slide level2">
-<h1>Descriptive Statistics (cont’d)</h1>
+<section id="section-4" class="slide level2">
+<h2></h2>
 <p>These statistics help answer two important questions:</p>
 <div class="fragment">
 <ul>
-<li><p>What is most common in the data; what is the “center”?</p>
+<li>What is most common in the data; what is the “center”?
 <ul>
 <li>Mean, median, and mode each provide a slightly different answer</li>
 </ul></li>
@@ -106,7 +107,7 @@
 </div>
 <div class="fragment">
 <ul>
-<li><p>How spread out is the data from its center?</p>
+<li>How spread out is the data from its center?
 <ul>
 <li>Minimum, maximum, and range give one answer</li>
 <li>Standard deviation and variance give another</li>
@@ -115,12 +116,15 @@
 </div>
 </section>
 <section id="mean-vs-median-vs-mode" class="slide level2">
-<h1>Mean vs Median vs Mode</h1>
-<p><img src="./networth/networth.png" title="hey" alt="networh" /> </p>
+<h2>Mean vs Median vs Mode</h2>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p><img data-src="./networth/networth.png" alt="networh" /> </p>
 <p>Source: <a href="http://politicalcalculations.blogspot.com/2013/01/the-distribution-of-net-worth-in-united.html">politicalcalculations.blogspot.com</a></p>
 </section>
-<section id="mean-vs-median-vs-mode-contd" class="slide level2">
-<h1>Mean vs Median vs Mode (cont’d)</h1>
+<section id="section-6" class="slide level2">
+<h2></h2>
 <ul>
 <li>Mean = $45,671</li>
 <li>Median = $16,667</li>
@@ -128,8 +132,20 @@
 </ul>
 <p>(The actual U.S. descriptive statistics are even more extreme!)</p>
 </section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<p><img data-src="./graphics/mean1.jpg" alt="mean1" /> </p>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<p><img data-src="./graphics/mean2.jpg" alt="mean2" /> </p>
+<p>Source: <a href="https://mathwithbaddrawings.com/2016/07/13/why-not-to-trust-statistics/">mathwithbaddrawings.com</a></p>
+</section>
 <section id="data-samples" class="slide level2">
-<h1>Data Samples</h1>
+<h2>Data Samples</h2>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
 <p>Imagine a single column/variable of sample data</p>
 <ul>
 <li><p><span class="math inline">\(n =\)</span> size of sample</p></li>
@@ -139,8 +155,8 @@
 <!--- $s =$ std dev of sample-->
 <!--- $s^2 =$ variance of sample-->
 </section>
-<section id="data-samples-mean" class="slide level2">
-<h1>Data Samples: Mean</h1>
+<section id="mean" class="slide level2">
+<h2>Mean</h2>
 <p><span class="math display">\[
     \bar x = \frac{x_1 + x_2 + \cdots + x_n}{n}
 \]</span></p>
@@ -149,8 +165,8 @@
 <li><p>Most frequently used measure of central tendency</p></li>
 </ul>
 </section>
-<section id="data-samples-standard-deviation" class="slide level2">
-<h1>Data Samples: Standard Deviation</h1>
+<section id="standard-deviation" class="slide level2">
+<h2>Standard Deviation</h2>
 <p><span class="math display">\[
     s = \sqrt{
         \frac{
@@ -166,6 +182,21 @@
 <li><p>See Excel file <em>mean_stdev.xlsm</em></p></li>
 </ul>
 </section>
+<section id="a-word-of-warning" class="slide level2">
+<h2>A Word of Warning</h2>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<p><img data-src="./graphics/DinoSequentialSmaller.gif" alt="datasaurus" /> </p>
+<p>Source: <a href="https://www.autodeskresearch.com/publications/samestats">autodeskresearch.com</a></p>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<ul>
+<li>Descriptive statistics are only part of the story!</li>
+<li>Be sure to visualize your data</li>
+</ul>
+</section>
     </div>
   </div>
 
@@ -177,11 +208,30 @@
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
           { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
         ]
       });

@@ -9,7 +9,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
   <!-- Printing and PDF exports -->
@@ -28,20 +33,20 @@
   <div class="reveal">
     <div class="slides">
 
-<section>
+<section id="title-slide">
   <h1 class="title">Histograms</h1>
-  <h2 class="author">Samuel Burer</h2>
-  <h3 class="date">Last updated: July 10, 2016</h3>
+  <p class="author">Samuel Burer</p>
+  <p class="date">Last updated: August 10, 2018</p>
 </section>
 
-<section id="histograms" class="slide level1">
-<h1>Histograms</h1>
+<section id="histograms" class="slide level2">
+<h2>Histograms</h2>
 <ul>
 <li>See this <a href="https://www.youtube.com/watch?v=-TFZIx-ZbhM">YouTube tutorial</a> to construct histograms of the various types discussed here</li>
 </ul>
 </section>
-<section id="histograms-contd" class="slide level1">
-<h1>Histograms (cont’d)</h1>
+<section id="section" class="slide level2">
+<h2></h2>
 <ul>
 <li>A <em>histogram</em> is a graphical summary of a single column/variable of data</li>
 <li>Purpose is to show the data’s “look and feel”</li>
@@ -49,8 +54,13 @@
 <li>Most often depicted as a bar chart</li>
 </ul>
 </section>
-<section id="histograms-contd-1" class="slide level1">
-<h1>Histograms (cont’d)</h1>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/animation.gif" /></p>
+<p>Source: <a href="https://gist.github.com/thomasp85/88d6e7883883315314f341d2207122a1">gist.github.com</a></p>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
 <ul>
 <li><p>To create a histogram in Excel, use a PivotTable with bar chart</p></li>
 <li><p>Example: Excel file <em>homes.xlsx</em></p></li>
@@ -62,43 +72,56 @@
 </ul>
 </div>
 </section>
-<section id="histograms-contd-2" class="slide level1">
-<h1>Histograms (cont’d)</h1>
-<p><img src="graphics/scrabble1.jpg" /> </p>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<img data-src="graphics/scrabble1.jpg" class="stretch" /> 
 <p>Source: <a href="http://statpics.blogspot.com/2014/04/scrabble-distribution.html">statpics.blogspot.com</a></p>
 </section>
-<section id="histograms-contd-3" class="slide level1">
-<h1>Histograms (cont’d)</h1>
-<p><img src="graphics/scrabble2.jpg" /> </p>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<img data-src="graphics/scrabble2.jpg" class="stretch" /> 
 <p>Source: <a href="http://statpics.blogspot.com/2014/04/scrabble-distribution.html">statpics.blogspot.com</a></p>
 </section>
-<section id="cumulative-histograms" class="slide level1">
-<h1>Cumulative Histograms</h1>
+<section id="cumulative-histograms" class="slide level2">
+<h2>Cumulative Histograms</h2>
 <p>A <em>cumulative histogram</em> is a variation of the regular histogram</p>
+<div class="fragment">
 <ul>
-<li><p>For ratio/numerical data</p></li>
-<li><p>The <em>cumulative frequency</em> for a bin is the sum of all frequencies at or below that bin</p></li>
-<li><p>Can be depicted on top of a histogram using a line graph</p></li>
+<li>For ratio/numerical data</li>
+<li>The <em>cumulative frequency</em> for a bin is the sum of all frequencies at or below that bin</li>
+<li>Can be depicted on top of a histogram using a line graph</li>
 </ul>
+</div>
+<div class="fragment">
 <p>Example: Excel file <em>homes.xlsx</em></p>
+</div>
 </section>
-<section id="other-types-of-histograms" class="slide level1">
-<h1>Other Types of Histograms</h1>
-<p><img src="graphics/BA_borrowed_amounts_relative_histogram.png" /> </p>
+<section id="other-types-of-histograms" class="slide level2">
+<h2>Other Types of Histograms</h2>
+<img data-src="graphics/BA_borrowed_amounts_relative_histogram.png" class="stretch" /> 
 <p>Source: <a href="http://www.nytimes.com/2015/06/17/upshot/the-rise-of-student-debt-for-those-who-get-degrees.html">nytimes.com</a></p>
 </section>
-<section id="other-types-of-histograms-contd" class="slide level1">
-<h1>Other Types of Histograms (cont’d)</h1>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/steak.png" /></p>
+<p>Source: <a href="https://fivethirtyeight.com/features/how-americans-order-their-steak/">fivethirtyeight.com</a></p>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
 <p><em>Relative histograms</em> and <em>cumulative relative histograms</em> are further variations</p>
+<div class="fragment">
 <ul>
-<li><p>Based on <em>relative frequencies</em>, i.e., percentage of data in bins</p>
+<li>Based on <em>relative frequencies</em>, i.e., percentage of data in bins
 <ul>
 <li>Divide frequencies by total number of pieces of data</li>
 </ul></li>
-<li><p>Shows the exact same info, just on a standardized scale</p></li>
-<li><p>Can be created directly from frequency info</p></li>
+<li>Shows the exact same info, just on a standardized scale</li>
+<li>Can be created directly from frequency info</li>
 </ul>
+</div>
+<div class="fragment">
 <p>Example: Excel file <em>homes.xlsx</em></p>
+</div>
 </section>
     </div>
   </div>
@@ -111,11 +134,30 @@
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
           { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
         ]
       });

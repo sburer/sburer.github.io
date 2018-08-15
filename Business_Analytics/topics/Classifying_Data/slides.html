@@ -9,7 +9,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
   <!-- Printing and PDF exports -->
@@ -28,14 +33,14 @@
   <div class="reveal">
     <div class="slides">
 
-<section>
+<section id="title-slide">
   <h1 class="title">Classifying Data</h1>
-  <h2 class="author">Samuel Burer</h2>
-  <h3 class="date">Last updated: July 10, 2016</h3>
+  <p class="author">Samuel Burer</p>
+  <p class="date">Last updated: August 10, 2018</p>
 </section>
 
 <section id="classifying-data" class="slide level2">
-<h1>Classifying Data</h1>
+<h2>Classifying Data</h2>
 <ul>
 <li><p>Imagine data in a single column/variable</p></li>
 <li><p>Two complementary classifications</p>
@@ -46,7 +51,7 @@
 </ul>
 </section>
 <section id="measurement-scale" class="slide level2">
-<h1>Measurement Scale</h1>
+<h2>Measurement Scale</h2>
 <p><strong>Ratio data</strong></p>
 <ul>
 <li>The most common type of data</li>
@@ -60,8 +65,8 @@
 <li>Highly amenable to statistical analysis</li>
 </ul>
 </section>
-<section id="measurement-scale-contd" class="slide level2">
-<h1>Measurement Scale (cont’d)</h1>
+<section id="section" class="slide level2">
+<h2></h2>
 <p><strong>Categorical data</strong></p>
 <ul>
 <li>Occurs frequently</li>
@@ -76,7 +81,7 @@
 </ul>
 </section>
 <section id="time-collection" class="slide level2">
-<h1>Time Collection</h1>
+<h2>Time Collection</h2>
 <p><strong>Cross-sectional data</strong></p>
 <ul>
 <li>Data that is collected at one moment in time</li>
@@ -88,8 +93,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="time-collection-contd" class="slide level2">
-<h1>Time Collection (cont’d)</h1>
+<section id="section-1" class="slide level2">
+<h2></h2>
 <p><strong>Time-series data</strong></p>
 <ul>
 <li>Data of the same type that is collected over time (usually at equally spaced intervals)</li>
@@ -100,10 +105,6 @@
 </ul></li>
 <li>Cross-sectional data becomes time series data if it is collected more than once!</li>
 </ul>
-<!--## Classifying Data (cont'd)-->
-<!--Examples-->
-<!--* *homes.xlsx*-->
-<!--* *CPI.xlsx*-->
 </section>
     </div>
   </div>
@@ -116,11 +117,30 @@
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
           { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
         ]
       });
