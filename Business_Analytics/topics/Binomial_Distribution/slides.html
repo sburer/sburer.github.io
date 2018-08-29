@@ -9,7 +9,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
   <!-- Printing and PDF exports -->
@@ -23,24 +28,23 @@
   <!--[if lt IE 9]>
   <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
   <![endif]-->
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
-<section>
+<section id="title-slide">
   <h1 class="title">Binomial Distribution</h1>
-  <h2 class="author">Samuel Burer</h2>
-  <h3 class="date">Last updated: August 29, 2016</h3>
+  <p class="author">Samuel Burer</p>
+  <p class="date">Last updated: August 10, 2018</p>
 </section>
 
 <section id="binomial-distribution" class="slide level2">
-<h1>Binomial Distribution</h1>
+<h2>Binomial Distribution</h2>
 <p>The <em>binomial distribution</em> is one of the most commonly encountered DRVs. It has the following characteristics…</p>
 </section>
 <section id="binomial-distribution-contd" class="slide level2">
-<h1>Binomial Distribution (cont’d)</h1>
+<h2>Binomial Distribution (cont’d)</h2>
 <ol type="1">
 <li><p>One experiment is repeated <span class="math inline">\(n\)</span> times</p></li>
 <li><p>In each experiment, only two outcomes are possible—either “success” or “failure”</p></li>
@@ -50,7 +54,7 @@
 </ol>
 </section>
 <section id="binomial-distribution-contd-1" class="slide level2">
-<h1>Binomial Distribution (cont’d)</h1>
+<h2>Binomial Distribution (cont’d)</h2>
 <p>Equivalently:</p>
 <ol type="1">
 <li><p>One experiment is repeated <span class="math inline">\(n\)</span> times; <span class="math inline">\(X_i\)</span> represents <span class="math inline">\(i\)</span>-th experiment</p></li>
@@ -61,7 +65,7 @@
 </ol>
 </section>
 <section id="binomial-distribution-contd-2" class="slide level2">
-<h1>Binomial Distribution (cont’d)</h1>
+<h2>Binomial Distribution (cont’d)</h2>
 <ul>
 <li><p>The values of <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> are called the <em>binomial parameters</em></p></li>
 <li><p>If you think you have a binomial situation you must identify</p>
@@ -73,7 +77,7 @@
 </ul>
 </section>
 <section id="binomial-distribution-contd-3" class="slide level2">
-<h1>Binomial Distribution (cont’d)</h1>
+<h2>Binomial Distribution (cont’d)</h2>
 <p>Hockey example:</p>
 <blockquote>
 <p>The Chicago Blackhawks score about 3.6 goals per (home) game. So they have a 1/1000 chance of scoring a goal at time 10:00 in the second period (since each game last 3600 seconds) If the Blackhawks play 41 home games, what is the probability that at least one such well-timed goal will occur during the season?</p>
@@ -86,7 +90,7 @@
 </div>
 </section>
 <section id="binomial-probabilities" class="slide level2">
-<h1>Binomial Probabilities</h1>
+<h2>Binomial Probabilities</h2>
 <!--*¡Book shows math formulas, but I show Excel formulas!*-->
 <p>If you have a binomial situation with <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>, the Excel formula for the probability of <em>exactly</em> <span class="math inline">\(k\)</span> successes in <span class="math inline">\(n\)</span> trials is:</p>
 <div class="fragment">
@@ -109,7 +113,7 @@
 </div>
 </section>
 <section id="binomial-probabilities-contd" class="slide level2">
-<h1>Binomial Probabilities (cont’d)</h1>
+<h2>Binomial Probabilities (cont’d)</h2>
 <p>Given <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>, the Excel formula for the probability of <em>at most</em> <span class="math inline">\(k\)</span> successes:</p>
 <div class="fragment">
 <table>
@@ -131,12 +135,12 @@
 </div>
 </section>
 <section id="binomial-probabilities-contd-1" class="slide level2">
-<h1>Binomial Probabilities (cont’d)</h1>
+<h2>Binomial Probabilities (cont’d)</h2>
 <p>Important fact:</p>
 <p><span class="math display">\[P(X &gt; k) = P(X \ge k+1) = 1 - P(X \le k)\]</span></p>
 </section>
 <section id="binomial-probabilities-contd-2" class="slide level2">
-<h1>Binomial Probabilities (cont’d)</h1>
+<h2>Binomial Probabilities (cont’d)</h2>
 <table>
 <thead>
 <tr class="header">
@@ -168,11 +172,11 @@
 </ul>
 </section>
 <section id="binomial-probabilities-contd-3" class="slide level2">
-<h1>Binomial Probabilities (cont’d)</h1>
-<img src="graphics/applications.png" alt="applications" class="stretch" /> 
+<h2>Binomial Probabilities (cont’d)</h2>
+<img data-src="graphics/applications.png" alt="applications" class="stretch" /> 
 </section>
 <section id="binomial-probabilities-contd-4" class="slide level2">
-<h1>Binomial Probabilities (cont’d)</h1>
+<h2>Binomial Probabilities (cont’d)</h2>
 <table>
 <thead>
 <tr class="header">
@@ -197,7 +201,7 @@
 </table>
 </section>
 <section id="binomial-mean-and-std-dev" class="slide level2">
-<h1>Binomial Mean and Std Dev</h1>
+<h2>Binomial Mean and Std Dev</h2>
 <p>Suppose <span class="math inline">\(X\)</span> is binomial with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>:</p>
 <div class="fragment">
 <p><span class="math display">\[E(X) = n \cdot p\]</span> <span class="math display">\[\sigma_X = \sqrt{n \cdot p \cdot (1 - p)}\]</span></p>
@@ -211,19 +215,19 @@
 </div>
 </section>
 <section id="binomial-example" class="slide level2">
-<h1>Binomial Example</h1>
-<img src="graphics/banks_hold_capital_cushions.png" class="stretch" /> 
+<h2>Binomial Example</h2>
+<img data-src="graphics/banks_hold_capital_cushions.png" class="stretch" /> 
 <p>Source: Wall Street Journal, Nov 10 2014</p>
 </section>
 <section id="binomial-example-contd" class="slide level2">
-<h1>Binomial Example (cont’d)</h1>
+<h2>Binomial Example (cont’d)</h2>
 <p>A study by one automobile manufacturer indicated that one out of every four new cars required repairs under the company’s new-car warranty. The manufacturer must keep money on hand to handle warranty repairs</p>
 <ul>
 <li>See tab <em>cars</em> of Excel file <em>discrete_examples.xlsx</em></li>
 </ul>
 </section>
 <section id="binomial-example-contd-1" class="slide level2">
-<h1>Binomial Example (cont’d)</h1>
+<h2>Binomial Example (cont’d)</h2>
 <ol type="1">
 <li><p>For 100 new cars, what is the expected number needing repairs? What is the standard deviation?</p></li>
 <li><p>Provide a reasonable, worst-case estimate of the number of cars needing repair for a specified group of 100 cars. (Hint: What number of repairs is there only a 5% chance of exceeding?)</p></li>
@@ -231,7 +235,7 @@
 </ol>
 </section>
 <section id="example-churn" class="slide level2">
-<h1>Example: Churn</h1>
+<h2>Example: Churn</h2>
 <p>Analysts of the wireless industry estimate that, every month, 0.5% of all wireless customers churn, i.e., 0.5% of customers switch carriers</p>
 <ul>
 <li><p>How many times per year does the average customer churn?</p></li>
@@ -239,7 +243,7 @@
 </ul>
 </section>
 <section id="example-churn-contd" class="slide level2">
-<h1>Example: Churn (cont’d)</h1>
+<h2>Example: Churn (cont’d)</h2>
 <ul>
 <li><p>For a given customer, let <span class="math inline">\(X\)</span> be the number of times the customer churns in 12 months</p></li>
 <li><p>What assumption is necessary to apply the binomial model? Is this a reasonable assumption?</p></li>
@@ -249,7 +253,7 @@
 </ul>
 </section>
 <section id="example-mud-slides" class="slide level2">
-<h1>Example: Mud Slides</h1>
+<h2>Example: Mud Slides</h2>
 <p>Suppose the chance of a mud slide occurring in a given rainy season is 1%. What is the chance of having at least one mud slide in the next 20 rainy seasons?</p>
 <div class="fragment">
 <ul>
@@ -269,11 +273,30 @@
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
           { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
         ]
       });
