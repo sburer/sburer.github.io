@@ -9,7 +9,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
   <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
   <!-- Printing and PDF exports -->
@@ -23,16 +28,15 @@
   <!--[if lt IE 9]>
   <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
   <![endif]-->
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
-<section>
+<section id="title-slide">
   <h1 class="title">Continuous Probability</h1>
-  <h2 class="author">Samuel Burer</h2>
-  <h3 class="date">Last updated: September  6, 2016</h3>
+  <p class="author">Samuel Burer</p>
+  <p class="date">Last updated: August 10, 2018</p>
 </section>
 
 <section id="continuous-random-variables" class="slide level1">
@@ -44,7 +48,7 @@
 </section>
 <section id="continuous-random-variables-contd" class="slide level1">
 <h1>Continuous Random Variables (cont’d)</h1>
-<img src="graphics/normal.png" alt="normal distribution" class="stretch" /> 
+<img data-src="graphics/normal.png" alt="normal distribution" class="stretch" /> 
 </section>
 <section id="normal-example-1" class="slide level1">
 <h1>Normal Example #1</h1>
@@ -111,17 +115,17 @@
 </section>
 <section id="probability-density-function-contd-1" class="slide level1">
 <h1>Probability Density Function (cont’d)</h1>
-<img src="graphics/uniform.png" alt="uniform distribution" class="stretch" /> 
+<img data-src="graphics/uniform.png" alt="uniform distribution" class="stretch" /> 
 <p>Probability evenly (“uniformly”) distributed between 10 and 14</p>
 </section>
 <section id="probability-density-function-contd-2" class="slide level1">
 <h1>Probability Density Function (cont’d)</h1>
-<p><img src="graphics/uniform2.png" alt="uniform distribution" /> </p>
+<p><img data-src="graphics/uniform2.png" alt="uniform distribution" /> </p>
 <p>Probability between 11 and 12 is <span class="math inline">\(P(11 \le X \le 12) = 0.25 = 25\)</span>%</p>
 </section>
 <section id="probability-density-function-contd-3" class="slide level1">
 <h1>Probability Density Function (cont’d)</h1>
-<img src="graphics/nonuniform.png" alt="nonuniform distribution" class="stretch" /> 
+<img data-src="graphics/nonuniform.png" alt="nonuniform distribution" class="stretch" /> 
 <p>Could this be reality??</p>
 </section>
 <section id="how-to-talk-about-crvs" class="slide level1">
@@ -160,11 +164,11 @@
 </section>
 <section id="expected-value-of-a-crv" class="slide level1">
 <h1>Expected Value of a CRV</h1>
-<p>The <em>expected value</em> <span class="math inline">\(E[X]\)</span> of a CRV <span class="math inline">\(X\)</span> is the average of all the possible values for X, weighted by the probabilities</p>
+<p>The <em>expected value</em> <span class="math inline">\(E(X)\)</span> of a CRV <span class="math inline">\(X\)</span> is the average of all the possible values for X, weighted by the probabilities</p>
 </section>
 <section id="std-dev-of-a-crv" class="slide level1">
 <h1>Std Dev of a CRV</h1>
-<p>The <em>standard deviation</em> <span class="math inline">\(\sigma\)</span> is a measure of how far the values of <span class="math inline">\(X\)</span> differ from (or deviate from) its expected value, <span class="math inline">\(E[X]\)</span></p>
+<p>The <em>standard deviation</em> <span class="math inline">\(\sigma\)</span> is a measure of how far the values of <span class="math inline">\(X\)</span> differ from (or deviate from) its expected value, <span class="math inline">\(E(X)\)</span></p>
 </section>
     </div>
   </div>
@@ -177,11 +181,30 @@
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // Optional reveal.js plugins
         dependencies: [
           { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
           { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
         ]
       });
