@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Hypothesis Testing</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Hypothesis Testing</h1>
+  <p class="author">Samuel Burer</p>
+  <p class="date">Last updated: September 17, 2018</p>
+</section>
+
+<section><section id="thought-experiment" class="title-slide slide level1"><h1>Thought Experiment</h1></section><section id="section" class="slide level2">
+<h2></h2>
+<p>You flip a coin 10 times, and it comes up Heads all 10 times. Will the next flip be Heads or Tails?</p>
+</section></section>
+<section><section id="introduction-to-hypothesis-testing" class="title-slide slide level1"><h1>Introduction to Hypothesis Testing</h1></section><section id="innocent-until-proven-guilty" class="slide level2">
+<h2>Innocent Until Proven Guilty</h2>
+<ul>
+<li>In our judicial system, a person is <em>innocent until proven guilty</em></li>
+<li>I.e., evidence is required to prove guilt <em>beyond a reasonable doubt</em></li>
+<li>Otherwise, innocence is assumed</li>
+</ul>
+</section><section id="section-1" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/ht1a.png" /> </p>
+</section><section id="section-2" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/ht1b.png" /> </p>
+</section><section id="section-3" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/ht1c.png" /> </p>
+</section><section id="section-4" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/ht1d.png" /> </p>
+</section></section>
+<section><section id="hypothesis-testing" class="title-slide slide level1"><h1>Hypothesis Testing</h1></section><section id="section-5" class="slide level2">
+<h2></h2>
+<p>Often, you’d like to test a hypothesis about a population by taking a sample of size <span class="math inline">\(n\)</span>…</p>
+<ul>
+<li>Has customer approval changed since the new billing system was implemented?</li>
+<li>Is the proportion of out-of-tolerance piston-bore pairs less than 5%?</li>
+</ul>
+</section><section id="section-6" class="slide level2">
+<h2></h2>
+<ul>
+<li>Has the average elementary school teacher’s salary increased, decreased, or stayed the same since 5 years ago?</li>
+<li>Does gender have an impact on salary?</li>
+<li>Is the number of violent crimes (per 100,000 residents) higher in Iowa or Minnesota?</li>
+</ul>
+</section><section id="section-7" class="slide level2">
+<h2></h2>
+<p>Today, we will only talk about testing hypotheses involving means and proportions.</p>
+<p>But basic ideas apply in other situations, too (as we will see in later classes)</p>
+</section></section>
+<section><section id="example" class="title-slide slide level1"><h1>Example</h1></section><section id="section-8" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>Customer satisfaction at your company has been steady at 75% during the past several years</p></li>
+<li><p>New techniques to (hopefully) improve customer service have been implemented recently</p></li>
+<li><p>You’d like to know if customer satisfaction has actually increased.</p></li>
+<li><p>So you take a survey…</p></li>
+</ul>
+</section><section id="section-9" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/ht2a.png" /> </p>
+</section><section id="section-10" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/ht2b.png" /> </p>
+</section><section id="section-11" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/ht2c.png" /> </p>
+</section><section id="section-12" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/ht2d.png" /> </p>
+</section><section id="section-13" class="slide level2">
+<h2></h2>
+<p>Consider the following scenarios:</p>
+<ol type="1">
+<li>Survey reports a 95% CI of 76% <span class="math inline">\(\pm\)</span> 2%</li>
+<li>Survey reports a 95% CI of 78% <span class="math inline">\(\pm\)</span> 2%</li>
+</ol>
+</section><section id="section-14" class="slide level2">
+<h2></h2>
+<ol type="1">
+<li><p>True customer satisfaction could still be 75% (since 75% is in CI), i.e., we are still unsure whether satisfaction has increased</p></li>
+<li><p>True customer satisfaction is more than 75% (since 75% is below CI), i.e., we are confident that satisfaction has increased</p></li>
+</ol>
+</section><section id="section-15" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/ht2e.png" /><br />
+</p>
+</section><section id="section-16" class="slide level2">
+<h2></h2>
+<p>Important point!</p>
+<ul>
+<li>In scenario #2, the probability of an error is less than 5%</li>
+</ul>
+</section></section>
+<section><section id="hypothesis-testing-contd" class="title-slide slide level1"><h1>Hypothesis Testing (cont’d)</h1></section><section id="section-17" class="slide level2">
+<h2></h2>
+<p>Steps of Hypothesis Testing</p>
+<ol type="1">
+<li>Formulate a hypothesis to test</li>
+<li>Specify an acceptable level of risk for making an error</li>
+<li>Determine the criterion upon which final conclusion will be based</li>
+<li>Collect data by taking a sample</li>
+<li>Determine whether or not to accept the hypothesis as true</li>
+</ol>
+</section><section id="step-1" class="slide level2">
+<h2>Step 1</h2>
+<p>Formulate a hypothesis to test</p>
+<ul>
+<li><p>The <em>alternative hypothesis</em> <span class="math inline">\(H_1\)</span> is a hypothesis about the population that we would like to investigate (“guilty”)</p></li>
+<li><p>The <em>null hypothesis</em> <span class="math inline">\(H_0\)</span> is a statement about the status quo that is assumed correct (“innocent”)</p></li>
+<li><p>The two hypotheses <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span> are MECE (mutually exclusive and collectively exhaustive)</p></li>
+</ul>
+</section><section id="section-18" class="slide level2">
+<h2></h2>
+<p>In our previous example:</p>
+<ul>
+<li><span class="math inline">\(H_0 : p \le 0.75\)</span></li>
+<li><span class="math inline">\(H_1 : p &gt; 0.75\)</span></li>
+</ul>
+</section><section id="section-19" class="slide level2">
+<h2></h2>
+<ul>
+<li>The number “0.75” is called the <em>hypothesis constant</em></li>
+<li>The letter “<span class="math inline">\(p\)</span>” is called the <em>population parameter</em></li>
+</ul>
+</section><section id="section-20" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>We will discuss three different situations:</p>
+<ul>
+<li><p><span class="math inline">\(H_0 : \text{param} \le \text{hc}\)</span> with <span class="math inline">\(H_1 : \text{param} &gt; \text{hc}\)</span></p></li>
+<li><p><span class="math inline">\(H_0 : \text{param} = \text{hc}\)</span> with <span class="math inline">\(H_1 : \text{param} \ne \text{hc}\)</span></p></li>
+<li><p><span class="math inline">\(H_0 : \text{param} \ge \text{hc}\)</span> with <span class="math inline">\(H_1 : \text{param}\)</span> &lt; <span class="math inline">\(\text{hc}\)</span></p></li>
+</ul></li>
+<li><p>These are called <em>one-sample tests</em> (both <em>one-</em> and <em>two-sided</em>, or <span class="math inline">\(one-\)</span> and <span class="math inline">\(two-tailed\)</span>)</p></li>
+<li><p>There are also two-sample tests, but they are out of scope</p></li>
+</ul>
+</section><section id="section-21" class="slide level2">
+<h2></h2>
+<ul>
+<li>Defining the null and alternative can be tricky</li>
+<li>Two rules of thumb
+<ul>
+<li>If you are making a claim, then the claim should define the alternative</li>
+<li>Whatever will cause action should define the alternative</li>
+</ul></li>
+<li>No substitute for practice and experience</li>
+</ul>
+</section></section>
+<section><section id="examples" class="title-slide slide level1"><h1>Examples</h1></section><section id="section-22" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>Our current light bulb lasts an average of 959 hours. We have developed a new light bulb that we hope lasts longer than the current one</p></li>
+<li><p>Let <span class="math inline">\(\mu\)</span> be the mean burning time of the new light bulb</p></li>
+<li><p>Then our hypotheses are:</p></li>
+</ul>
+<p><span class="math display">\[
+H_0 : \mu \le 959 \ \ \ \ \ \ \ \ H_1 : \mu &gt; 959
+\]</span></p>
+</section><section id="section-23" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>In a certain manufacturing process, it is important to produce a part as close as possible to 1 inch long. A little less or a little more is okay, but a significant difference from 1 inch can cause trouble.</p></li>
+<li><p>Let <span class="math inline">\(\mu\)</span> be the mean length of the manufactured part</p></li>
+</ul>
+<p><span class="math display">\[
+H_0 : \mu = 1.0 \ \ \ \ \ \ \ \ H_1 : \mu \ne 1.0
+\]</span></p>
+</section><section id="section-24" class="slide level2">
+<h2></h2>
+<p>(see Excel examples)</p>
+</section></section>
+<section><section id="hypothesis-testing-contd-1" class="title-slide slide level1"><h1>Hypothesis Testing (cont’d)</h1></section><section id="step-2" class="slide level2">
+<h2>Step 2</h2>
+<p>Specify an acceptable level of risk for making an error</p>
+</section><section id="section-25" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/ht3.png" /><br />
+</p>
+</section><section id="section-26" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/pregnancy.png" /><br />
+</p>
+</section><section id="section-27" class="slide level2">
+<h2></h2>
+<ul>
+<li>Our risk is the probability of making a Type I error</li>
+<li>We specify the highest risk we can tolerate</li>
+<li>This is called the <em>level of significance</em></li>
+<li>Denoted by <span class="math inline">\(\alpha\)</span> (“alpha”)</li>
+<li><span class="math inline">\(1 – \alpha\)</span> is called the <em>confidence coefficient</em></li>
+</ul>
+</section><section id="section-28" class="slide level2">
+<h2></h2>
+<ul>
+<li>Common values for <span class="math inline">\(\alpha\)</span> are 0.10, 0.05, and 0.01</li>
+<li>Corresponding values for <span class="math inline">\(1 – \alpha\)</span> are 90%, 95%, and 99%</li>
+</ul>
+</section><section id="section-29" class="slide level2">
+<h2></h2>
+<p>Terminology:</p>
+<ul>
+<li>Rejecting <span class="math inline">\(H_0\)</span> is the same as accepting <span class="math inline">\(H_1\)</span></li>
+<li>Accepting <span class="math inline">\(H_0\)</span> is the same as rejecting <span class="math inline">\(H_1\)</span></li>
+</ul>
+</section><section id="steps-3-5" class="slide level2">
+<h2>Steps 3-5</h2>
+<p>Determine the criterion upon which final conclusion will be based</p>
+<ul>
+<li><p>We can use either of the following:</p>
+<ol type="1">
+<li><p>confidence intervals</p></li>
+<li><p><span class="math inline">\(p\)</span>-values</p></li>
+</ol></li>
+<li><p>And we phrase the decision, “What criterion must be met in order to reject the null?”</p></li>
+</ul>
+</section></section>
+<section><section id="confidence-intervals" class="title-slide slide level1"><h1>Confidence Intervals</h1></section><section id="section-30" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>In the next few slides, most everything will be in terms of means (not proportions)</p></li>
+<li><p>The logic of testing proportions is exactly the same, but the formulas are somewhat different</p></li>
+<li><p>Will show formulas for proportions along the way</p></li>
+</ul>
+</section><section id="section-31" class="slide level2">
+<h2></h2>
+<p>Suppose you have…</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span></li>
+<li>CI for <span class="math inline">\(\mu\)</span> with confidence level <span class="math inline">\(1 - \alpha\)</span></li>
+</ul>
+</section><section id="section-32" class="slide level2">
+<h2></h2>
+<ol type="1">
+<li><p>Imagine that the CI represents one big, collective value for <span class="math inline">\(\mu\)</span></p></li>
+<li><p>Reject <span class="math inline">\(H_0\)</span> if and only if hc’s mathematical relationship to “<span class="math inline">\(\mu\)</span>” matches <span class="math inline">\(H_1\)</span></p></li>
+</ol>
+</section><section id="section-33" class="slide level2">
+<h2></h2>
+<ul>
+<li>See Excel examples</li>
+</ul>
+</section></section>
+<section><section id="p-values" class="title-slide slide level1"><h1><em>p</em>-Values</h1></section><section id="section-34" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>The concept of a <span class="math inline">\(p\)</span>-value is very important in statistics</p></li>
+<li><p>In fact, it is a much broader concept than just the formulas we will discuss today</p></li>
+<li><p>So what is the basic concept of a <span class="math inline">\(p\)</span>-value?</p></li>
+</ul>
+</section><section id="section-35" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>Say you would like to prove a new, exciting claim with the data you have collected; the claim is <span class="math inline">\(H_1\)</span></p></li>
+<li><p>Even if you think your data supports <span class="math inline">\(H_1\)</span> (“we got great results!”), you can never be 100% sure</p></li>
+<li><p>Roughly speaking, the <span class="math inline">\(p\)</span>-value is the probability that your great results actually were blind luck</p></li>
+<li><p>More precisely, the <span class="math inline">\(p\)</span>-value equals the probability of getting your great results under the assumption that <span class="math inline">\(H_0\)</span> is true</p></li>
+</ul>
+</section><section id="section-36" class="slide level2">
+<h2></h2>
+<p>For example…</p>
+<ul>
+<li><p>Your employee, George, has just failed a drug test</p></li>
+<li><p>But the drug test has a relatively high false-positive rate, i.e., the <span class="math inline">\(p\)</span>-value is high</p></li>
+<li><p>So you test him again</p></li>
+</ul>
+</section><section id="section-37" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>George fails the second time, but he swears he doesn’t use drugs</p></li>
+<li><p>The <span class="math inline">\(p\)</span>-value is smaller than before</p></li>
+<li><p>You give him the benefit of the doubt and test him one more time</p></li>
+</ul>
+</section><section id="section-38" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>He fails a third time</p></li>
+<li><p>If he truly were not using drugs, what is the chance he would fail three times in a row?</p></li>
+<li><p>Not very high at all, i.e., the <span class="math inline">\(p\)</span>-value is low</p></li>
+<li><p>So you decide to fire him</p></li>
+</ul>
+</section><section id="deciding-with-p-values" class="slide level2">
+<h2>Deciding with <em>p</em>-Values</h2>
+<p>Ingredients:</p>
+<ul>
+<li>Null <span class="math inline">\(H_0\)</span> and alternative <span class="math inline">\(H_1\)</span></li>
+<li>Significance level <span class="math inline">\(\alpha\)</span></li>
+<li>Data sample with <span class="math inline">\(n \ge 30\)</span> and sample mean <span class="math inline">\(\bar x\)</span></li>
+</ul>
+</section><section id="section-39" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>Calculate <em>test statistic</em> <span class="math display">\[t = \frac{\bar x - \text{hc}}{s/\sqrt{n}}\]</span></p></li>
+<li><p><span class="math inline">\(t\)</span> is the number of standard errors <span class="math inline">\(\bar x\)</span> is away from <span class="math inline">\(\text{hc}\)</span> (either positive or negative)</p></li>
+<li><p>Generally speaking, the higher <span class="math inline">\(|t|\)</span>, the lower the <span class="math inline">\(p\)</span>-value</p></li>
+</ul>
+</section><section id="section-40" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>Calculate the <span class="math inline">\(p\)</span>-value based on <span class="math inline">\(t\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Form of <span class="math inline">\(H_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(p\)</span>-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(mu \ne \text{hc}\)</span></td>
+<td style="text-align: center;">2.0 * NORM.S.DIST(-ABS(<span class="math inline">\(t\)</span>))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(mu &gt; \text{hc}\)</span></td>
+<td style="text-align: center;">1.0 - NORM.S.DIST(<span class="math inline">\(t\)</span>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(mu\)</span> &lt; <span class="math inline">\(\text{hc}\)</span></td>
+<td style="text-align: center;">NORM.S.DIST(<span class="math inline">\(t\)</span>)</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>If <span class="math inline">\(p\)</span>-value &lt; <span class="math inline">\(\alpha\)</span>, then reject <span class="math inline">\(H_0\)</span></p></li>
+<li><p>Otherwise, accept <span class="math inline">\(H_0\)</span></p></li>
+</ul>
+</section><section id="proportions" class="slide level2">
+<h2>Proportions</h2>
+<ul>
+<li><p>Testing for proportions follows the exact same logic</p></li>
+<li><p>Just need <span class="math inline">\(n \cdot \text{hc} \ge 5\)</span> and <span class="math inline">\(n \cdot (1 - \text{hc}) \ge 5\)</span></p></li>
+<li><p>And substitute the following definition for <span class="math inline">\(t\)</span>: <span class="math display">\[t = \frac{\bar p - \text{hc}}{\sqrt{\text{hc}(1 - \text{hc})/n}}\]</span></p></li>
+</ul>
+</section><section id="section-41" class="slide level2">
+<h2></h2>
+<ul>
+<li>See Excel examples</li>
+</ul>
+</section></section>
+<section><section id="terminology" class="title-slide slide level1"><h1>Terminology</h1></section><section id="section-42" class="slide level2">
+<h2></h2>
+<p>When <span class="math inline">\(\alpha = 0.05\)</span> and you have rejected <span class="math inline">\(H_0\)</span>…</p>
+<ul>
+<li>“Difference between the true mean <span class="math inline">\(\mu\)</span> and the hypothesized value hc is statistically significant at the 5% level”</li>
+<li>“Difference is statistically significant at the 5% level”</li>
+<li>“Difference is statistically significant”</li>
+<li>“Difference is significant”</li>
+</ul>
+</section><section id="section-43" class="slide level2">
+<h2></h2>
+<p>What is the right <span class="math inline">\(\alpha\)</span>?</p>
+<ul>
+<li>Depends on the person, organization, or application</li>
+<li><span class="math inline">\(\alpha = 0.05\)</span> is typical in business and the social sciences</li>
+<li><span class="math inline">\(\alpha = 0.01\)</span> is common in the physical sciences</li>
+<li>Generally speaking, <span class="math inline">\(\alpha &gt; 0.10\)</span> is “not significant”</li>
+</ul>
+</section><section id="section-44" class="slide level2">
+<h2></h2>
+<table>
+<thead>
+<tr class="header">
+<th><em>p</em>-value range</th>
+<th>“Difference is…”</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&lt; 0.01</td>
+<td>very significant</td>
+</tr>
+<tr class="even">
+<td>between 0.01 and 0.05</td>
+<td>significant</td>
+</tr>
+<tr class="odd">
+<td>between 0.05 and 0.10</td>
+<td>marginally significant</td>
+</tr>
+<tr class="even">
+<td>&gt; 0.10</td>
+<td>not significant</td>
+</tr>
+</tbody>
+</table>
+</section><section id="section-45" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/xkcd.png" /><br />
+</p>
+<p>Source: <a href="https://xkcd.com/1478/">xkcd.com</a></p>
+</section></section>
+<section><section id="examples-1" class="title-slide slide level1"><h1>Examples</h1></section><section id="section-46" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/economist.png" /><br />
+</p>
+</section><section id="section-47" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/epa.png" /><br />
+</p>
+</section><section id="coke-vs.pepsi" class="slide level2">
+<h2>Coke vs. Pepsi</h2>
+<p>Can people really identify Coke against Pepsi?</p>
+</section><section id="section-48" class="slide level2">
+<h2></h2>
+<ul>
+<li>Last week, 18 students submitted to a blind taste test of Coke and Pepsi</li>
+<li>Eight correctly identified Coke and Pepsi, while 10 did not</li>
+<li>Assuming a random sample, does this provide evidence that people can identify one from the other?</li>
+</ul>
+</section><section id="section-49" class="slide level2">
+<h2></h2>
+<ul>
+<li>Let <span class="math inline">\(p\)</span> be the true proportion of people who correctly identify Coke against Pepsi in a blind test</li>
+<li>Equivalently, <span class="math inline">\(p\)</span> is the chance that a random person guesses right</li>
+</ul>
+</section><section id="section-50" class="slide level2">
+<h2></h2>
+<ul>
+<li>If <span class="math inline">\(p\)</span> is fairly close to 1, then we would say, “Most people are able to identify.”</li>
+<li>If <span class="math inline">\(p\)</span> is fairly close to 0, then we would say, “Most people are able to distinguish. They’ve just got the brands switched.”</li>
+<li>If <span class="math inline">\(p\)</span> is close to 0.5, then we would say, “The tastes are essentially indistinguishable. In other words, people are randomly guessing.”</li>
+</ul>
+</section><section id="section-51" class="slide level2">
+<h2></h2>
+<ul>
+<li>So the interesting hypotheses are <span class="math inline">\(H_0 : p = 0.5\)</span> and <span class="math inline">\(H_1 : p \ne 0.5\)</span></li>
+<li>Have <span class="math inline">\(n = 18\)</span> and <span class="math inline">\(\bar p = 8/18 = 0.44\)</span></li>
+<li>Also <span class="math inline">\(n \bar p \ge 5\)</span> and <span class="math inline">\(n (1 - \bar p) \ge 5\)</span></li>
+</ul>
+</section><section id="section-52" class="slide level2">
+<h2></h2>
+<ul>
+<li>The corresponding 95% CI is <span class="math inline">\(0.44 \pm 0.23\)</span></li>
+<li>Since 0.5 is contained in the CI, we accept the null, i.e., people cannot identify Coke against Pepsi</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
