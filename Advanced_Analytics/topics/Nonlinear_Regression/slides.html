@@ -36,33 +36,34 @@
 <section id="title-slide">
   <h1 class="title">Nonlinear Regression</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: January 13, 2019</p>
+  <p class="date">Last updated: January 16, 2019</p>
 </section>
 
 <section><section id="introduction" class="title-slide slide level1"><h1>Introduction</h1></section><section id="section" class="slide level2">
 <h2></h2>
 <ul>
-<li>Linear regression models linear relationships</li>
+<li>Linear regression is a tool for modeling linear relationships</li>
 <li>What about nonlinear relationships?</li>
 <li><em>Nonlinear regression</em> allows us to capture these</li>
 </ul>
 </section><section id="section-1" class="slide level2">
 <h2></h2>
 <ul>
-<li>Nonlinear regression is a huge subject on its own</li>
-<li>So we will focus our attention and study an important case…nonlinear regression via a transformation to linear regression</li>
-<li>We will thus leverage our knowledge of linear regression</li>
+<li>But nonlinear regression is a huge subject on its own</li>
+<li>So we will focus on an important case…nonlinear regression via a transformation to linear regression</li>
+<li>By focusing, we can leverage our knowledge of linear regression</li>
 </ul>
 </section></section>
 <section><section id="transforming-variables" class="title-slide slide level1"><h1>Transforming Variables</h1></section><section id="section-2" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Using linear regression to model a nonlinear relationship is synonymous with the idea of <em>transforming variables</em></p></li>
-<li><p>Transforming variables also means that we will need to transform our data</p></li>
+<li><p>Transforming variables = transforming data</p></li>
 </ul>
 </section><section id="section-3" class="slide level2">
 <h2></h2>
-<p>Transforming an independent variable…</p>
+<p>How to transform an independent variable…</p>
+<p> </p>
 <ul>
 <li>Add a transformed version of <span class="math inline"><em>X</em></span> to the model
 <ul>
@@ -76,7 +77,8 @@
 </ul>
 </section><section id="section-4" class="slide level2">
 <h2></h2>
-<p>Transforming the dependent variable…</p>
+<p>How to transform the dependent variable…</p>
+<p> </p>
 <ul>
 <li>In the model, replace <span class="math inline"><em>Y</em></span> with a transformed version of itself</li>
 <li>In the data, calculate and add the data column for the new version of <span class="math inline"><em>Y</em></span></li>
@@ -84,8 +86,8 @@
 </section><section id="section-5" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>You can do any transformation that you want; there are many, many options</p></li>
-<li><p>Since there are so many options, we need some guiding principles to help point us towards transformations that make sense</p></li>
+<li><p>You can do any transformation that you want; there are (too) many options</p></li>
+<li><p>Since there are so many options, we need some guiding principles to point us towards transformations that make sense</p></li>
 </ul>
 </section><section id="section-6" class="slide level2">
 <h2></h2>
@@ -108,13 +110,14 @@
 </section><section id="section-9" class="slide level2">
 <h2></h2>
 <ol start="4" type="1">
-<li>Transform <span class="math inline"><em>X</em></span> and/or <span class="math inline"><em>Y</em></span> so that the transformed variables better fit the underlying business situation. In such cases, the transformed model will be more meaningful in context</li>
+<li>Transform <span class="math inline"><em>X</em></span> and/or <span class="math inline"><em>Y</em></span> so that the transformed variables better fit the underlying business situation. In such cases, the transformed model will be more meaningful in the business context</li>
 </ol>
 </section><section id="section-10" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Our examples will emphasize these principles</p></li>
-<li><p>In many cases, the principles will positively reinforce each other, that is, different principles will suggest the same transformations</p></li>
+<li>In many cases, the principles will positively reinforce each other</li>
+<li><p>That is, different principles will suggest the same transformations</p></li>
 </ul>
 </section><section id="section-11" class="slide level2">
 <h2></h2>
@@ -132,13 +135,13 @@
 <ul>
 <li>EXP = exponential function (base <span class="math inline"><em>e</em> ≈ 2.71828</span>)</li>
 <li>LOG = (natural) logarithm function</li>
-<li>Both are surprisingly useful for NR</li>
+<li>Both are surprisingly useful for nonlinear regression</li>
 </ul>
 </section><section id="section-14" class="slide level2">
 <h2></h2>
 <ul>
 <li><span class="math inline">exp (<em>x</em>) = <em>e</em><sup><em>x</em></sup></span></li>
-<li><span class="math inline">exp (<em>x</em>)</span> is positive no matter <span class="math inline"><em>x</em></span></li>
+<li>No matter <span class="math inline"><em>x</em></span>, <span class="math inline">exp (<em>x</em>)</span> is always positive</li>
 <li><span class="math inline">exp (0) = 1</span></li>
 </ul>
 </section><section id="section-15" class="slide level2">
@@ -263,7 +266,7 @@
 <td>“constant rel err”</td>
 </tr>
 <tr class="even">
-<td>Assumption</td>
+<td>Assumptions</td>
 <td>NA</td>
 <td><span class="math inline"><em>β</em> &gt; 0</span>, <span class="math inline"><em>b</em> &gt; 0</span></td>
 </tr>
@@ -285,7 +288,7 @@
 <h2></h2>
 <p><strong><span class="math inline"><em>β</em></span> = growth rate</strong></p>
 <ul>
-<li>Multiplicative-factor change in <span class="math inline"><em>Y</em></span> when <span class="math inline"><em>X</em></span> increases by +1
+<li>Multiplicative-factor change in <span class="math inline"><em>Y</em></span> when <span class="math inline"><em>X</em></span> changes by +1
 <ul>
 <li><span class="math inline"><em>Y</em> = <em>α</em><em>β</em><sup><em>X</em></sup></span></li>
 <li><span class="math inline"><em>Y</em>′ = <em>α</em><em>β</em><sup><em>X</em> + 1</sup> = <em>α</em><em>β</em><sup><em>X</em></sup><em>β</em><sup>1</sup> = <em>β</em> ⋅ <em>α</em><em>β</em><sup><em>X</em></sup> = <em>β</em><em>Y</em></span></li>
@@ -342,7 +345,7 @@
 <ul>
 <li>The Dow Jones Industrial Average (DJIA) jumped 1,086 points (or 5%) on Dec 26, 2018</li>
 <li>This was its single largest point increase in a single day</li>
-<li>On Mar 15, 1933, the DJIA gained 8 points, its largest ever single-day percentage increase of 15%</li>
+<li>On Mar 15, 1933, the DJIA gained 8 points, its largest ever single-day percentage increase (15%)</li>
 </ul>
 </section><section id="section-33" class="slide level2">
 <h2></h2>
