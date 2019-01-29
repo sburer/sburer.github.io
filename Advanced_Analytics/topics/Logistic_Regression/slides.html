@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samuel Burer">
+  <title>Logistic Regression</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../sburer.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Logistic Regression</h1>
+  <p class="author">Samuel Burer</p>
+  <p class="date">Last updated: January 24, 2019</p>
+</section>
+
+<section><section id="introduction" class="title-slide slide level1"><h1>Introduction</h1></section><section id="section" class="slide level2">
+<h2></h2>
+<p>Sometimes we wish to predict a binary outcome…</p>
+</section><section id="section-1" class="slide level2">
+<h2></h2>
+<ul>
+<li>If Bank of America lends money to Mr. Smith, will he default?</li>
+<li>More generally, which demographic or financial characteristics increase a customer’s likelihood of default?</li>
+</ul>
+</section><section id="section-2" class="slide level2">
+<h2></h2>
+<ul>
+<li>Ms. Johnson has just been diagnosed with breast cancer</li>
+<li>She is young but has a family history</li>
+<li>What is the probability of complete recovery?</li>
+<li>What can she do to increase her odds?</li>
+</ul>
+</section><section id="section-3" class="slide level2">
+<h2></h2>
+<ul>
+<li>Will the Cubs sweep Houston this weekend?</li>
+<li>What are the odds?</li>
+<li>Does it help or hurt that the series is away?</li>
+</ul>
+</section><section id="predicting-a-binary-event" class="slide level2">
+<h2>Predicting a Binary Event</h2>
+</section><section id="section-4" class="slide level2">
+<h2></h2>
+<ul>
+<li>Suppose we wish to predict (or understand) an event that has only two possible outcomes</li>
+<li>Binary: 0/1, success/failure, yes/no</li>
+<li>Alternatively, suppose we’re interested in the probability of the “1” outcome</li>
+</ul>
+</section><section id="section-5" class="slide level2">
+<h2></h2>
+<ul>
+<li>Several decades ago, people used regular linear regression</li>
+<li>However, a better tool is (binomial) logistic regression
+<ul>
+<li>A “cousin” of linear regression</li>
+</ul></li>
+<li>These days, all major statistical software packages can do logistic regression (except Excel)</li>
+</ul>
+</section><section id="predicting-probabilities" class="slide level2">
+<h2>Predicting Probabilities</h2>
+</section><section id="section-6" class="slide level2">
+<h2></h2>
+<p><strong>Important</strong></p>
+<ul>
+<li>Logistic regression predicts probabilities</li>
+<li>Probabilities are easier to deal with mathematically</li>
+<li>We can always round a probability to 0 or 1</li>
+</ul>
+</section><section id="section-7" class="slide level2">
+<h2></h2>
+<p><strong>Why not linear regression?</strong></p>
+<ul>
+<li>Linear regression is not well suited for predicting probabilities
+<ul>
+<li>Accidentally predicts outside of the probability range 0% to 100%</li>
+<li>Consistently misbehaves on binary data, e.g., the residuals often have undesirable patterns</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="probabilities-and-odds" class="title-slide slide level1"><h1>Probabilities and Odds</h1></section><section id="section-8" class="slide level2">
+<h2></h2>
+<ul>
+<li>As you know, probabilities are expressed as numbers between 0 and 1 (0% and 100%)</li>
+<li>But they can also be expressed as <em>odds</em>…</li>
+</ul>
+</section><section id="section-9" class="slide level2">
+<h2></h2>
+<p>“Odds are 2:1 that Chicago will beat Houston”</p>
+<ul>
+<li>I.e., out of 3 games, Chicago will win 2 times (a 67% chance)</li>
+<li>Odds = 2:1 is the same as Odds = 2.0</li>
+</ul>
+</section><section id="section-10" class="slide level2">
+<h2></h2>
+<ul>
+<li>As decimals, odds are always between 0 and <span class="math inline"> + ∞</span></li>
+<li>Mathematical relationship between probability (<span class="math inline"><em>p</em></span>) and odds (<span class="math inline"><em>d</em></span>):</li>
+</ul>
+<p><br /><span class="math display"><em>d</em> = <em>p</em>/(1 − <em>p</em>)</span><br /> <br /><span class="math display"><em>p</em> = <em>d</em>/(1 + <em>d</em>)</span><br /></p>
+</section><section id="odds-ratios" class="slide level2">
+<h2>Odds Ratios</h2>
+</section><section id="section-11" class="slide level2">
+<h2></h2>
+<ul>
+<li>Compared to probabilities, odds are easy to compare by multiplicative factors</li>
+<li>The multiplicative factor is called an <em>odds ratio</em></li>
+</ul>
+</section><section id="section-12" class="slide level2">
+<h2></h2>
+<ul>
+<li>“A male has double the odds of causing a car crash than a female.”</li>
+<li>“The average consumer is five times as likely to buy the name brand if its price matches the generic brand (e.g., because its on sale).”</li>
+<li>Odds ratios 2 and 5, respectively</li>
+</ul>
+</section></section>
+<section><section id="simple-logistic-regression" class="title-slide slide level1"><h1>Simple Logistic Regression</h1></section><section id="section-13" class="slide level2">
+<h2></h2>
+<p><strong>Raw Ingredients</strong></p>
+<ul>
+<li>Variables
+<ul>
+<li>Independent variable <span class="math inline"><em>X</em></span> (continuous)</li>
+<li>Binary variable <span class="math inline"><em>Y</em></span> (we assume 0/1)</li>
+</ul></li>
+<li>Data</li>
+<li>Software package, e.g., R</li>
+</ul>
+</section><section id="section-14" class="slide level2">
+<h2></h2>
+<p><strong>Derived variables</strong></p>
+<ul>
+<li>Probability <span class="math inline"><em>P</em></span>
+<ul>
+<li><span class="math inline"><em>P</em></span> equals Prob(<span class="math inline"><em>Y</em> = 1</span> given values of <span class="math inline"><em>X</em></span>)</li>
+<li>Continuous between 0 and 1</li>
+</ul></li>
+<li>Odds <span class="math inline"><em>D</em></span>
+<ul>
+<li><span class="math inline"><em>D</em> = <em>P</em>/(1 − <em>P</em>)</span> and <span class="math inline"><em>P</em> = <em>D</em>/(1 + <em>D</em>)</span></li>
+<li>Continuous between 0 and <span class="math inline"> + ∞</span></li>
+</ul></li>
+</ul>
+</section><section id="the-model" class="slide level2">
+<h2>The Model</h2>
+</section><section id="section-15" class="slide level2">
+<h2></h2>
+<p><br /><span class="math display"><em>D</em> = <em>α</em><em>β</em><sup><em>X</em></sup></span><br /></p>
+<p> </p>
+<ul>
+<li>When <span class="math inline"><em>X</em> = 0</span>, the value of <span class="math inline"><em>D</em></span> is <span class="math inline"><em>α</em></span></li>
+<li>Otherwise, <span class="math inline"><em>X</em></span> affects <span class="math inline"><em>D</em></span> via the odds ratio <span class="math inline"><em>β</em></span>
+<ul>
+<li><span class="math inline"><em>β</em></span> is the multiplicative change in the odds <span class="math inline"><em>D</em></span> when <span class="math inline"><em>X</em></span> changes by +1</li>
+</ul></li>
+</ul>
+</section><section id="section-16" class="slide level2">
+<h2></h2>
+<ul>
+<li>Using the properties of log, the odds formula <span class="math inline"><em>D</em> = <em>α</em><em>β</em><sup><em>X</em></sup></span> is equivalent to…</li>
+</ul>
+<p><br /><span class="math display">log (<em>D</em>) = log (<em>α</em>) + log (<em>β</em>)<em>X</em></span><br /></p>
+<p> </p>
+<p>This is called the <em>logit</em> or <em>log-odds</em></p>
+</section><section id="section-17" class="slide level2">
+<h2></h2>
+<ul>
+<li>Logistic regression returns estimates of <span class="math inline">log (<em>α</em>)</span> and <span class="math inline">log (<em>β</em>)</span></li>
+<li>Do exp to recover estimates of <span class="math inline"><em>α</em></span> and <span class="math inline"><em>β</em></span></li>
+</ul>
+</section><section id="section-18" class="slide level2">
+<h2></h2>
+<p><strong>Behind the Scenes</strong></p>
+<ul>
+<li>Logistic regression uses an algorithm called <em>maximum-likelihood estimation</em></li>
+<li>Analogous to the least-squares procedure of regular linear regression</li>
+</ul>
+</section><section id="section-19" class="slide level2">
+<h2></h2>
+<p><strong>Multiple Logistic Regression</strong></p>
+<ul>
+<li>Similar to simple logistic regression</li>
+<li>Just allow more independent variables, including discrete variables if you like</li>
+</ul>
+</section></section>
+<section><section id="critiquing-the-model" class="title-slide slide level1"><h1>Critiquing the Model</h1></section><section id="section-20" class="slide level2">
+<h2></h2>
+<ul>
+<li>Compared to linear regression, critiquing a logistic model is trickier</li>
+<li>We focus on just three ways to critique a logistic regression model…</li>
+</ul>
+</section><section id="section-21" class="slide level2">
+<h2></h2>
+<p><strong><span class="math inline"><em>p</em></span>-values</strong></p>
+<ul>
+<li>Each odds ratio <span class="math inline"><em>β</em></span> has an associated <span class="math inline"><em>p</em></span>-value, which tests whether <span class="math inline"><em>β</em></span> is significantly different than 1.0
+<ul>
+<li>Q: Why is it relevant to test whether <span class="math inline"><em>β</em> = 1</span>?</li>
+</ul></li>
+<li>Similar to the <span class="math inline"><em>p</em></span>-value in linear regression</li>
+<li>Can remove insignificant variables from the logistic regression</li>
+</ul>
+</section><section id="section-22" class="slide level2">
+<h2></h2>
+<p><strong>AIC (Akaike information criterion)</strong></p>
+<ul>
+<li>A measure of the goodness-of-fit of models such as those based on logistic regression</li>
+<li>Lower AIC values are better</li>
+</ul>
+</section><section id="section-23" class="slide level2">
+<h2></h2>
+<p><strong>VIFs</strong></p>
+<ul>
+<li>As with linear regression, we’d like all the VIFs to be less than 5.0</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
