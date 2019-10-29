@@ -36,7 +36,7 @@
 <section id="title-slide">
   <h1 class="title">Monte Carlo Simulation</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: September 15, 2018</p>
+  <p class="date">Last updated: October 28, 2019</p>
 </section>
 
 <section><section id="the-law-of-averages" class="title-slide slide level1"><h1>The Law of Averages?</h1></section><section id="section" class="slide level2">
@@ -84,20 +84,28 @@ Complicating factors...
 <li><p>But because we can’t, we make our best guess based on whatever partial information we have at the moment</p></li>
 </ul></li>
 </ul>
+<!--
+##
+
+* Decision trees are one tool for making decision in the face of
+uncertainty
+
+    * Use fairly simple models of uncertainty
+    * Are based on a sequence of decisions and events over time
+    * Are built with the intent of choosing the best decision strategy
+
+##
+
+* Today, we will learn about another tool (*Monte Carlo simulation*) to
+describe the uncertainty in complex situations, which may or may not be
+sequenced over time
+
+* We can then make decisions based on the simulation
+-->
 </section><section id="section-4" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>Decision trees are one tool for making decision in the face of uncertainty</p>
-<ul>
-<li>Use fairly simple models of uncertainty</li>
-<li>Are based on a sequence of decisions and events over time</li>
-<li>Are built with the intent of choosing the best decision strategy</li>
-</ul></li>
-</ul>
-</section><section id="section-5" class="slide level2">
-<h2></h2>
-<ul>
-<li><p>Today, we will learn about another tool (<em>Monte Carlo simulation</em>) to describe the uncertainty in complex situations (which may or may not be sequenced over time)</p></li>
+<li><p>Today, we will learn about a specific tool (<em>Monte Carlo simulation</em>) to describe the uncertainty in complex situations</p></li>
 <li><p>We can then make decisions based on the simulation</p></li>
 </ul>
 </section></section>
@@ -106,7 +114,7 @@ Complicating factors...
 <blockquote>
 <p>the representation of the operation or features of one process or system through the use of another</p>
 </blockquote>
-</section><section id="section-6" class="slide level2">
+</section><section id="section-5" class="slide level2">
 <h2></h2>
 <ul>
 <li>A meteorologist simulates a thunderstorm on his/her computer</li>
@@ -121,33 +129,33 @@ Complicating factors...
 <li><p>Like rolling a die, except the die can represent any random event that we wish</p></li>
 <li><p>If we roll the die many times, how many is called the <em>number of trials</em> or the <em>sample size</em>; denoted by <span class="math inline">\(n\)</span></p></li>
 </ul>
-</section><section id="section-7" class="slide level2">
+</section><section id="section-6" class="slide level2">
 <h2></h2>
 <p>Single random number from continuous uniform distribution between <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>:</p>
 <pre><code>L + RAND()*(U - L)</code></pre>
-</section><section id="section-8" class="slide level2">
+</section><section id="section-7" class="slide level2">
 <h2></h2>
 <p>Single random integer from discrete uniform distribution between <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> (inclusive):</p>
 <pre><code>RANDBETWEEN(L, U)</code></pre>
-</section><section id="section-9" class="slide level2">
+</section><section id="section-8" class="slide level2">
 <h2></h2>
 <p>Single random number from normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>:</p>
 <pre><code>NORM.INV(RAND(), mu, sigma)</code></pre>
-</section><section id="section-10" class="slide level2">
+</section><section id="section-9" class="slide level2">
 <h2></h2>
 <p>Single random variable from binomial distribution with <span class="math inline">\(n\)</span> trials, each having probability <span class="math inline">\(0 &lt; p &lt; 1\)</span> for success:</p>
 <pre><code>BINOM.INV(n, p, RAND())</code></pre>
-</section><section id="section-11" class="slide level2">
+</section><section id="section-10" class="slide level2">
 <h2></h2>
 <p>From specified discrete distribution:</p>
 <p><img data-src="graphics/discrete.png" /> </p>
-</section><section id="section-12" class="slide level2">
+</section><section id="section-11" class="slide level2">
 <h2></h2>
 <ul>
 <li>See <em>random_numbers.xlsx</em></li>
 </ul>
 </section></section>
-<section><section id="monte-carlo-simulation" class="title-slide slide level1"><h1>Monte Carlo Simulation</h1></section><section id="section-13" class="slide level2">
+<section><section id="monte-carlo-simulation" class="title-slide slide level1"><h1>Monte Carlo Simulation</h1></section><section id="section-12" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Imagine a situation having uncertain inputs with known probability distributions</p></li>
@@ -172,7 +180,7 @@ Complicating factors...
 <li><p>How do you know what distribution to use for a given uncertain input?</p></li>
 <li><p>Typically, you can make an educated guess either from historical data or from insight gained through experience</p></li>
 </ul>
-</section><section id="section-14" class="slide level2">
+</section><section id="section-13" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>In fact, a relative histogram from historical data is a good way to create a discrete distrubition from which to sample</p></li>
@@ -185,7 +193,7 @@ Complicating factors...
 <li><p>In MCS, we assume that these random inputs are independent of one another, i.e., their values are not correlated</p></li>
 <li><p>For example, high values of one input are not associated with high values of another</p></li>
 </ul>
-</section><section id="section-15" class="slide level2">
+</section><section id="section-14" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>In many situations, this is an unrealistic assumption, i.e., the variable <em>should be</em> correlated</p></li>
@@ -197,7 +205,7 @@ Complicating factors...
 <li><p>Monte Carlo simulation is a good tool for exploring an extremely important, albeit theoretical, concept in probability: the Central Limit Theorem</p></li>
 <li><p>The <em>Central Limit Theorem</em> says that, when you take a large enough random sample from a population, then the sample mean <span class="math inline">\(\bar x\)</span> is distributed normally—even if the population itself is not normally distributed</p></li>
 </ul>
-</section><section id="section-16" class="slide level2">
+</section><section id="section-15" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>More precisely, if <span class="math inline">\(X_1, \ldots, X_n\)</span> are the random values gotten when you take a random sample of size <span class="math inline">\(n\)</span> from a random variable <span class="math inline">\(X\)</span>, then the sample mean <span class="math display">\[\bar X = \frac{X_1 + \cdots + X_n}{n}\]</span> is approximately normally distributed—as long as <span class="math inline">\(n\)</span> is large enough</p></li>
