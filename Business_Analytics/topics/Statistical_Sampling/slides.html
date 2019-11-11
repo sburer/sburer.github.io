@@ -36,7 +36,7 @@
 <section id="title-slide">
   <h1 class="title">Statistical Sampling</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: September 24, 2018</p>
+  <p class="date">Last updated: November 11, 2019</p>
 </section>
 
 <section><section id="the-statistical-point-of-view" class="title-slide slide level1"><h1>The Statistical Point of View</h1></section><section id="section" class="slide level2">
@@ -44,7 +44,7 @@
 <ul>
 <li>What is the average level of education in Iowa?</li>
 <li>What is United Airlines’ on-time percentage?</li>
-<li>What proportion of 25-34 year-old males enjoy “reality” shows like <em>American Idol</em> and <em>Survivor</em>?</li>
+<li>What proportion of 25-34 year-old males enjoy shows like <em>The Bachelorette</em>?</li>
 </ul>
 <p>These are questions about the underlying probability distributions</p>
 </section><section id="section-1" class="slide level2">
@@ -58,8 +58,8 @@
 </section><section id="section-2" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>We assume that, in any given situation, there is an underlying probability distribution (or random variable <span class="math inline">\(X\)</span>) that determines the outcomes we’re interested in.</p></li>
-<li><p>Statistics deduces properties of <span class="math inline">\(X\)</span> from empirical knowledge of the real world.</p></li>
+<li><p>We assume that, in any given situation, there is an underlying probability distribution (or random variable <span class="math inline">\(X\)</span>) that determines the outcomes we’re interested in</p></li>
+<li><p>Statistics deduces properties of <span class="math inline">\(X\)</span> from empirical knowledge of the real world</p></li>
 </ul>
 </section></section>
 <section><section id="populations-and-samples" class="title-slide slide level1"><h1>Populations and Samples</h1></section><section id="section-3" class="slide level2">
@@ -152,6 +152,10 @@
 <ul>
 <li><span class="math inline">\(\mu\)</span>? (Note: <span class="math inline">\(\mu\)</span> often called <span class="math inline">\(p\)</span> to indicate proportion)</li>
 </ul></li>
+</ul>
+</section><section id="section-12" class="slide level2">
+<h2></h2>
+<ul>
 <li><p>Government rule: The advertised burn time must hold for 95% of all light bulbs</p>
 <ul>
 <li>What <span class="math inline">\(x\)</span> gives <span class="math inline">\(P(X \ge x)\)</span> = 0.95?</li>
@@ -167,7 +171,7 @@
 </ul></li>
 <li><p>Let <span class="math inline">\(x_i\)</span> = the <span class="math inline">\(i\)</span>-th member’s observed numerical value</p></li>
 </ul>
-</section><section id="section-12" class="slide level2">
+</section><section id="section-13" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Do the <span class="math inline">\(x_i\)</span>’s tell you much about <span class="math inline">\(X\)</span>?</p>
@@ -178,21 +182,21 @@
 </ul></li>
 </ul>
 </section></section>
-<section><section id="analyzing-the-sample" class="title-slide slide level1"><h1>Analyzing the Sample</h1></section><section id="section-13" class="slide level2">
+<section><section id="analyzing-the-sample" class="title-slide slide level1"><h1>Analyzing the Sample</h1></section><section id="section-14" class="slide level2">
 <h2></h2>
 <p>Once you have observed a random sample of size <span class="math inline">\(n\)</span>, how can you make conclusions about <span class="math inline">\(X\)</span>? Recall:</p>
 <ul>
 <li>Relative histogram</li>
 <li>Cumulative relative histogram</li>
 </ul>
-</section><section id="section-14" class="slide level2">
+</section><section id="section-15" class="slide level2">
 <h2></h2>
 <p>Recall:</p>
 <ul>
 <li><p>Observed sample mean <span class="math inline">\(\bar x = (x_1 + x_2 + \cdots + x_n)/n\)</span></p></li>
 <li><p>Observed sample standard deviation <span class="math display">\[s = \sqrt{ \frac{(x_1 - \bar x)^2 + (x_2 - \bar x)^2 + \cdots + (x_n - \bar x)^2}{n-1} }\]</span></p></li>
 </ul>
-</section><section id="section-15" class="slide level2">
+</section><section id="section-16" class="slide level2">
 <h2></h2>
 <table>
 <thead>
@@ -227,7 +231,7 @@
 <li><p>Our intuition suggests that the bigger <span class="math inline">\(n\)</span> is, the better the estimates of <span class="math inline">\(X\)</span> will be</p></li>
 <li><p>Theory confirms this is true</p></li>
 </ul>
-</section><section id="section-16" class="slide level2">
+</section><section id="section-17" class="slide level2">
 <h2></h2>
 <p>For example…</p>
 <ul>
@@ -238,7 +242,7 @@
 <li>Its std dev is <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span></li>
 </ul></li>
 </ul>
-</section><section id="section-17" class="slide level2">
+</section><section id="section-18" class="slide level2">
 <h2></h2>
 <p>Standard error of the mean = <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span></p>
 <ul>
@@ -250,14 +254,14 @@
 </ul></li>
 </ul>
 </section></section>
-<section><section id="confidence-intervals" class="title-slide slide level1"><h1>Confidence Intervals</h1></section><section id="section-18" class="slide level2">
+<section><section id="confidence-intervals" class="title-slide slide level1"><h1>Confidence Intervals</h1></section><section id="section-19" class="slide level2">
 <h2></h2>
 <ul>
 <li><span class="math inline">\(\bar x\)</span> is an estimate of <span class="math inline">\(\mu\)</span></li>
 <li>But how good an estimate is it?</li>
 <li>Confidence intervals help us answer this question…</li>
 </ul>
-</section><section id="section-19" class="slide level2">
+</section><section id="section-20" class="slide level2">
 <h2></h2>
 <p>Given random sample with</p>
 <ul>
@@ -270,7 +274,7 @@
 \quad \text{or} \quad
 \left[ \bar x - 1.96 \frac{s}{\sqrt{n}}, \bar x + 1.96 \frac{s}{\sqrt{n}} \right]
 \]</span></p>
-</section><section id="section-20" class="slide level2">
+</section><section id="section-21" class="slide level2">
 <h2></h2>
 <p>More generally, a <span class="math inline">\(\beta\)</span>% confidence interval for <span class="math inline">\(\mu\)</span> is <span class="math display">\[
 \bar x \pm c \cdot \frac{s}{\sqrt{n}}
@@ -278,7 +282,7 @@
 \left[ \bar x - c \cdot \frac{s}{\sqrt{n}}, \bar x + c \cdot \frac{s}{\sqrt{n}} \right]
 \]</span></p>
 <p>where <span class="math inline">\(c = \text{NORM.S.INV}(1-(1- \beta/100)/2)\)</span></p>
-</section><section id="section-21" class="slide level2">
+</section><section id="section-22" class="slide level2">
 <h2></h2>
 <p>Most common <span class="math inline">\(c\)</span> values</p>
 <table>
@@ -307,7 +311,7 @@
 </tr>
 </tbody>
 </table>
-</section><section id="section-22" class="slide level2">
+</section><section id="section-23" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Technical interpretation of a <span class="math inline">\(\beta\)</span>% CI</p>
@@ -321,24 +325,26 @@
 </ul>
 </section><section id="exercise-heights" class="slide level2">
 <h2>Exercise: Heights</h2>
-<p>The corresponding Excel file contains the heights (in inches) of a random sample of 50 adult females.</p>
+<p>The corresponding Excel file contains the heights (in inches) of a random sample of 50 adult females</p>
 <ul>
-<li><p>Calculate the observed sample mean, observed sample standard deviation, and observed standard error of the 50 values.</p></li>
-<li><p>Construct 95% and 99% confidence intervals (CIs) for the population mean.</p></li>
+<li><p>Calculate the observed sample mean, observed sample standard deviation, and observed standard error of the 50 values</p></li>
+<li><p>Construct 95% and 99% confidence intervals (CIs) for the population mean</p></li>
 </ul>
 </section><section id="cis-for-small-sample-size" class="slide level2">
 <h2>CI’s for Small Sample Size</h2>
-<p>Given random sample with</p>
+<ul>
+<li><p>Given random sample with</p>
 <ul>
 <li>small sample size <span class="math inline">\(n\)</span> &lt; 30</li>
 <li>observed sample mean <span class="math inline">\(\bar x\)</span></li>
 <li>observed sample std dev <span class="math inline">\(s\)</span></li>
-</ul>
-<p>We can still construct a CI for <span class="math inline">\(\mu\)</span>, but we need an additional assumption</p>
+</ul></li>
+<li><p>We can still construct a CI for <span class="math inline">\(\mu\)</span>, but we need an additional assumption:</p>
 <ul>
-<li>underlying distribution of <span class="math inline">\(X\)</span> is normally distributed</li>
+<li>the underlying distribution of <span class="math inline">\(X\)</span> should be normally distributed</li>
+</ul></li>
 </ul>
-</section><section id="section-23" class="slide level2">
+</section><section id="section-24" class="slide level2">
 <h2></h2>
 <p>A <span class="math inline">\(\beta\)</span>% confidence interval for <span class="math inline">\(\mu\)</span> is <span class="math display">\[
 \bar x \pm c \cdot \frac{s}{\sqrt{n}}
@@ -357,7 +363,7 @@
 </ul></li>
 <li><p><span class="math inline">\(p\)</span> is the population proportion</p></li>
 </ul>
-</section><section id="section-24" class="slide level2">
+</section><section id="section-25" class="slide level2">
 <h2></h2>
 <ul>
 <li><span class="math inline">\(\bar p\)</span> is the observed sample proportion</li>
@@ -365,7 +371,7 @@
 <p><span class="math display">\[
 \bar p = \frac{\text{number of successes}}{n}
 \]</span></p>
-</section><section id="section-25" class="slide level2">
+</section><section id="section-26" class="slide level2">
 <h2></h2>
 <p>If <span class="math inline">\(n \bar p \ge 5\)</span> and <span class="math inline">\(n(1 - \bar p) \ge 5\)</span>, then a <span class="math inline">\(\beta\)</span>% CI for <span class="math inline">\(p\)</span> is <span class="math display">\[
 \bar p \pm c \sqrt{\frac{\bar p(1 - \bar p)}{n}}
@@ -382,13 +388,13 @@
 <li><p>Consider estimating <span class="math inline">\(\mu\)</span>. How many observations <span class="math inline">\(n\)</span> are needed to obtain a <span class="math inline">\(\beta\)</span>% confidence interval for a specified tolerance level <span class="math inline">\(L\)</span>?</p></li>
 <li><p>I.e., what <span class="math inline">\(n\)</span> will give a CI of the form <span class="math inline">\(\bar x \pm L\)</span>?</p></li>
 </ul>
-</section><section id="section-26" class="slide level2">
+</section><section id="section-27" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Suppose you have an observed sample std dev <span class="math inline">\(s\)</span> gotten from a small pilot sample</p></li>
 <li><p>Then the required sample size <span class="math inline">\(n\)</span> to achieve a <span class="math inline">\(\beta\)</span>% CI for <span class="math inline">\(\mu\)</span> with tolerance level <span class="math inline">\(L\)</span> is <span class="math display">\[n = \frac{c^2 s^2}{L^2}\]</span> where <span class="math inline">\(c\)</span> is the same as in the large-sample-size case</p></li>
 </ul>
-</section><section id="section-27" class="slide level2">
+</section><section id="section-28" class="slide level2">
 <h2></h2>
 <p>Also</p>
 <ul>
@@ -408,7 +414,7 @@
 <li><p>I.e., what <span class="math inline">\(n\)</span> will give a CI of the form <span class="math inline">\(\bar p \pm L\)</span>?</p></li>
 <li><p>In this case, <span class="math inline">\(L\)</span> is a decimal between 0 and 1</p></li>
 </ul>
-</section><section id="section-28" class="slide level2">
+</section><section id="section-29" class="slide level2">
 <h2></h2>
 <ul>
 <li>The required sample size <span class="math inline">\(n\)</span> to achieve a <span class="math inline">\(\beta\)</span>% CI for <span class="math inline">\(p\)</span> with tolerance level <span class="math inline">\(L\)</span> is <span class="math display">\[n = \frac{c^2}{4 L^2}\]</span> where <span class="math inline">\(c\)</span> is the same as in the large-sample-size case</li>
@@ -418,8 +424,12 @@
 <ul>
 <li><p>In estimating the proportion of the population that approves of the President’s performance, how many people should be polled to provide a 95% confidence interval with error of 3 percentage points?</p></li>
 <li><p>Want to be able to say something like: “44% of Americans approve of the job the President is doing, plus or minus 3 percentage points”</p></li>
-<li><p>Apply formula with <span class="math inline">\(c = 1.960\)</span> and <span class="math inline">\(L = 0.03\)</span>: <span class="math display">\[n = 1.960^2 / (4
-\cdot 0.03^2 ) = 1067.1 \approx 1068\]</span></p></li>
+</ul>
+</section><section id="section-30" class="slide level2">
+<h2></h2>
+<ul>
+<li>Apply formula with <span class="math inline">\(c = 1.960\)</span> and <span class="math inline">\(L = 0.03\)</span>: <span class="math display">\[n = 1.960^2 / (4
+\cdot 0.03^2 ) = 1067.1 \approx 1068\]</span></li>
 </ul>
 </section></section>
     </div>

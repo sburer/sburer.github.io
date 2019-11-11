@@ -36,7 +36,7 @@
 <section id="title-slide">
   <h1 class="title">Hypothesis Testing</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: September 17, 2018</p>
+  <p class="date">Last updated: November 11, 2019</p>
 </section>
 
 <section><section id="thought-experiment" class="title-slide slide level1"><h1>Thought Experiment</h1></section><section id="section" class="slide level2">
@@ -341,16 +341,16 @@ H_0 : \mu = 1.0 \ \ \ \ \ \ \ \ H_1 : \mu \ne 1.0
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(mu \ne \text{hc}\)</span></td>
-<td style="text-align: center;">2.0 * NORM.S.DIST(-ABS(<span class="math inline">\(t\)</span>))</td>
+<td style="text-align: center;"><span class="math inline">\(\mu \ne \text{hc}\)</span></td>
+<td style="text-align: center;">2.0 * NORM.S.DIST(-ABS(<span class="math inline">\(t\)</span>), 1)</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><span class="math inline">\(mu &gt; \text{hc}\)</span></td>
-<td style="text-align: center;">1.0 - NORM.S.DIST(<span class="math inline">\(t\)</span>)</td>
+<td style="text-align: center;"><span class="math inline">\(\mu &gt; \text{hc}\)</span></td>
+<td style="text-align: center;">1.0 - NORM.S.DIST(<span class="math inline">\(t\)</span>, 1)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(mu\)</span> &lt; <span class="math inline">\(\text{hc}\)</span></td>
-<td style="text-align: center;">NORM.S.DIST(<span class="math inline">\(t\)</span>)</td>
+<td style="text-align: center;"><span class="math inline">\(\mu\)</span> &lt; <span class="math inline">\(\text{hc}\)</span></td>
+<td style="text-align: center;">NORM.S.DIST(<span class="math inline">\(t\)</span>, 1)</td>
 </tr>
 </tbody>
 </table></li>
