@@ -36,7 +36,7 @@
 <section id="title-slide">
   <h1 class="title">Time Series</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: January 29, 2019</p>
+  <p class="date">Last updated: February 20, 2020</p>
 </section>
 
 <section><section id="getting-started" class="title-slide slide level1"><h1>Getting Started</h1></section><section id="section" class="slide level2">
@@ -60,12 +60,16 @@
 <p><img data-src="graphics/usmelec.png" /> </p>
 </section><section id="section-3" class="slide level2">
 <h2></h2>
+<p><img data-src="graphics/djia.png" />  </p>
+<p>Source: <a href="https://www.wsj.com/articles/market-indicators-turn-bullish-after-flashing-red-last-year-11549801801">WSJ</a></p>
+</section><section id="section-4" class="slide level2">
+<h2></h2>
 <ul>
 <li>With time series data, our goal will still be to explain variation in the data</li>
 <li>However, time-series tools are different and include more than just regression</li>
 <li>E.g., what can you do when you have only <span class="math inline"><em>Y</em></span> but no <span class="math inline"><em>X</em><sub><em>i</em></sub></span>?</li>
 </ul>
-</section><section id="section-4" class="slide level2">
+</section><section id="section-5" class="slide level2">
 <h2></h2>
 <p><strong>Notation</strong></p>
 <ul>
@@ -73,28 +77,28 @@
 <li><span class="math inline"><em>Y</em><sub><em>t</em></sub></span> = value of <span class="math inline"><em>Y</em></span> at time <span class="math inline"><em>t</em></span></li>
 <li>We often use <span class="math inline"><em>Y</em></span> and <span class="math inline"><em>Y</em><sub><em>t</em></sub></span> interchangeably</li>
 </ul>
-</section><section id="section-5" class="slide level2">
-<h2></h2>
-<p>Before formally analyzing Y, we should adjust for the effects of certain factors</p>
 </section><section id="section-6" class="slide level2">
 <h2></h2>
+<p>Before formally analyzing <span class="math inline"><em>Y</em><sub><em>t</em></sub></span>, we should adjust for the effects of certain factors</p>
+</section><section id="section-7" class="slide level2">
+<h2></h2>
 <ul>
-<li>Stabilize variation of <span class="math inline"><em>Y</em></span> over time by logging <span class="math inline"><em>Y</em></span></li>
+<li>Stabilize variation of <span class="math inline"><em>Y</em><sub><em>t</em></sub></span> over time by logging <span class="math inline"><em>Y</em><sub><em>t</em></sub></span></li>
 <li>Adjust prices for inflation (using CPI)</li>
 <li>Adjust for lengths of months or number of business days in month</li>
 <li>Etc.</li>
 </ul>
-</section><section id="section-7" class="slide level2">
-<h2></h2>
-<p><img data-src="graphics/log_usmelec.png" /> </p>
 </section><section id="section-8" class="slide level2">
 <h2></h2>
-<p>We assume throughout these slides that <span class="math inline"><em>Y</em></span> has already been logged (if necessary)</p>
+<p><img data-src="graphics/log_usmelec.png" /> </p>
+</section><section id="section-9" class="slide level2">
+<h2></h2>
+<p>We assume throughout these slides that <span class="math inline"><em>Y</em><sub><em>t</em></sub></span> has already been logged (if necessary)</p>
 </section></section>
-<section><section id="exploration" class="title-slide slide level1"><h1>Exploration</h1></section><section id="section-9" class="slide level2">
+<section><section id="exploration" class="title-slide slide level1"><h1>Exploration</h1></section><section id="section-10" class="slide level2">
 <h2></h2>
 <p>Given series <span class="math inline"><em>Y</em><sub><em>t</em></sub></span>, we break it into several components…</p>
-</section><section id="section-10" class="slide level2">
+</section><section id="section-11" class="slide level2">
 <h2></h2>
 <p><strong>Trend component</strong></p>
 <ul>
@@ -102,7 +106,7 @@
 <li>Not necessarily linear</li>
 <li>May “change direction”</li>
 </ul>
-</section><section id="section-11" class="slide level2">
+</section><section id="section-12" class="slide level2">
 <h2></h2>
 <p><strong>Seasonal component</strong></p>
 <ul>
@@ -114,7 +118,7 @@
 <li>E.g., do the Summer Olympics have a seasonal effect?</li>
 </ul></li>
 </ul>
-</section><section id="section-12" class="slide level2">
+</section><section id="section-13" class="slide level2">
 <h2></h2>
 <p><strong>Cyclic component</strong></p>
 <ul>
@@ -123,7 +127,7 @@
 <li>Hard to identify, but need to be aware</li>
 <li>In fact, the cyclic component is often lumped in with the trend</li>
 </ul>
-</section><section id="section-13" class="slide level2">
+</section><section id="section-14" class="slide level2">
 <h2></h2>
 <p><strong>Remainder component</strong></p>
 <ul>
@@ -131,20 +135,20 @@
 <li>Also called “random” or “irregular”</li>
 <li>Analogous to residuals/errors in regression</li>
 </ul>
-</section><section id="section-14" class="slide level2">
+</section><section id="section-15" class="slide level2">
 <h2></h2>
 <p><strong>Additive decomposition model</strong></p>
 <p><br /><span class="math display"><em>Y</em><sub><em>t</em></sub> = <em>T</em><sub><em>t</em></sub> + <em>S</em><sub><em>t</em></sub> + <em>C</em><sub><em>t</em></sub> + <em>R</em><sub><em>t</em></sub></span><br /></p>
-</section><section id="section-15" class="slide level2">
+</section><section id="section-16" class="slide level2">
 <h2></h2>
 <ul>
 <li>Because cyclic is hard to separate from trend, it is typical to just write <span class="math inline"><em>Y</em><sub><em>t</em></sub> = <em>T</em><sub><em>t</em></sub> + <em>S</em><sub><em>t</em></sub> + <em>R</em><sub><em>t</em></sub></span> where <span class="math inline"><em>T</em><sub><em>t</em></sub></span> is the combined <em>trend-cycle</em> component</li>
 <li>Some people even just say “trend” for the trend-cycle component</li>
 </ul>
-</section><section id="section-16" class="slide level2">
+</section><section id="section-17" class="slide level2">
 <h2></h2>
 <p><img data-src="graphics/decomp_log_usmelec.png" /> </p>
-</section><section id="section-17" class="slide level2">
+</section><section id="section-18" class="slide level2">
 <h2></h2>
 <p><strong>Seasonally Adjusted Data</strong></p>
 <ul>
@@ -152,31 +156,31 @@
 <li>For example, when you’d like to make an “apples to apples” comparison between data points in different seasons</li>
 <li><em>Seasonally adjusted</em> time series is <span class="math inline"><em>Y</em><sub><em>t</em></sub> − <em>S</em><sub><em>t</em></sub> = <em>T</em><sub><em>t</em></sub> + <em>R</em><sub><em>t</em></sub></span></li>
 </ul>
-</section><section id="section-18" class="slide level2">
-<h2></h2>
-<p><img data-src="graphics/seasadj1_log_usmelec.png" /> </p>
 </section><section id="section-19" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/seasadj2_log_usmelec.png" /> </p>
+<p><img data-src="graphics/seasadj1_log_usmelec.png" /> </p>
 </section><section id="section-20" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/seasadj2_log_usmelec.png" /> </p>
+</section><section id="section-21" class="slide level2">
 <h2></h2>
 <p><img data-src="graphics/decomp_ui.png" /> </p>
 </section></section>
-<section><section id="fitting-a-time-series" class="title-slide slide level1"><h1>Fitting a Time Series</h1></section><section id="section-21" class="slide level2">
+<section><section id="fitting-a-time-series" class="title-slide slide level1"><h1>Fitting a Time Series</h1></section><section id="section-22" class="slide level2">
 <h2></h2>
 <ul>
 <li>Given single time series <span class="math inline"><em>Y</em><sub><em>t</em></sub></span></li>
 <li>We will soon look at several methods for constructing a “best-fit” time series <span class="math inline"><em>F</em><sub><em>t</em></sub></span> for <span class="math inline"><em>Y</em><sub><em>t</em></sub></span></li>
 <li>If <span class="math inline"><em>F</em><sub><em>t</em></sub></span> fits well, then we can use <span class="math inline"><em>F</em><sub><em>t</em></sub></span> to forecast</li>
 </ul>
-</section><section id="section-22" class="slide level2">
+</section><section id="section-23" class="slide level2">
 <h2></h2>
 <ul>
 <li>Define <span class="math inline"><em>E</em><sub><em>t</em></sub> = <em>Y</em><sub><em>t</em></sub> − <em>F</em><sub><em>t</em></sub></span> to be the residual (“error”) time series</li>
 <li>Similar to the remainder component of the decomposition</li>
 <li>The residual time series contains our model’s mistakes—in sequential order (!)</li>
 </ul>
-</section><section id="section-23" class="slide level2">
+</section><section id="section-24" class="slide level2">
 <h2></h2>
 <ul>
 <li>To understand the fit, we need to critique <span class="math inline"><em>E</em><sub><em>t</em></sub></span></li>
@@ -184,7 +188,7 @@
 </ul>
 </section><section id="stationary-time-series" class="slide level2">
 <h2>Stationary Time Series</h2>
-</section><section id="section-24" class="slide level2">
+</section><section id="section-25" class="slide level2">
 <h2></h2>
 <p>A <em>stationary series</em> is “pure noise”, i.e., a series that:</p>
 <ul>
@@ -193,23 +197,23 @@
 <li>Is normally distributed with mean 0</li>
 <li>Exhibits no <em>autocorrelation</em> (more in a moment…)</li>
 </ul>
-</section><section id="section-25" class="slide level2">
+</section><section id="section-26" class="slide level2">
 <h2></h2>
 <p><img data-src="graphics/stationary.png" /> </p>
-</section><section id="section-26" class="slide level2">
+</section><section id="section-27" class="slide level2">
 <h2></h2>
 <p>Ideally <span class="math inline"><em>E</em><sub><em>t</em></sub></span> is a stationary series</p>
 <p> </p>
 <p><strong>But what is autocorrelation?</strong></p>
 </section><section id="lags" class="slide level2">
 <h2>Lags</h2>
-</section><section id="section-27" class="slide level2">
+</section><section id="section-28" class="slide level2">
 <h2></h2>
 <ul>
 <li>For a given time series <span class="math inline"><em>Y</em><sub><em>t</em></sub></span>, the <em>backward lagged series</em> of lag <span class="math inline"><em>k</em></span>, denoted <span class="math inline"><em>Y</em><sub><em>t</em> − <em>k</em></sub></span>, is the copy of <span class="math inline"><em>Y</em><sub><em>t</em></sub></span>, which is <span class="math inline"><em>k</em></span> units of time behind <span class="math inline"><em>Y</em><sub><em>t</em></sub></span></li>
 <li>“Present values of <span class="math inline"><em>Y</em><sub><em>t</em> − <em>k</em></sub></span> are past values of <span class="math inline"><em>Y</em><sub><em>t</em></sub></span>”</li>
 </ul>
-</section><section id="section-28" class="slide level2">
+</section><section id="section-29" class="slide level2">
 <h2></h2>
 <table>
 <thead>
@@ -261,26 +265,26 @@
 </table>
 </section><section id="autocorrelation" class="slide level2">
 <h2>Autocorrelation</h2>
-</section><section id="section-29" class="slide level2">
+</section><section id="section-30" class="slide level2">
 <h2></h2>
 <ul>
 <li><em>Autocorrelation (AC)</em> at lag <span class="math inline"><em>k</em></span> is the correlation between <span class="math inline"><em>Y</em><sub><em>t</em></sub></span> and <span class="math inline"><em>Y</em><sub><em>t</em> − <em>k</em></sub></span></li>
 <li>For example, seasonality can lead to (significant) autocorrelations</li>
 <li>But AC is not just caused by seasonality</li>
 </ul>
-</section><section id="section-30" class="slide level2">
-<h2></h2>
-<p><img data-src="graphics/soda.png" /> </p>
 </section><section id="section-31" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/acf_soda.png" /> </p>
+<p><img data-src="graphics/soda.png" /> </p>
 </section><section id="section-32" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/cpi.png" /> </p>
+<p><img data-src="graphics/acf_soda.png" /> </p>
 </section><section id="section-33" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/acf_cpi.png" /> </p>
+<p><img data-src="graphics/cpi.png" /> </p>
 </section><section id="section-34" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/acf_cpi.png" /> </p>
+</section><section id="section-35" class="slide level2">
 <h2></h2>
 <ul>
 <li>As mentioned, we want <span class="math inline"><em>E</em><sub><em>t</em></sub></span> to be stationary, in particular, with no AC</li>
@@ -288,10 +292,10 @@
 </ul>
 </section><section id="measures-of-total-error" class="slide level2">
 <h2>Measures of Total Error</h2>
-</section><section id="section-35" class="slide level2">
+</section><section id="section-36" class="slide level2">
 <h2></h2>
 <p>There are several ways to measure the total error in the residual time series <span class="math inline"><em>E</em><sub><em>t</em></sub></span></p>
-</section><section id="section-36" class="slide level2">
+</section><section id="section-37" class="slide level2">
 <h2></h2>
 <p><strong>Errors in the original units</strong></p>
 <ul>
@@ -302,7 +306,7 @@
 </ul></li>
 <li>Mean absolute error = MAE = mean(<span class="math inline">|<em>E</em><sub><em>t</em></sub>|</span>)</li>
 </ul>
-</section><section id="section-37" class="slide level2">
+</section><section id="section-38" class="slide level2">
 <h2></h2>
 <p><strong>Percentage errors:</strong> <span class="math inline"><em>p</em><sub><em>t</em></sub> = 100<em>E</em><sub><em>t</em></sub>/<em>Y</em><sub><em>t</em></sub></span></p>
 <ul>
@@ -310,7 +314,7 @@
 <li>Mean absolute percentage error = MAPE = mean(<span class="math inline">|<em>p</em><sub><em>t</em></sub>|</span>)</li>
 </ul>
 </section></section>
-<section><section id="linear-regression" class="title-slide slide level1"><h1>Linear Regression</h1></section><section id="section-38" class="slide level2">
+<section><section id="linear-regression" class="title-slide slide level1"><h1>Linear Regression</h1></section><section id="section-39" class="slide level2">
 <h2></h2>
 <ul>
 <li>Can use linear regression for fitting <span class="math inline"><em>Y</em><sub><em>t</em></sub></span></li>
@@ -320,39 +324,39 @@
 <li>dummies for the seasons (only if seasonality is present)</li>
 </ul></li>
 </ul>
-</section><section id="section-39" class="slide level2">
-<h2></h2>
-<p><img data-src="graphics/regression_cpi.png" /> </p>
 </section><section id="section-40" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/regression_soda.png" /> </p>
+<p><img data-src="graphics/regression_cpi.png" /> </p>
 </section><section id="section-41" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/regression_soda.png" /> </p>
+</section><section id="section-42" class="slide level2">
 <h2></h2>
 <ul>
 <li>Check the usual diagnostics</li>
 <li>Plus look for AC in <span class="math inline"><em>E</em><sub><em>t</em></sub></span></li>
 </ul>
-</section><section id="section-42" class="slide level2">
-<h2></h2>
-<p><img data-src="graphics/acf_regression_cpi.png" /> </p>
 </section><section id="section-43" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/acf_regression_soda.png" /> </p>
+<p><img data-src="graphics/acf_regression_cpi.png" /> </p>
 </section><section id="section-44" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/acf_regression_soda.png" /> </p>
+</section><section id="section-45" class="slide level2">
 <h2></h2>
 <ul>
 <li>This simple regression method works well sometimes—but not always</li>
 <li>If model is good, can forecast using the regression equation</li>
 </ul>
 </section></section>
-<section><section id="exponential-smoothing" class="title-slide slide level1"><h1>Exponential Smoothing</h1></section><section id="section-45" class="slide level2">
+<section><section id="exponential-smoothing" class="title-slide slide level1"><h1>Exponential Smoothing</h1></section><section id="section-46" class="slide level2">
 <h2></h2>
 <ul>
 <li><em>Exponential smoothing</em> fits <span class="math inline"><em>Y</em><sub><em>t</em></sub></span> by using only <span class="math inline"><em>Y</em><sub><em>t</em></sub></span> itself</li>
-<li>“Learn from past data”</li>
 <li>Idea is to balance old observations against recent ones</li>
+<li>“Learn from past data”</li>
 </ul>
-</section><section id="section-46" class="slide level2">
+</section><section id="section-47" class="slide level2">
 <h2></h2>
 <p><strong>Terminology</strong></p>
 <ul>
@@ -361,7 +365,7 @@
 </ul>
 </section><section id="simple-exponential-smoothing" class="slide level2">
 <h2>Simple Exponential Smoothing</h2>
-</section><section id="section-47" class="slide level2">
+</section><section id="section-48" class="slide level2">
 <h2></h2>
 <ul>
 <li>Simple exponential smoothing (SES) is best suited for non-seasonal time series without much slope</li>
@@ -371,7 +375,7 @@
 <li><span class="math inline"><em>α</em> ≈ 1</span> means emphasize new data</li>
 </ul></li>
 </ul>
-</section><section id="section-48" class="slide level2">
+</section><section id="section-49" class="slide level2">
 <h2></h2>
 <p><strong>SES</strong></p>
 <ul>
@@ -379,21 +383,21 @@
 <li>Then for <span class="math inline"><em>t</em> = 2, 3, 4, ...</span></li>
 </ul>
 <p><br /><span class="math display"><em>F</em><sub><em>t</em></sub> = <em>α</em><em>Y</em><sub><em>t</em> − 1</sub> + (1 − <em>α</em>)<em>F</em><sub><em>t</em> − 1</sub></span><br /></p>
-</section><section id="section-49" class="slide level2">
-<h2></h2>
-<p><img data-src="graphics/rain.png" /> </p>
 </section><section id="section-50" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/ses_050_rain.png" /> </p>
+<p><img data-src="graphics/rain.png" /> </p>
 </section><section id="section-51" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/ses_001_rain.png" /> </p>
+<p><img data-src="graphics/ses_050_rain.png" /> </p>
 </section><section id="section-52" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/ses_001_rain.png" /> </p>
+</section><section id="section-53" class="slide level2">
 <h2></h2>
 <p><img data-src="graphics/ses_099_rain.png" /> </p>
 </section><section id="other-types" class="slide level2">
 <h2>Other Types</h2>
-</section><section id="section-53" class="slide level2">
+</section><section id="section-54" class="slide level2">
 <h2></h2>
 <ul>
 <li>There are more sophisticated versions of exponential smoothing that also incorporate
@@ -403,21 +407,21 @@
 </ul></li>
 <li>But idea of trading off old and new data is the same</li>
 </ul>
-</section><section id="section-54" class="slide level2">
+</section><section id="section-55" class="slide level2">
 <h2></h2>
 <ul>
 <li>There are many choices for <span class="math inline"><em>α</em>, <em>β</em>, <em>γ</em></span></li>
 <li>And every choice leads to a different <span class="math inline"><em>F</em><sub><em>t</em></sub></span></li>
 <li>Which choice is best?</li>
 </ul>
-</section><section id="section-55" class="slide level2">
+</section><section id="section-56" class="slide level2">
 <h2></h2>
 <ul>
 <li>Software packages, e.g., R, can choose the optimal paramater values</li>
 <li>We will use a function that minimizes AIC (Akaike’s Information Criterion)</li>
 </ul>
 </section></section>
-<section><section id="arima" class="title-slide slide level1"><h1>ARIMA</h1></section><section id="section-56" class="slide level2">
+<section><section id="arima" class="title-slide slide level1"><h1>ARIMA</h1></section><section id="section-57" class="slide level2">
 <h2></h2>
 <ul>
 <li>Suppose you have tried:
@@ -428,7 +432,7 @@
 <li>And yet you still see autocorrelation in <span class="math inline"><em>E</em><sub><em>t</em></sub></span></li>
 <li>Is there anything else you can do?</li>
 </ul>
-</section><section id="section-57" class="slide level2">
+</section><section id="section-58" class="slide level2">
 <h2></h2>
 <p><strong>Two New Ideas</strong></p>
 <ul>
@@ -437,46 +441,46 @@
 </ul>
 </section><section id="autoregression" class="slide level2">
 <h2>Autoregression</h2>
-</section><section id="section-58" class="slide level2">
+</section><section id="section-59" class="slide level2">
 <h2></h2>
 <ul>
 <li>It is kind of surprising, but the lagged series <span class="math inline"><em>Y</em><sub><em>t</em> − 1</sub></span> often does a very good job of predicting <span class="math inline"><em>Y</em><sub><em>t</em></sub></span></li>
-<li>Autoregression (“AR”) of order 1 = regressing <span class="math inline"><em>Y</em><sub><em>t</em></sub></span> on <span class="math inline"><em>Y</em><sub><em>t</em> − 1</sub></span></li>
+<li>Autoregression (“AR”) of order 1 means regressing <span class="math inline"><em>Y</em><sub><em>t</em></sub></span> on <span class="math inline"><em>Y</em><sub><em>t</em> − 1</sub></span></li>
 </ul>
-</section><section id="section-59" class="slide level2">
+</section><section id="section-60" class="slide level2">
 <h2></h2>
 <p><img data-src="graphics/autoregression_cpi.png" /> </p>
-</section><section id="section-60" class="slide level2">
+</section><section id="section-61" class="slide level2">
 <h2></h2>
 <ul>
 <li>Often, one lag is enough, but we can do more</li>
-<li>AR of order <span class="math inline"><em>k</em></span> = regressing <span class="math inline"><em>Y</em><sub><em>t</em></sub></span> on <span class="math inline"><em>Y</em><sub><em>t</em> − 1</sub>, …, <em>Y</em><sub><em>t</em> − <em>k</em></sub></span></li>
+<li>AR of order <span class="math inline"><em>k</em></span> means regressing <span class="math inline"><em>Y</em><sub><em>t</em></sub></span> on <span class="math inline"><em>Y</em><sub><em>t</em> − 1</sub>, …, <em>Y</em><sub><em>t</em> − <em>k</em></sub></span></li>
 </ul>
 </section><section id="differencing" class="slide level2">
 <h2>Differencing</h2>
-</section><section id="section-61" class="slide level2">
+</section><section id="section-62" class="slide level2">
 <h2></h2>
 <ul>
 <li>Differencing is a type of transformation</li>
 <li>Should be applied to the original time series before applying other techniques</li>
 </ul>
-</section><section id="section-62" class="slide level2">
+</section><section id="section-63" class="slide level2">
 <h2></h2>
 <p>Differenced series at lag <span class="math inline"><em>k</em></span> is defined as:</p>
 <p><br /><span class="math display"><em>D</em>(<em>k</em>)<sub><em>t</em></sub> = <em>Y</em><sub><em>t</em></sub> − <em>Y</em><sub><em>t</em> − <em>k</em></sub></span><br /></p>
-</section><section id="section-63" class="slide level2">
+</section><section id="section-64" class="slide level2">
 <h2></h2>
 <ul>
 <li><span class="math inline"><em>D</em>(1)<sub><em>t</em></sub></span> is the most important in practice</li>
 <li>But <span class="math inline"><em>D</em>(<em>k</em>)<sub><em>t</em></sub></span> comes in handy for handling seasonality, e.g., <span class="math inline"><em>D</em>(12)<sub><em>t</em></sub></span> when there are 12 seasons</li>
 </ul>
-</section><section id="section-64" class="slide level2">
+</section><section id="section-65" class="slide level2">
 <h2></h2>
 <ul>
 <li>You can even difference <span class="math inline"><em>D</em>(1)<sub><em>t</em></sub></span>, e.g., difference the differenced series</li>
 <li>Admittedly, this gets complicated</li>
 </ul>
-</section><section id="section-65" class="slide level2">
+</section><section id="section-66" class="slide level2">
 <h2></h2>
 <ul>
 <li>It may not be obvious at first, but…</li>
@@ -485,7 +489,7 @@
 </ul>
 </section><section id="arima-1" class="slide level2">
 <h2>ARIMA</h2>
-</section><section id="section-66" class="slide level2">
+</section><section id="section-67" class="slide level2">
 <h2></h2>
 <p>ARIMA = Autoregressive Integrated Moving Average</p>
 <p> </p>
@@ -496,7 +500,7 @@
 </ul>
 <p> </p>
 <p>(MA is out of scope for us)</p>
-</section><section id="section-67" class="slide level2">
+</section><section id="section-68" class="slide level2">
 <h2></h2>
 <p><strong>ARIMA(<span class="math inline"><em>p</em></span>, <span class="math inline"><em>d</em></span>, <span class="math inline"><em>q</em></span>) without seasonality</strong></p>
 <ul>
@@ -504,7 +508,7 @@
 <li><span class="math inline"><em>d</em></span> = levels of differencing</li>
 <li><span class="math inline"><em>q</em></span> = order of moving average</li>
 </ul>
-</section><section id="section-68" class="slide level2">
+</section><section id="section-69" class="slide level2">
 <h2></h2>
 <p><strong>ARIMA(<span class="math inline"><em>p</em></span>, <span class="math inline"><em>d</em></span>, <span class="math inline"><em>q</em></span>)(<span class="math inline"><em>P</em></span>, <span class="math inline"><em>D</em></span>, <span class="math inline"><em>Q</em></span>) with seasonality</strong></p>
 <ul>
@@ -513,7 +517,7 @@
 <li><span class="math inline"><em>Q</em></span> = order of seasonal moving average</li>
 </ul>
 </section></section>
-<section><section id="regression-with-multiple-series" class="title-slide slide level1"><h1>Regression with Multiple Series</h1></section><section id="section-69" class="slide level2">
+<section><section id="regression-with-multiple-series" class="title-slide slide level1"><h1>Regression with Multiple Series</h1></section><section id="section-70" class="slide level2">
 <h2></h2>
 <ul>
 <li>We can also use linear regression to put multiple independent time series into a single model
@@ -521,7 +525,7 @@
 <li>E.g., predict sales based on advertising spend</li>
 </ul></li>
 </ul>
-</section><section id="section-70" class="slide level2">
+</section><section id="section-71" class="slide level2">
 <h2></h2>
 <ul>
 <li>This also allows us to capture cycles, interventions, and one-off situations using dummy variables
@@ -529,7 +533,7 @@
 <li>E.g., capture the effect of economic recessions</li>
 </ul></li>
 </ul>
-</section><section id="section-71" class="slide level2">
+</section><section id="section-72" class="slide level2">
 <h2></h2>
 <ul>
 <li>The challenge comes with forecasting</li>
