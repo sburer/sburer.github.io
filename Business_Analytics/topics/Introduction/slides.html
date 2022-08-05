@@ -8,26 +8,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
-  <![endif]-->
 </head>
 <body>
   <div class="reveal">
@@ -36,7 +28,7 @@
 <section id="title-slide">
   <h1 class="title">Data and Analytics</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: September 16, 2019</p>
+  <p class="date">August 2022</p>
 </section>
 
 <section id="numbers-everywhere" class="slide level2">
@@ -45,7 +37,7 @@
 <div class="fragment">
 <ul>
 <li>Price of oil</li>
-<li>Fed short-term interest rates</li>
+<li>Inflation rate</li>
 <li>Earnings reports</li>
 <li>Customer purchase histories</li>
 <li>Process completion times</li>
@@ -81,29 +73,29 @@
 </section>
 <section id="correct-use-of-data" class="slide level2">
 <h2>Correct Use of Data?</h2>
-<p><img data-src="graphics/us_post_causes_global_warming_lrg.jpg" /> </p>
+<img data-src="graphics/us_post_causes_global_warming_lrg.jpg" class="stretch" /> 
 <p>Source: <a href="http://joannenova.com.au/2009/05/shock-global-temperatures-driven-by-us-postal-charges/">joannenova.com.au</a></p>
 </section>
 <section id="section-2" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/divorce_vs_margarine.png" /><br />
+<p><img data-src="graphics/divorce_vs_margarine.png" class="stretch" /><br />
 </p>
 <p>Source: <a href="http://www.tylervigen.com/view_correlation?id=1703">tylervigen.com</a></p>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/autism_vs_organic_food_sales.png" /> </p>
+<img data-src="graphics/autism_vs_organic_food_sales.png" class="stretch" /> 
 </section>
 <section id="section-4" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/device_sales_over_time.png" style="height:70.0%" /> </p>
+<img data-src="graphics/device_sales_over_time.png" class="stretch" /> 
 <p>Source: ArsTechnica.com (2012-08-14)</p>
 </section>
 <section id="discussion" class="slide level2">
 <h2>Discussion</h2>
 <ul>
 <li><p>How are business using data these days?</p></li>
-<li><p>Are there any businesses in which data is definitely <em>not</em> useful?</p></li>
+<li><p>Are there any businesses in which data is <em>not</em> useful?</p></li>
 </ul>
 </section>
 <section id="section-5" class="slide level2">
@@ -130,13 +122,18 @@
     </div>
   </div>
 
-  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
-  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
@@ -157,12 +154,12 @@
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>
