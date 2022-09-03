@@ -8,26 +8,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
-  <![endif]-->
 </head>
 <body>
   <div class="reveal">
@@ -36,15 +28,15 @@
 <section id="title-slide">
   <h1 class="title">Binomial Distribution</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: September 16, 2019</p>
+  <p class="date">August 2022</p>
 </section>
 
 <section id="binomial-distribution" class="slide level2">
 <h2>Binomial Distribution</h2>
 <p>The <em>binomial distribution</em> is one of the most commonly encountered DRVs. It has the following characteristics…</p>
 </section>
-<section id="binomial-distribution-contd" class="slide level2">
-<h2>Binomial Distribution (cont’d)</h2>
+<section id="section" class="slide level2">
+<h2></h2>
 <ol type="1">
 <li><p>One experiment is repeated <span class="math inline">\(n\)</span> times</p></li>
 <li><p>In each experiment, only two outcomes are possible—either “success” or “failure”</p></li>
@@ -53,8 +45,8 @@
 <li><p>The random variable <span class="math inline">\(X\)</span> is “number of successes in <span class="math inline">\(n\)</span> trials”</p></li>
 </ol>
 </section>
-<section id="binomial-distribution-contd-1" class="slide level2">
-<h2>Binomial Distribution (cont’d)</h2>
+<section id="section-1" class="slide level2">
+<h2></h2>
 <p>Equivalently:</p>
 <ol type="1">
 <li><p>One experiment is repeated <span class="math inline">\(n\)</span> times; <span class="math inline">\(X_i\)</span> represents <span class="math inline">\(i\)</span>-th experiment</p></li>
@@ -64,8 +56,12 @@
 <li><p><span class="math inline">\(X = X_1 + X_2 + \cdots + X_n\)</span></p></li>
 </ol>
 </section>
-<section id="binomial-distribution-contd-2" class="slide level2">
-<h2>Binomial Distribution (cont’d)</h2>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p><a href="https://phet.colorado.edu/sims/html/plinko-probability/latest/plinko-probability_en.html">Plinko Probability</a></p>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
 <ul>
 <li><p>The values of <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> are called the <em>binomial parameters</em></p></li>
 <li><p>If you think you have a binomial situation you must identify</p>
@@ -76,18 +72,19 @@
 </ol></li>
 </ul>
 </section>
-<section id="binomial-distribution-contd-3" class="slide level2">
-<h2>Binomial Distribution (cont’d)</h2>
+<section id="section-4" class="slide level2">
+<h2></h2>
 <p>Hockey example:</p>
 <blockquote>
-<p>The Chicago Blackhawks score about 3.6 goals per (home) game. So they have a 1/1000 chance of scoring a goal at time 10:00 in the second period (since each game last 3600 seconds) If the Blackhawks play 41 home games, what is the probability that at least one such well-timed goal will occur during the season?</p>
+<p>The Chicago Blackhawks score about 3.6 goals per (home) game. So they have a 1/1000 chance of scoring a goal at time 10:00 in the second period (since each game last 3600 seconds). If the Blackhawks play 41 home games, what is the probability that at least one such well-timed goal will occur during the season?</p>
 </blockquote>
-<div class="fragment">
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
 <ul>
 <li>Fundamental success/failure experiment?</li>
 <li>Values of <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>?</li>
 </ul>
-</div>
 </section>
 <section id="binomial-probabilities" class="slide level2">
 <h2>Binomial Probabilities</h2>
@@ -112,8 +109,8 @@
 </table>
 </div>
 </section>
-<section id="binomial-probabilities-contd" class="slide level2">
-<h2>Binomial Probabilities (cont’d)</h2>
+<section id="section-6" class="slide level2">
+<h2></h2>
 <p>Given <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>, the Excel formula for the probability of <em>at most</em> <span class="math inline">\(k\)</span> successes:</p>
 <div class="fragment">
 <table>
@@ -134,13 +131,13 @@
 </table>
 </div>
 </section>
-<section id="binomial-probabilities-contd-1" class="slide level2">
-<h2>Binomial Probabilities (cont’d)</h2>
+<section id="section-7" class="slide level2">
+<h2></h2>
 <p>Important fact:</p>
 <p><span class="math display">\[P(X &gt; k) = P(X \ge k+1) = 1 - P(X \le k)\]</span></p>
 </section>
-<section id="binomial-probabilities-contd-2" class="slide level2">
-<h2>Binomial Probabilities (cont’d)</h2>
+<section id="section-8" class="slide level2">
+<h2></h2>
 <table>
 <thead>
 <tr class="header">
@@ -171,12 +168,12 @@
 <li>See tab <em>hockey</em> in Excel file <em>discrete_examples.xlsx</em></li>
 </ul>
 </section>
-<section id="binomial-probabilities-contd-3" class="slide level2">
-<h2>Binomial Probabilities (cont’d)</h2>
-<img data-src="graphics/applications.png" alt="applications" class="stretch" /> 
+<section id="section-9" class="slide level2">
+<h2></h2>
+<p><img data-src="graphics/applications.png" alt="applications" /> </p>
 </section>
-<section id="binomial-probabilities-contd-4" class="slide level2">
-<h2>Binomial Probabilities (cont’d)</h2>
+<section id="section-10" class="slide level2">
+<h2></h2>
 <table>
 <thead>
 <tr class="header">
@@ -219,20 +216,46 @@
 <img data-src="graphics/banks_hold_capital_cushions.png" class="stretch" /> 
 <p>Source: Wall Street Journal, Nov 10 2014</p>
 </section>
-<section id="binomial-example-contd" class="slide level2">
-<h2>Binomial Example (cont’d)</h2>
+<section id="section-11" class="slide level2">
+<h2></h2>
 <p>A study by one automobile manufacturer indicated that one out of every four new cars required repairs under the company’s new-car warranty. The manufacturer must keep money on hand to handle warranty repairs</p>
 <ul>
 <li>See tab <em>cars</em> of Excel file <em>discrete_examples.xlsx</em></li>
 </ul>
 </section>
-<section id="binomial-example-contd-1" class="slide level2">
-<h2>Binomial Example (cont’d)</h2>
+<section id="section-12" class="slide level2">
+<h2></h2>
 <ol type="1">
 <li><p>For 100 new cars, what is the expected number needing repairs? What is the standard deviation?</p></li>
 <li><p>Provide a reasonable, worst-case estimate of the number of cars needing repair for a specified group of 100 cars. (Hint: What number of repairs is there only a 5% chance of exceeding?)</p></li>
 <li><p>If each repair costs you an average of $50, how much money should you set aside for warranty repairs?</p></li>
 </ol>
+</section>
+<section id="job-interview-riddle" class="slide level2">
+<h2>Job-Interview Riddle</h2>
+<p>What’s more likely?</p>
+<p>Rolling a six-sided die 2,016 times and getting at least 336 sixes, or rolling it 2,022 times and getting at least 337 sixes</p>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<table>
+<thead>
+<tr class="header">
+<th>Excel</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>1 - BINOM.DIST</code>(335, 2016, 1/6, <code>1</code>)</td>
+<td>50.927%</td>
+</tr>
+<tr class="even">
+<td><code>1 - BINOM.DIST</code>(336, 2022, 1/6, <code>1</code>)</td>
+<td>50.926%</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="example-churn" class="slide level2">
 <h2>Example: Churn</h2>
@@ -242,8 +265,8 @@
 <li><p>What proportion of customers are “high churners,” i.e., churn 2+ times per year?</p></li>
 </ul>
 </section>
-<section id="example-churn-contd" class="slide level2">
-<h2>Example: Churn (cont’d)</h2>
+<section id="section-14" class="slide level2">
+<h2></h2>
 <ul>
 <li><p>For a given customer, let <span class="math inline">\(X\)</span> be the number of times the customer churns in 12 months</p></li>
 <li><p>What assumption is necessary to apply the binomial model? Is this a reasonable assumption?</p></li>
@@ -265,13 +288,18 @@
     </div>
   </div>
 
-  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
-  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
@@ -292,12 +320,12 @@
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>

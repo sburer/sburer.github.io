@@ -8,26 +8,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
-  <![endif]-->
 </head>
 <body>
   <div class="reveal">
@@ -36,7 +28,7 @@
 <section id="title-slide">
   <h1 class="title">Discrete Probability</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: September 16, 2019</p>
+  <p class="date">August 2022</p>
 </section>
 
 <section id="outcomes-and-probability" class="slide level1">
@@ -53,8 +45,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="outcomes-and-probability-contd" class="slide level1">
-<h1>Outcomes and Probability (cont’d)</h1>
+<section id="section" class="slide level1">
+<h1></h1>
 <p>The <em>probability</em> of a particular outcome is the likelihood that the outcome will occur</p>
 <ul>
 <li>Measured on a scale from 0 to 1 (or 0% to 100%)</li>
@@ -70,8 +62,8 @@
 </ul>
 </div>
 </section>
-<section id="outcomes-and-probability-contd-1" class="slide level1">
-<h1>Outcomes and Probability (cont’d)</h1>
+<section id="section-1" class="slide level1">
+<h1></h1>
 <p>To simplify, we will only investigate situations having <em>MECE</em> outcomes</p>
 <div class="fragment">
 <ul>
@@ -83,8 +75,8 @@
 <p>Probabilities of MECE outcomes add to 100%</p>
 </div>
 </section>
-<section id="outcomes-and-probability-contd-2" class="slide level1">
-<h1>Outcomes and Probability (cont’d)</h1>
+<section id="section-2" class="slide level1">
+<h1></h1>
 <p>Examples:</p>
 <ul>
 <li>Rolling a fair die
@@ -105,8 +97,8 @@
 <li><p>The random variable is often denoted by a capital letter such as <span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span></p></li>
 </ul>
 </section>
-<section id="random-variables-contd" class="slide level1">
-<h1>Random Variables (cont’d)</h1>
+<section id="section-3" class="slide level1">
+<h1></h1>
 <ul>
 <li>Every random variable <span class="math inline">\(X\)</span> is either <em>discrete</em> or <em>continuous</em>
 <ul>
@@ -116,8 +108,8 @@
 <li>For now, we focus on DRVs (discrete random variables)</li>
 </ul>
 </section>
-<section id="random-variables-contd-1" class="slide level1">
-<h1>Random Variables (cont’d)</h1>
+<section id="section-4" class="slide level1">
+<h1></h1>
 <table>
 <thead>
 <tr class="header">
@@ -142,6 +134,19 @@
 <td>Random Home</td>
 <td><span class="math inline">\(X =\)</span> # of bedrooms</td>
 </tr>
+</tbody>
+</table>
+</section>
+<section id="section-5" class="slide level1">
+<h1></h1>
+<table>
+<thead>
+<tr class="header">
+<th>Example</th>
+<th>Random Variable</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
 <td>Sick Leave</td>
 <td><span class="math inline">\(X =\)</span> # of employees sick tomorrow</td>
@@ -169,16 +174,16 @@
 <p>The PDF is often shown as a bar chart</p>
 </div>
 </section>
-<section id="probability-distribution-contd" class="slide level1">
-<h1>Probability Distribution (cont’d)</h1>
-<img data-src="graphics/coin_pdf.png" alt="coin PDF" class="stretch" /> 
+<section id="section-6" class="slide level1">
+<h1></h1>
+<img data-src="graphics/coin_pdf.png" class="stretch" alt="coin PDF" /> 
 </section>
-<section id="probability-distribution-contd-1" class="slide level1">
-<h1>Probability Distribution (cont’d)</h1>
-<img data-src="graphics/dice_pdf.png" alt="dice PDF" class="stretch" /> 
+<section id="section-7" class="slide level1">
+<h1></h1>
+<img data-src="graphics/dice_pdf.png" class="stretch" alt="dice PDF" /> 
 </section>
-<section id="probability-distribution-contd-2" class="slide level1">
-<h1>Probability Distribution (cont’d)</h1>
+<section id="section-8" class="slide level1">
+<h1></h1>
 <p>Recall:</p>
 <ul>
 <li>Relative histograms show the “look and feel” of data on a standardized scale</li>
@@ -186,9 +191,9 @@
 </ul>
 <p>A relative histogram is a type of PDF</p>
 </section>
-<section id="probability-distribution-contd-3" class="slide level1">
-<h1>Probability Distribution (cont’d)</h1>
-<img data-src="graphics/beds_relative_histogram.png" alt="beds relative histogram" class="stretch" /> 
+<section id="section-9" class="slide level1">
+<h1></h1>
+<img data-src="graphics/beds_relative_histogram.png" class="stretch" alt="beds relative histogram" /> 
 </section>
 <section id="cumulative-distribution" class="slide level1">
 <h1>Cumulative Distribution</h1>
@@ -204,21 +209,21 @@
 </ul>
 </div>
 </section>
-<section id="cumulative-distribution-contd" class="slide level1">
-<h1>Cumulative Distribution (cont’d)</h1>
-<img data-src="graphics/dice_cdf.png" alt="dice CDF" class="stretch" /> 
+<section id="section-10" class="slide level1">
+<h1></h1>
+<img data-src="graphics/dice_cdf.png" class="stretch" alt="dice CDF" /> 
 </section>
-<section id="cumulative-distribution-contd-1" class="slide level1">
-<h1>Cumulative Distribution (cont’d)</h1>
+<section id="section-11" class="slide level1">
+<h1></h1>
 <p>Recall:</p>
 <ul>
 <li>For relative histograms, the cumulative relative frequency shows the accumulation of relative frequency from left to right</li>
 </ul>
 <p>Cumulative relative frequency is a type of CDF</p>
 </section>
-<section id="cumulative-distribution-contd-2" class="slide level1">
-<h1>Cumulative Distribution (cont’d)</h1>
-<img data-src="graphics/beds_cumulative_histogram.png" alt="beds cumulative histogram" class="stretch" /> 
+<section id="section-12" class="slide level1">
+<h1></h1>
+<img data-src="graphics/beds_cumulative_histogram.png" class="stretch" alt="beds cumulative histogram" /> 
 </section>
 <section id="why-bother-with-random-variables" class="slide level1">
 <h1>Why bother with random variables?</h1>
@@ -228,8 +233,8 @@
 <li>We can use these to answer questions about the probability of certain events</li>
 </ul>
 </section>
-<section id="why-bother-contd" class="slide level1">
-<h1>Why bother? (cont’d)</h1>
+<section id="section-13" class="slide level1">
+<h1></h1>
 <table>
 <thead>
 <tr class="header">
@@ -269,8 +274,8 @@
 </tbody>
 </table>
 </section>
-<section id="why-bother-contd-1" class="slide level1">
-<h1>Why bother? (cont’d)</h1>
+<section id="section-14" class="slide level1">
+<h1></h1>
 <table>
 <thead>
 <tr class="header">
@@ -310,8 +315,8 @@
 </tbody>
 </table>
 </section>
-<section id="why-bother-contd-2" class="slide level1">
-<h1>Why bother? (cont’d)</h1>
+<section id="section-15" class="slide level1">
+<h1></h1>
 <table>
 <thead>
 <tr class="header">
@@ -364,8 +369,8 @@
 </ul>
 </div>
 </section>
-<section id="expected-value-contd" class="slide level1">
-<h1>Expected Value (cont’d)</h1>
+<section id="section-16" class="slide level1">
+<h1></h1>
 <table>
 <thead>
 <tr class="header">
@@ -401,16 +406,16 @@
 </tbody>
 </table>
 </section>
-<section id="expected-value-contd-1" class="slide level1">
-<h1>Expected Value (cont’d)</h1>
+<section id="section-17" class="slide level1">
+<h1></h1>
 <p>A common interpretation of expected value:</p>
 <blockquote>
 <p>Expected value is the long-run average of the random variable.</p>
 <p>That is, if <span class="math inline">\(X\)</span> is repeated <em>ad infinitum</em>, then <span class="math inline">\(E(X)\)</span> equals the average of the actual observed values of X</p>
 </blockquote>
 </section>
-<section id="expected-value-contd-2" class="slide level1">
-<h1>Expected Value (cont’d)</h1>
+<section id="section-18" class="slide level1">
+<h1></h1>
 <table>
 <thead>
 <tr class="header">
@@ -478,16 +483,16 @@
 </ul>
 </div>
 </section>
-<section id="standard-deviation-contd" class="slide level1">
-<h1>Standard Deviation (cont’d)</h1>
+<section id="section-19" class="slide level1">
+<h1></h1>
 <ul>
 <li><p>Std dev is in the same units as <span class="math inline">\(X\)</span>, and so we often talk about std dev rather than variance</p></li>
 <li><p>By itself, however, std dev is sometimes difficult on its own</p></li>
 <li><p>Often, we compare the std devs of two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> as a measure of which has more “risk”</p></li>
 </ul>
 </section>
-<section id="standard-deviation-contd-1" class="slide level1">
-<h1>Standard Deviation (cont’d)</h1>
+<section id="section-20" class="slide level1">
+<h1></h1>
 <table>
 <thead>
 <tr class="header">
@@ -546,13 +551,18 @@
     </div>
   </div>
 
-  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
-  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
@@ -573,12 +583,12 @@
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>
