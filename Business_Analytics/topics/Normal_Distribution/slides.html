@@ -8,26 +8,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
-  <![endif]-->
 </head>
 <body>
   <div class="reveal">
@@ -36,12 +28,12 @@
 <section id="title-slide">
   <h1 class="title">The Normal Distribution</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: September 12, 2018</p>
+  <p class="date">August 2022</p>
 </section>
 
 <section id="family-of-normal-distributions" class="slide level2">
 <h2>Family of Normal Distributions</h2>
-<p><img data-src="graphics/normal.png" alt="normal distribution" /> </p>
+<img data-src="graphics/normal.png" class="stretch" alt="normal distribution" /> 
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
@@ -66,6 +58,11 @@
 <li>See tabs <em>height (1)</em> and <em>Dam_2_Dam</em> of <em>normal_examples.xlsx</em></li>
 </ul>
 </section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<img data-src="graphics/temperature.png" class="stretch" alt="body temperature" /> 
+<p>See also: <a href="https://www.wsj.com/articles/98-6-degrees-fahrenheit-isnt-the-average-any-more-11579257001">WSJ.com</a></p>
+</section>
 <section id="important-properties" class="slide level2">
 <h2>Important Properties</h2>
 <ul>
@@ -73,40 +70,40 @@
 <li>We write <span class="math inline">\(X \sim N(\mu, \sigma)\)</span></li>
 </ul>
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p><img data-src="graphics/normal1.png" alt="1 stdev" /> </p>
-</section>
 <section id="section-2" class="slide level2">
+<h2></h2>
+<img data-src="graphics/normal1.png" class="stretch" alt="1 stdev" /> 
+</section>
+<section id="section-3" class="slide level2">
 <h2></h2>
 <ul>
 <li><span class="math inline">\(P(\mu - \sigma \le X \le \mu + \sigma) \approx 0.6826\)</span></li>
 <li>“Prob that <span class="math inline">\(X\)</span> falls within 1 std dev of its mean is about 68%”</li>
 </ul>
 </section>
-<section id="section-3" class="slide level2">
-<h2></h2>
-<p><img data-src="graphics/normal2.png" alt="2 stdev" /> </p>
-</section>
 <section id="section-4" class="slide level2">
+<h2></h2>
+<img data-src="graphics/normal2.png" class="stretch" alt="2 stdev" /> 
+</section>
+<section id="section-5" class="slide level2">
 <h2></h2>
 <ul>
 <li><span class="math inline">\(P(\mu - 2\sigma \le X \le \mu + 2\sigma) \approx 0.9544\)</span></li>
 <li>“Prob that <span class="math inline">\(X\)</span> falls within 2 std dev of its mean is about 95%”</li>
 </ul>
 </section>
-<section id="section-5" class="slide level2">
-<h2></h2>
-<p><img data-src="graphics/normal3.png" alt="3 stdev" /> </p>
-</section>
 <section id="section-6" class="slide level2">
+<h2></h2>
+<img data-src="graphics/normal3.png" class="stretch" alt="3 stdev" /> 
+</section>
+<section id="section-7" class="slide level2">
 <h2></h2>
 <ul>
 <li><span class="math inline">\(P(\mu - 3\sigma \le X \le \mu + 3\sigma) \approx 0.9973\)</span></li>
 <li>“Prob that <span class="math inline">\(X\)</span> falls within 3 std dev of its mean is about 99%”</li>
 </ul>
 </section>
-<section id="section-7" class="slide level2">
+<section id="section-8" class="slide level2">
 <h2></h2>
 <p>These will also come in handy:</p>
 <ul>
@@ -123,10 +120,17 @@
 <li>In 2009, Georgia 3rd graders had a mean WTR of 1.87 on the state math test with std dev 0.6</li>
 </ul>
 </section>
-<section id="section-8" class="slide level2">
+<section id="section-9" class="slide level2">
 <h2></h2>
 <ul>
-<li>However, one class at Dunbar Elementary in Atlanta had a mean WTR of 14.47, which statistically indicates cheating</li>
+<li>However, one class at Dunbar Elementary in Atlanta had a mean WTR of 14.47</li>
+<li>What can we can conclude?</li>
+</ul>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<ul>
+<li>This evidence points towards cheating</li>
 <li>From this type of evidence, widespread cheating was uncovered in Georgia in 2010</li>
 </ul>
 </section>
@@ -161,7 +165,7 @@
 <li><p>What inventory should the company have on hand if they want the probability of running out of stock to be 5%?</p></li>
 </ol>
 </section>
-<section id="section-9" class="slide level2">
+<section id="section-11" class="slide level2">
 <h2></h2>
 <p>An alternative method:</p>
 <ul>
@@ -170,7 +174,7 @@
 <li><p>Can calculate <span class="math display">\[P(X \le x) = \text{NORM.S.DIST}((x - \mu)/\sigma, 1)\]</span></p></li>
 </ul>
 </section>
-<section id="section-10" class="slide level2">
+<section id="section-12" class="slide level2">
 <h2></h2>
 <p>Why bother with this alternative method?</p>
 <ul>
@@ -186,7 +190,7 @@
 <li><p>A <em><span class="math inline">\(z\)</span>-value</em> measures the number of std dev’s a values is from the mean, either below (negative <span class="math inline">\(z\)</span>-value) or above (positive <span class="math inline">\(z\)</span>-value)</p></li>
 </ul>
 </section>
-<section id="section-11" class="slide level2">
+<section id="section-13" class="slide level2">
 <h2></h2>
 <p>Compare your performance in all courses…</p>
 <table>
@@ -255,13 +259,18 @@
     </div>
   </div>
 
-  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
-  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
@@ -282,12 +291,12 @@
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>

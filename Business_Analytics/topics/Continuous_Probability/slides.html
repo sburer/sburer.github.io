@@ -8,26 +8,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
-  <![endif]-->
 </head>
 <body>
   <div class="reveal">
@@ -36,7 +28,7 @@
 <section id="title-slide">
   <h1 class="title">Continuous Probability</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: September 12, 2018</p>
+  <p class="date">August 2022</p>
 </section>
 
 <section id="continuous-random-variables" class="slide level2">
@@ -48,7 +40,7 @@
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/normal.png" alt="normal distribution" /> </p>
+<img data-src="graphics/normal.png" class="stretch" alt="normal distribution" /> 
 </section>
 <section id="normal-example-1" class="slide level2">
 <h2>Normal Example #1</h2>
@@ -115,17 +107,17 @@
 </section>
 <section id="section-4" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/uniform.png" alt="uniform distribution" /> </p>
+<img data-src="graphics/uniform.png" class="stretch" alt="uniform distribution" /> 
 <p>Probability evenly (“uniformly”) distributed between 10 and 14</p>
 </section>
 <section id="section-5" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/uniform2.png" alt="uniform distribution" /> </p>
+<img data-src="graphics/uniform2.png" class="stretch" alt="uniform distribution" /> 
 <p>Probability between 11 and 12 is <span class="math inline">\(P(11 \le X \le 12) = 0.25 = 25\)</span>%</p>
 </section>
 <section id="section-6" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/nonuniform.png" alt="nonuniform distribution" /> </p>
+<img data-src="graphics/nonuniform.png" class="stretch" alt="nonuniform distribution" /> 
 <p>Could this be reality??</p>
 </section>
 <section id="how-to-talk-about-crvs" class="slide level2">
@@ -142,8 +134,8 @@
 <li><p>In fact, <span class="math inline">\(P(X = x) = 0\)</span> for any value <span class="math inline">\(x\)</span></p></li>
 </ul>
 </section>
-<section id="cumulative-distribution-function" class="slide level2">
-<h2>Cumulative Distribution Function</h2>
+<section id="cumulative-density-function" class="slide level2">
+<h2>Cumulative Density Function</h2>
 <p>We have talked about CDFs for DRVs. Same idea for CRVs…</p>
 <ul>
 <li>The <em>cumulative density function</em> (CDF) for a CRV <span class="math inline">\(X\)</span> accumulates probability from left to right, i.e., it shows <span class="math inline">\(P(X \le x)\)</span> for every value <span class="math inline">\(x\)</span></li>
@@ -170,16 +162,52 @@
 <h2>Std Dev of a CRV</h2>
 <p>The <em>standard deviation</em> <span class="math inline">\(\sigma\)</span> is a measure of how far the values of <span class="math inline">\(X\)</span> differ from (or deviate from) its expected value, <span class="math inline">\(E(X)\)</span></p>
 </section>
+<section id="the-uniform-distribution" class="slide level2">
+<h2>The Uniform Distribution</h2>
+<ul>
+<li>A common continuous distribution is the <em>uniform distribution</em></li>
+<li>It is specified by two parameters, <span class="math inline">\(l\)</span> and <span class="math inline">\(u\)</span>, and is characterized by the following idea: every value between <span class="math inline">\(l\)</span> and <span class="math inline">\(u\)</span> is equally likely</li>
+</ul>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<ul>
+<li>The PDF is a rectangle with base from <span class="math inline">\(l\)</span> to <span class="math inline">\(u\)</span> and height <span class="math inline">\(1/(u - l)\)</span></li>
+<li>Then the area under the PDF is <span class="math inline">\((u - l) \cdot 1/(u - l) = 1\)</span></li>
+<li>When computing probabilities with the uniform distribution, we calculate the area of the rectangles of interest</li>
+</ul>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<p>For example, suppose <span class="math inline">\(X\)</span> has a uniform distribution from 7 to 12:</p>
+<ul>
+<li>What is <span class="math inline">\(P(X \ge 8)\)</span>? The rectangle to the right of 8 has base 4 with height <span class="math inline">\(1/(12 - 7) = 1/5\)</span>, so the probability is <span class="math inline">\(4/5 = 80\%\)</span></li>
+<li>What is <span class="math inline">\(P(8 \le X \le 10)\)</span>? The rectangle between 8 and 10 has base 2 with height <span class="math inline">\(1/(12 - 7) = 1/5\)</span>, so the probability is <span class="math inline">\(2/5 = 40\%\)</span></li>
+</ul>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<ul>
+<li>The expected value is the midpoint between <span class="math inline">\(l\)</span> and <span class="math inline">\(u\)</span>, which is <span class="math inline">\(\frac12(l + u)\)</span></li>
+<li>The median equals the expected value</li>
+<li>The standard deviation is <span class="math inline">\((u - l)/(2\sqrt{3})\)</span></li>
+</ul>
+</section>
     </div>
   </div>
 
-  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
-  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
@@ -200,12 +228,12 @@
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>
