@@ -8,26 +8,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
-  <![endif]-->
 </head>
 <body>
   <div class="reveal">
@@ -36,17 +28,23 @@
 <section id="title-slide">
   <h1 class="title">Monte Carlo Simulation</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: October 28, 2019</p>
+  <p class="date">August 2022</p>
 </section>
 
-<section><section id="the-law-of-averages" class="title-slide slide level1"><h1>The Law of Averages?</h1></section><section id="section" class="slide level2">
+<section>
+<section id="the-law-of-averages" class="title-slide slide level1">
+<h1>The Law of Averages?</h1>
+
+</section>
+<section id="section" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>In August, Walton Bookstore must decide how many of next year’s nature calendars to order</p></li>
+<li><p>In August, Walton Bookstore must decide how many of next year’s calendars to order</p></li>
 <li><p>Each calendar costs the bookstore $7.50 and sells for $10</p></li>
 <li><p>After January 1, all unsold calendars will be returned to the publisher for a refund of $2.50 per calendar</p></li>
 </ul>
-</section><section id="section-1" class="slide level2">
+</section>
+<section id="section-1" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>The mean historical demand for calendars is 200</p></li>
@@ -54,9 +52,10 @@
 <li><p>Is this a good decision?</p></li>
 <li><p>See <em>flaw_of_averages.xlsx</em> (tabs <em>model</em> and <em>uniform</em>)</p></li>
 </ul>
-</section><section id="section-2" class="slide level2">
+</section>
+<section id="section-2" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/flaw.png" /> </p>
+<p><img src="graphics/flaw.png" style="width:80%;height:auto;" /></p>
 <!-- ## Motivating Example
 
 * Your company manufactures and sells a particular product.
@@ -74,7 +73,12 @@ Complicating factors...
 
     * Per-unit raw material costs somewhere between $22 and $25 -->
 </section></section>
-<section><section id="decisions-and-uncertainty" class="title-slide slide level1"><h1>Decisions and Uncertainty</h1></section><section id="section-3" class="slide level2">
+<section>
+<section id="decisions-and-uncertainty" class="title-slide slide level1">
+<h1>Decisions and Uncertainty</h1>
+
+</section>
+<section id="section-3" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Most decisions are made in the face of uncertainty, e.g., random events out of our control</p></li>
@@ -97,24 +101,31 @@ uncertainty
 ##
 
 * Today, we will learn about another tool (*Monte Carlo simulation*) to
-describe the uncertainty in complex situations, which may or may not be
+*describe* the uncertainty in complex situations, which may or may not be
 sequenced over time
 
 * We can then make decisions based on the simulation
 -->
-</section><section id="section-4" class="slide level2">
+</section>
+<section id="section-4" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>Today, we will learn about a specific tool (<em>Monte Carlo simulation</em>) to describe the uncertainty in complex situations</p></li>
+<li><p>Today, we will learn about a specific tool (<em>Monte Carlo simulation</em>) to <em>describe</em> the uncertainty in complex situations</p></li>
 <li><p>We can then make decisions based on the simulation</p></li>
 </ul>
 </section></section>
-<section><section id="prerequisites" class="title-slide slide level1"><h1>Prerequisites</h1></section><section id="simulation" class="slide level2">
+<section>
+<section id="prerequisites" class="title-slide slide level1">
+<h1>Prerequisites</h1>
+
+</section>
+<section id="simulation" class="slide level2">
 <h2>Simulation</h2>
 <blockquote>
 <p>the representation of the operation or features of one process or system through the use of another</p>
 </blockquote>
-</section><section id="section-5" class="slide level2">
+</section>
+<section id="section-5" class="slide level2">
 <h2></h2>
 <ul>
 <li>A meteorologist simulates a thunderstorm on his/her computer</li>
@@ -122,40 +133,52 @@ sequenced over time
 <li>IKEA tests how its new chair holds up under years of simulated wear and tear</li>
 <li>A new amusement park uses software to simulate lines before opening day</li>
 </ul>
-</section><section id="random-sampling" class="slide level2">
+</section>
+<section id="random-sampling" class="slide level2">
 <h2>Random Sampling</h2>
 <ul>
 <li><p>Random sampling is the act of using a computer to generate a number from a given probability distribution</p></li>
-<li><p>Like rolling a die, except the die can represent any random event that we wish</p></li>
-<li><p>If we roll the die many times, how many is called the <em>number of trials</em> or the <em>sample size</em>; denoted by <span class="math inline">\(n\)</span></p></li>
+<li><p>It’s like rolling a die, except the die can represent any random event that we wish</p></li>
+<li><p>If we roll the die many times, the “how many” is called the <em>number of trials</em> or the <em>sample size</em>; denoted by <span class="math inline">\(n\)</span></p></li>
 </ul>
-</section><section id="section-6" class="slide level2">
+</section>
+<section id="section-6" class="slide level2">
 <h2></h2>
 <p>Single random number from continuous uniform distribution between <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>:</p>
 <pre><code>L + RAND()*(U - L)</code></pre>
-</section><section id="section-7" class="slide level2">
+</section>
+<section id="section-7" class="slide level2">
 <h2></h2>
 <p>Single random integer from discrete uniform distribution between <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> (inclusive):</p>
 <pre><code>RANDBETWEEN(L, U)</code></pre>
-</section><section id="section-8" class="slide level2">
+</section>
+<section id="section-8" class="slide level2">
 <h2></h2>
 <p>Single random number from normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>:</p>
 <pre><code>NORM.INV(RAND(), mu, sigma)</code></pre>
-</section><section id="section-9" class="slide level2">
+</section>
+<section id="section-9" class="slide level2">
 <h2></h2>
 <p>Single random variable from binomial distribution with <span class="math inline">\(n\)</span> trials, each having probability <span class="math inline">\(0 &lt; p &lt; 1\)</span> for success:</p>
 <pre><code>BINOM.INV(n, p, RAND())</code></pre>
-</section><section id="section-10" class="slide level2">
+</section>
+<section id="section-10" class="slide level2">
 <h2></h2>
 <p>From specified discrete distribution:</p>
-<p><img data-src="graphics/discrete.png" /> </p>
-</section><section id="section-11" class="slide level2">
+<p><img src="graphics/discrete.png" style="width:30%;height:auto;" /></p>
+</section>
+<section id="section-11" class="slide level2">
 <h2></h2>
 <ul>
 <li>See <em>random_numbers.xlsx</em></li>
 </ul>
 </section></section>
-<section><section id="monte-carlo-simulation" class="title-slide slide level1"><h1>Monte Carlo Simulation</h1></section><section id="section-12" class="slide level2">
+<section>
+<section id="monte-carlo-simulation" class="title-slide slide level1">
+<h1>Monte Carlo Simulation</h1>
+
+</section>
+<section id="section-12" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Imagine a situation having uncertain inputs with known probability distributions</p></li>
@@ -163,49 +186,77 @@ sequenced over time
 <li><p>Shows the effect of uncertain inputs in a statistical setting</p></li>
 <li><p>See <em>flaw_of_averages.xlsx</em> (tab <em>normal</em>) and <em>birthdays.xlsx</em></p></li>
 </ul>
-</section><section id="a-longer-example" class="slide level2">
+</section>
+<section id="just-for-fun" class="slide level2">
+<h2>Just For Fun</h2>
+<p><a href="https://thedailyviz.com/2016/09/17/how-common-is-your-birthday-dailyviz">How Common is Your Birthday?</a></p>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<p><img src="graphics/birthdays1.png" style="width:35%;height:auto;" /></p>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<p><img src="graphics/birthdays2.png" style="width:50%;height:auto;" /></p>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<p><img src="graphics/birthdays3.jpg" style="width:30%;height:auto;" /></p>
+</section>
+<section id="a-longer-example" class="slide level2">
 <h2>A Longer Example</h2>
 <ul>
 <li>See <em>production.xlsx</em></li>
 </ul>
-</section><section id="using-data-tables-in-mcs" class="slide level2">
+</section>
+<section id="using-data-tables-in-mcs" class="slide level2">
 <h2>Using Data Tables in MCS</h2>
 <ul>
 <li>See <em>flaw_of_averages.xlsx</em> (tabs <em>normal</em> and <em>normal2</em>)</li>
 </ul>
 </section></section>
-<section><section id="additional-issues-and-topics" class="title-slide slide level1"><h1>Additional Issues and Topics</h1></section><section id="fitting-distributions-to-existing-data" class="slide level2">
+<section>
+<section id="additional-issues-and-topics" class="title-slide slide level1">
+<h1>Additional Issues and Topics</h1>
+
+</section>
+<section id="fitting-distributions-to-existing-data" class="slide level2">
 <h2>Fitting Distributions to Existing Data</h2>
 <ul>
 <li><p>How do you know what distribution to use for a given uncertain input?</p></li>
 <li><p>Typically, you can make an educated guess either from historical data or from insight gained through experience</p></li>
 </ul>
-</section><section id="section-13" class="slide level2">
+</section>
+<section id="section-16" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>In fact, a relative histogram from historical data is a good way to create a discrete distrubition from which to sample</p></li>
 <li><p>See <em>random_homes.xlsx</em></p></li>
 </ul>
-</section><section id="the-issue-of-independence" class="slide level2">
+</section>
+<section id="the-issue-of-independence" class="slide level2">
 <h2>The Issue of Independence</h2>
 <ul>
 <li><p>Suppose you have two or more random inputs</p></li>
 <li><p>In MCS, we assume that these random inputs are independent of one another, i.e., their values are not correlated</p></li>
 <li><p>For example, high values of one input are not associated with high values of another</p></li>
 </ul>
-</section><section id="section-14" class="slide level2">
+</section>
+<section id="section-17" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>In many situations, this is an unrealistic assumption, i.e., the variable <em>should be</em> correlated</p></li>
 <li><p>If your inputs are strongly correlated, then more sophisticated techniques and software are required</p></li>
 </ul>
-</section><section id="the-sample-mean" class="slide level2">
+</section>
+<section id="the-sample-mean" class="slide level2">
 <h2>The Sample Mean</h2>
 <ul>
 <li><p>Monte Carlo simulation is a good tool for exploring an extremely important, albeit theoretical, concept in probability: the Central Limit Theorem</p></li>
 <li><p>The <em>Central Limit Theorem</em> says that, when you take a large enough random sample from a population, then the sample mean <span class="math inline">\(\bar x\)</span> is distributed normally—even if the population itself is not normally distributed</p></li>
 </ul>
-</section><section id="section-15" class="slide level2">
+</section>
+<section id="section-18" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>More precisely, if <span class="math inline">\(X_1, \ldots, X_n\)</span> are the random values gotten when you take a random sample of size <span class="math inline">\(n\)</span> from a random variable <span class="math inline">\(X\)</span>, then the sample mean <span class="math display">\[\bar X = \frac{X_1 + \cdots + X_n}{n}\]</span> is approximately normally distributed—as long as <span class="math inline">\(n\)</span> is large enough</p></li>
@@ -215,13 +266,18 @@ sequenced over time
     </div>
   </div>
 
-  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
-  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
@@ -242,12 +298,12 @@ sequenced over time
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>
