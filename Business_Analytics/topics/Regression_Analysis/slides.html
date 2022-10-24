@@ -8,26 +8,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
-  <![endif]-->
 </head>
 <body>
   <div class="reveal">
@@ -36,26 +28,34 @@
 <section id="title-slide">
   <h1 class="title">Regression (Analysis)</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: November 24, 2019</p>
+  <p class="date">August 2022</p>
 </section>
 
-<section><section id="handling-categorical-variables" class="title-slide slide level1"><h1>Handling Categorical Variables</h1></section><section id="section" class="slide level2">
+<section>
+<section id="handling-categorical-variables" class="title-slide slide level1">
+<h1>Handling Categorical Variables</h1>
+
+</section>
+<section id="section" class="slide level2">
 <h2></h2>
 <p>See Excel file <em>soccer_3.xlsx</em></p>
-</section><section id="section-1" class="slide level2">
+</section>
+<section id="section-1" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>If you would like to include a categorical variable <span class="math inline">\(X\)</span> in a regression, and <span class="math inline">\(X\)</span> takes on <span class="math inline">\(k\)</span> different values</p></li>
 <li><p>Then <span class="math inline">\(X\)</span> must be broken down into <span class="math inline">\(k-1\)</span> “dummy” variables, each of which corresponds to a single value of <span class="math inline">\(X\)</span></p></li>
 </ul>
-</section><section id="section-2" class="slide level2">
+</section>
+<section id="section-2" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>A dummy equals 1 when X is that value (0 otherwise)</p></li>
 <li><p>The value, which does not have a dummy, is the base case; happens when all dummies equal 0</p></li>
 <li><p>Regression intercept and coefficients must be interpreted with respect to the base case</p></li>
 </ul>
-</section><section id="section-3" class="slide level2">
+</section>
+<section id="section-3" class="slide level2">
 <h2></h2>
 <ul>
 <li>You get to choose the base case</li>
@@ -66,10 +66,16 @@
 </ul></li>
 </ul>
 </section></section>
-<section><section id="example-sex-discrimination" class="title-slide slide level1"><h1>Example: Sex Discrimination?</h1></section><section id="section-4" class="slide level2">
+<section>
+<section id="example-sex-discrimination" class="title-slide slide level1">
+<h1>Example: Sex Discrimination?</h1>
+
+</section>
+<section id="section-4" class="slide level2">
 <h2></h2>
 <p>See Excel file <em>sex_discrimination_1.xlsx</em></p>
-</section><section id="section-5" class="slide level2">
+</section>
+<section id="section-5" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Does it make sense to say, “The pay difference between Grades 1 and 2 is the same as the difference between Grades 7 and 8”? No!</p></li>
@@ -79,7 +85,8 @@
 </ul></li>
 <li><p>How do we fix this problem?</p></li>
 </ul>
-</section><section id="section-6" class="slide level2">
+</section>
+<section id="section-6" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Recall: GRADE goes from 1 to 8</p></li>
@@ -94,16 +101,19 @@
 <li>Employee is in Grade 1 if G2 = G3 = … = G8 = 0</li>
 </ul></li>
 </ul>
-</section><section id="section-7" class="slide level2">
+</section>
+<section id="section-7" class="slide level2">
 <h2></h2>
 <p><img data-src="./graphics/sex_discrimination.png" title="sex_discrimination" alt="sex_discrimination" /> </p>
-</section><section id="section-8" class="slide level2">
+</section>
+<section id="section-8" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Keep in mind…</p></li>
 <li><p>Breaking GRADE out into G2, …, G7 is used to make our model more accurate</p></li>
 </ul>
-</section><section id="section-9" class="slide level2">
+</section>
+<section id="section-9" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[
     \text{Rate} = 211.5
@@ -123,10 +133,16 @@
 <li>How could you use this model in practice?</li>
 </ul>
 </section></section>
-<section><section id="is-the-model-good" class="title-slide slide level1"><h1>Is the Model Good?</h1></section><section id="step-1-the-linear-model" class="slide level2">
+<section>
+<section id="is-the-model-good" class="title-slide slide level1">
+<h1>Is the Model Good?</h1>
+
+</section>
+<section id="step-1-the-linear-model" class="slide level2">
 <h2>Step 1: The Linear Model</h2>
 <p>The Simple Linear Model: <span class="math inline">\(Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_m X_m + \epsilon\)</span></p>
-</section><section id="section-10" class="slide level2">
+</section>
+<section id="section-10" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Ingredients: <span class="math inline">\(X_i, Y, \beta_i, \beta_0, \epsilon\)</span></p></li>
@@ -139,11 +155,13 @@
 <li><span class="math inline">\(\epsilon\)</span> is “relatively small” compared to <span class="math inline">\(X_i\)</span>’s and <span class="math inline">\(Y\)</span></li>
 </ul></li>
 </ul>
-</section><section id="step-3-evaluating-the-fit" class="slide level2">
+</section>
+<section id="step-3-evaluating-the-fit" class="slide level2">
 <h2>Step 3: Evaluating the Fit</h2>
 <p>How do we evaluate the quality of the linear equation <span class="math inline">\(\bar Y = b_0 + b_1 X_1 + \cdots b_m X_m\)</span>?</p>
 <p>We compare our model against the simple linear model…</p>
-</section><section id="section-11" class="slide level2">
+</section>
+<section id="section-11" class="slide level2">
 <h2></h2>
 <p>Key Questions:</p>
 <ol type="1">
@@ -154,7 +172,8 @@
 <li>Is <span class="math inline">\(S_{XY}\)</span> relatively small (i.e., close to 0)?</li>
 <li>Is Adjusted <span class="math inline">\(R^2\)</span> relatively large (i.e., close to 100%)?</li>
 </ol>
-</section><section id="section-12" class="slide level2">
+</section>
+<section id="section-12" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Ideally, would like to have YES for each question</p></li>
@@ -162,7 +181,8 @@
 <li><p>More details follow…</p></li>
 <li><p>See also Excel examples</p></li>
 </ul>
-</section><section id="section-13" class="slide level2">
+</section>
+<section id="section-13" class="slide level2">
 <h2></h2>
 <p>1. Is each <span class="math inline">\(\beta_1, \ldots, \beta_m\)</span> significantly different from 0?</p>
 <ul>
@@ -172,7 +192,8 @@
 <li><p>Otherwise, <span class="math inline">\(\beta_i\)</span> may be 0, and <span class="math inline">\(X_i\)</span> may be insignificant in the regression</p></li>
 <li><p>Alternative: If p-value &lt; 0.05, then conclude <span class="math inline">\(\beta_i \neq 0\)</span></p></li>
 </ul>
-</section><section id="section-14" class="slide level2">
+</section>
+<section id="section-14" class="slide level2">
 <h2></h2>
 <p>2. Are the residuals/errors independent of the <span class="math inline">\(X_i\)</span>’s?</p>
 <ul>
@@ -180,14 +201,16 @@
 <li><p>In Excel, examine a scatter plot of the residuals against the predicted values</p></li>
 <li><p>Rule of thumb: “strip of random points”</p></li>
 </ul>
-</section><section id="section-15" class="slide level2">
+</section>
+<section id="section-15" class="slide level2">
 <h2></h2>
 <p>3. Are the residuals normally distributed?</p>
 <ul>
 <li><p>Must examine a histogram of the residuals</p></li>
 <li><p>Excel: use pivot table/chart to create histogram of residuals</p></li>
 </ul>
-</section><section id="section-16" class="slide level2">
+</section>
+<section id="section-16" class="slide level2">
 <h2></h2>
 <p>4. Does each <span class="math inline">\(b_1 , \ldots, b_m\)</span> make sense? Does <span class="math inline">\(b_0\)</span> make sense?</p>
 <ul>
@@ -198,13 +221,15 @@
 <li>When the data values for X are far from 0, the intercept may be far from what you expect; this is okay</li>
 </ul></li>
 </ul>
-</section><section id="section-17" class="slide level2">
+</section>
+<section id="section-17" class="slide level2">
 <h2></h2>
 <p>5. Is <span class="math inline">\(S_{XY}\)</span> relatively small (i.e., close to 0)?</p>
 <ul>
 <li>Rule of thumb: want <span class="math inline">\(S_{XY}\)</span> &lt; <span class="math inline">\(0.1 \cdot \bar{y}\)</span></li>
 </ul>
-</section><section id="section-18" class="slide level2">
+</section>
+<section id="section-18" class="slide level2">
 <h2></h2>
 <p>6. Is Adjusted <span class="math inline">\(R^2\)</span> relatively large (i.e., close to 100%)?</p>
 <ul>
@@ -215,7 +240,8 @@
 <li>Social science applications: want adjusted <span class="math inline">\(R^2 &gt; 0.3\)</span></li>
 </ul></li>
 </ul>
-</section><section id="step-4-conclusion" class="slide level2">
+</section>
+<section id="step-4-conclusion" class="slide level2">
 <h2>Step 4: Conclusion</h2>
 <ul>
 <li><p>If good, then use the fitted model to explain or forecast</p>
@@ -224,7 +250,8 @@
 <li>A good regression model can be used in many ways</li>
 </ul></li>
 </ul>
-</section><section id="section-19" class="slide level2">
+</section>
+<section id="section-19" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>If bad, then “back to the drawing board”</p>
@@ -235,14 +262,16 @@
 </ul></li>
 <li><p>See Excel files <em>soccer_3.xlsx</em> and <em>cpi_2.xlsx</em></p></li>
 </ul>
-</section><section id="the-principle-of-parsimony" class="slide level2">
+</section>
+<section id="the-principle-of-parsimony" class="slide level2">
 <h2>The Principle of Parsimony</h2>
 <ul>
 <li><p>“Unusual or excessive frugality; extreme economy or stinginess.”</p></li>
 <li><p>“Adoption of the simplest assumption in the formulation of a theory or in the interpretation of data, especially in accordance with the rule of Ockham’s razor.”</p></li>
 <li><p>In other words, keep it as simple as possible</p></li>
 </ul>
-</section><section id="section-20" class="slide level2">
+</section>
+<section id="section-20" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Remove insignificant variables in the regression</p>
@@ -250,14 +279,16 @@
 <li>I.e., those <span class="math inline">\(X_i\)</span> for which <span class="math inline">\(\beta_i\)</span> might equal 0</li>
 </ul></li>
 </ul>
-</section><section id="systematic-approach-for-good-models" class="slide level2">
+</section>
+<section id="systematic-approach-for-good-models" class="slide level2">
 <h2>Systematic Approach for Good Models</h2>
 <ol type="1">
 <li><p>Specify relevant independent variables, including dummy variables for categorical variables</p></li>
 <li><p>Construct a model with all independent variables</p></li>
 <li><p>Check for significance of the independent variables by examining the p-values</p></li>
 </ol>
-</section><section id="section-21" class="slide level2">
+</section>
+<section id="section-21" class="slide level2">
 <h2></h2>
 <ol start="4" type="1">
 <li><p>If some p-values are above 0.05, remove the one with the highest p-value, and re-run the regression. Go to Step 3.</p></li>
@@ -268,13 +299,18 @@
     </div>
   </div>
 
-  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
-  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
@@ -295,12 +331,12 @@
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>
