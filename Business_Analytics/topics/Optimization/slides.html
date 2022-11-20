@@ -8,26 +8,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/beige.css" id="theme">
   <link rel="stylesheet" href="../sburer.css"/>
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
-  <![endif]-->
 </head>
 <body>
   <div class="reveal">
@@ -36,10 +28,15 @@
 <section id="title-slide">
   <h1 class="title">Optimization</h1>
   <p class="author">Samuel Burer</p>
-  <p class="date">Last updated: October 24, 2018</p>
+  <p class="date">August 2022</p>
 </section>
 
-<section><section id="linear-programming" class="title-slide slide level1"><h1>Linear Programming</h1></section><section id="what-is-lp" class="slide level2">
+<section>
+<section id="linear-programming" class="title-slide slide level1">
+<h1>Linear Programming</h1>
+
+</section>
+<section id="what-is-lp" class="slide level2">
 <h2>What is LP?</h2>
 <ul>
 <li><p>LP = Linear Programming</p></li>
@@ -47,23 +44,27 @@
 <li><p>In this case, <em>programming</em> means <em>planning</em></p></li>
 <li><p><em>Linear</em> refers to the nature of the mathematical relationships involved, i.e., all relationships are defined by lines</p></li>
 </ul>
-</section><section id="section" class="slide level2">
+</section>
+<section id="section" class="slide level2">
 <h2></h2>
 <p>So LP is a tool for planning, or making decisions, when the mathematical relationships are linear</p>
-</section><section id="a-bit-of-history" class="slide level2">
+</section>
+<section id="a-bit-of-history" class="slide level2">
 <h2>A Bit of History</h2>
 <ul>
 <li><p>LP was first recognized as a useful tool by George Dantzig using the <em>simplex method</em> in 1947 at the Pentagon during WWII</p></li>
 <li><p>LP was not really useful at the time because computers were too slow; it took until 1955 before benefits were realized</p></li>
 <li><p>Since then, the use of LP has grown tremendously along with the growth of computers</p></li>
 </ul>
-</section><section id="section-1" class="slide level2">
+</section>
+<section id="section-1" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>All sorts of industries (manufacturing, financial, service, health, etc.) now use LP to plan their operations</p></li>
 <li><p>The <a href="https://www.informs.org/Recognizing-Excellence/INFORMS-Prizes/Franz-Edelman-Award">Franz Edelman Award</a> highlights the use of optimization in industry</p></li>
 </ul>
-</section><section id="what-is-lp-contd" class="slide level2">
+</section>
+<section id="what-is-lp-contd" class="slide level2">
 <h2>What is LP? (cont’d)</h2>
 <ul>
 <li><p>More than any other topic so far, LP is about <em>you</em> making good models of business situations</p></li>
@@ -71,88 +72,100 @@
 <li><p>There is no probability in LP; it is <em>deterministic</em></p></li>
 </ul>
 </section></section>
-<section><section id="first-example" class="title-slide slide level1"><h1>First Example</h1></section><section id="iphone-6-vs-iphone-6-plus" class="slide level2">
+<section>
+<section id="first-example" class="title-slide slide level1">
+<h1>First Example</h1>
+
+</section>
+<section id="iphone-6-vs-iphone-6-plus" class="slide level2">
 <h2>iPhone 6 vs iPhone 6 Plus</h2>
-<p><img data-src="graphics/iphones01.png" /><br />
-</p>
-</section><section id="section-2" class="slide level2">
+<p><img src="graphics/iphones01.png" style="width:40%;height:auto;" /></p>
+</section>
+<section id="section-2" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones02.png" /><br />
-</p>
-</section><section id="section-3" class="slide level2">
+<p><img src="graphics/iphones02.png" style="width:60%;height:auto;" /></p>
+</section>
+<section id="section-3" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones03.png" /><br />
-</p>
-</section><section id="section-4" class="slide level2">
+<p><img src="graphics/iphones03.png" style="width:70%;height:auto;" /></p>
+</section>
+<section id="section-4" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones04.png" /><br />
-</p>
+<p><img src="graphics/iphones04.png" style="width:80%;height:auto;" /></p>
 <p>Source: IHS, Inc.</p>
-</section><section id="section-5" class="slide level2">
+</section>
+<section id="section-5" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones05.png" /><br />
-</p>
+<p><img src="graphics/iphones05.png" style="width:80%;height:auto;" /></p>
 <p>Source: Time, Inc.</p>
-</section><section id="section-6" class="slide level2">
+</section>
+<section id="section-6" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones06.png" /><br />
-</p>
+<p><img src="graphics/iphones06.png" style="width:60%;height:auto;" /></p>
 <p>Source: Apple</p>
-</section><section id="section-7" class="slide level2">
+</section>
+<section id="section-7" class="slide level2">
 <h2></h2>
 <p>How many of each phone should Apple make?</p>
-</section><section id="how-many-of-each" class="slide level2">
+</section>
+<section id="how-many-of-each" class="slide level2">
 <h2>How Many of Each?</h2>
-<p><img data-src="graphics/iphones07.png" /><br />
-</p>
+<p><img src="graphics/iphones07.png" style="width:70%;height:auto;" /></p>
 <ul>
 <li>Regular = $649.00 - $200.10 = $448.90 unit profit</li>
 <li>Plus = $749.00 - $215.60 = $533.40 unit profit</li>
 </ul>
-</section><section id="decision-variables" class="slide level2">
+</section>
+<section id="decision-variables" class="slide level2">
 <h2>Decision Variables</h2>
 <ul>
 <li><span class="math inline">\(r\)</span> = number of Regular to make</li>
 <li><span class="math inline">\(p\)</span> = number of Plus to make</li>
 </ul>
-</section><section id="objective-function" class="slide level2">
+</section>
+<section id="objective-function" class="slide level2">
 <h2>Objective Function</h2>
 <p><span class="math inline">\(\max 448.90 r + 533.40 p\)</span></p>
-</section><section id="section-8" class="slide level2">
+</section>
+<section id="section-8" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones08.png" /><br />
-</p>
-</section><section id="section-9" class="slide level2">
+<p><img src="graphics/iphones08.png" style="width:90%;height:auto;" /></p>
+</section>
+<section id="section-9" class="slide level2">
 <h2></h2>
 <p>Current model suggests to make an infinite number of units, which is clearly impossible. What are we missing?</p>
-</section><section id="section-10" class="slide level2">
+</section>
+<section id="section-10" class="slide level2">
 <h2></h2>
 <p>Even if we could make an infinite number, we couldn’t sell them all because of limited demand.</p>
-</section><section id="section-11" class="slide level2">
+</section>
+<section id="section-11" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones09.png" /><br />
-</p>
-</section><section id="section-12" class="slide level2">
+<p><img src="graphics/iphones09.png" style="width:90%;height:auto;" /></p>
+</section>
+<section id="section-12" class="slide level2">
 <h2></h2>
 <p>Companies such as Apple always forecast demand. Let us say that demand will be 74,500,000 units with a 3:1 split between Regular and Plus.</p>
-</section><section id="demand-constraints" class="slide level2">
+</section>
+<section id="demand-constraints" class="slide level2">
 <h2>Demand Constraints</h2>
 <p><span class="math display">\[\begin{align*}
 \max \ \ &amp;448.90 r + 533.40 p \\
 \text{s.t.} \ \ \ \ \  &amp;r \le 55875000 \\
 &amp;p \le 18625000
 \end{align*}\]</span></p>
-</section><section id="section-13" class="slide level2">
+</section>
+<section id="section-13" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones10.png" /><br />
-</p>
+<p><img src="graphics/iphones10.png" style="width:70%;height:auto;" /></p>
 <p>The best solution is to make as many as you can sell. Makes sense, but what if…</p>
-</section><section id="section-14" class="slide level2">
+</section>
+<section id="section-14" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones11.png" /><br />
-</p>
+<p><img src="graphics/iphones11.png" style="width:80%;height:auto;" /></p>
 <p>Source: PC Magazine</p>
-</section><section id="section-15" class="slide level2">
+</section>
+<section id="section-15" class="slide level2">
 <h2></h2>
 <ul>
 <li>Glass usage
@@ -162,7 +175,8 @@
 </ul></li>
 <li>Apple’s glass supplier has only 650,000,000 sq in of glass available</li>
 </ul>
-</section><section id="supply-constraint" class="slide level2">
+</section>
+<section id="supply-constraint" class="slide level2">
 <h2>Supply Constraint</h2>
 <p><span class="math display">\[\begin{align*}
 \max \ \ &amp;448.90 r + 533.40 p \\
@@ -170,21 +184,24 @@
 &amp;p \le 18625000 \\
 &amp;9.4 r + 12.9 p \le 650000000
 \end{align*}\]</span></p>
-</section><section id="section-16" class="slide level2">
+</section>
+<section id="section-16" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones12.png" /><br />
-</p>
-</section><section id="section-17" class="slide level2">
+<p><img src="graphics/iphones12.png" style="width:90%;height:auto;" /></p>
+</section>
+<section id="section-17" class="slide level2">
 <h2></h2>
 <p>But what if Apple’s supplier loses one of its two factories due to an earthquake? (Seriously.)</p>
-</section><section id="section-18" class="slide level2">
+</section>
+<section id="section-18" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones13.png" /><br />
-</p>
-</section><section id="section-19" class="slide level2">
+<p><img src="graphics/iphones13.png" style="width:90%;height:auto;" /></p>
+</section>
+<section id="section-19" class="slide level2">
 <h2></h2>
 <p>But it doesn’t make sense to make a negative number of units. How to fix?</p>
-</section><section id="nonnegativity-constraints" class="slide level2">
+</section>
+<section id="nonnegativity-constraints" class="slide level2">
 <h2>Nonnegativity Constraints</h2>
 <p><span class="math display">\[\begin{align*}
 \max \ \ &amp;448.90 r + 533.40 p \\
@@ -193,39 +210,48 @@
 &amp;9.4 r + 12.9 p \le 650000000 \\
 &amp;r \ge 0, \ \ p \ge 0
 \end{align*}\]</span></p>
-</section><section id="section-20" class="slide level2">
+</section>
+<section id="section-20" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/iphones14.png" /><br />
-</p>
+<p><img src="graphics/iphones14.png" style="width:90%;height:auto;" /></p>
 </section></section>
-<section><section id="definitions" class="title-slide slide level1"><h1>Definitions</h1></section><section id="decision-variables-1" class="slide level2">
+<section>
+<section id="definitions" class="title-slide slide level1">
+<h1>Definitions</h1>
+
+</section>
+<section id="decision-variables-1" class="slide level2">
 <h2>Decision Variables</h2>
 <ul>
 <li><p>The quantities that are unknown but we wish to determine</p></li>
 <li><p>All other quantities in the situation depend on the decision variables (e.g., profit, resources used)</p></li>
 <li><p>Every LP has decision variables, and they must be identified ASAP in the modeling process</p></li>
 </ul>
-</section><section id="objective-function-1" class="slide level2">
+</section>
+<section id="objective-function-1" class="slide level2">
 <h2>Objective Function</h2>
 <ul>
 <li><p>The quantity that we would like to maximize or minimize (e.g., profit or cost)</p></li>
 <li><p>Written as a linear expression of the decision variables</p></li>
 </ul>
-</section><section id="constraints" class="slide level2">
+</section>
+<section id="constraints" class="slide level2">
 <h2>Constraints</h2>
 <ul>
 <li><p>The limitations imposed on the decision variables</p></li>
 <li><p>Written as a linear expression of decision variables that is <span class="math inline">\(\le\)</span>, <span class="math inline">\(=\)</span>, or <span class="math inline">\(\ge\)</span> some number</p></li>
 <li><p>That “some number” is called the <em>right-hand side</em></p></li>
 </ul>
-</section><section id="nonnegativity-constraints-1" class="slide level2">
+</section>
+<section id="nonnegativity-constraints-1" class="slide level2">
 <h2>Nonnegativity Constraints</h2>
 <ul>
 <li><p>Special constraints that say the decision variables must be restricted nonnegative values (0 or positive, not negative)</p></li>
 <li><p>Very natural constraints that occur in most LP problems</p></li>
 <li><p>Since nonnegativity constraints are very common, we will assume them unless otherwise stated</p></li>
 </ul>
-</section><section id="output-of-excels-solver" class="slide level2">
+</section>
+<section id="output-of-excels-solver" class="slide level2">
 <h2>Output of Excel’s Solver</h2>
 <ul>
 <li><p>When Solver finishes, it gives you one of three messages:</p>
@@ -237,11 +263,17 @@
 <li><p>When either of the last two occur, most likely something is wrong with your model. Double-check for errors!</p></li>
 </ul>
 </section></section>
-<section><section id="more-examples" class="title-slide slide level1"><h1>More Examples</h1></section><section id="example-2" class="slide level2">
+<section>
+<section id="more-examples" class="title-slide slide level1">
+<h1>More Examples</h1>
+
+</section>
+<section id="example-2" class="slide level2">
 <h2>Example 2</h2>
 <p>Bank Cashy has only three types of assets, loans (X), market investments (Y), and real estate (Z). A total of $700,000 is to be allocated between X, Y, and Z. For diversification, Bank Cashy wishes its loans to equal at least $250,000 and its market investments to be at least 30% of X + Z. The bank expects to earn 7% on its loans, 9% on its market investments, and 11% on real estate.</p>
 <p>Formulate an LP to maximize earnings, and then setup and solve the model in Excel.</p>
-</section><section id="section-21" class="slide level2">
+</section>
+<section id="section-21" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[\begin{align*}
 \max \ \ &amp;0.07 X + 0.09 Y +  0.11 Z \\
@@ -250,34 +282,38 @@
 &amp;Y \ge 0.3 (X + Z) \\
 &amp;X, Y, Z \ge 0
 \end{align*}\]</span></p>
-</section><section id="example-3" class="slide level2">
+</section>
+<section id="example-3" class="slide level2">
 <h2>Example 3</h2>
 <p>The J.F. Pluckett Company manufactures furnaces at three different plants and sells these furnaces at four different sales outlets. The number of furnaces constructed at each plant is 10, 15, and 11 (per week). Company policy requires that 9 furnaces be sent to each sales outlet (per week ). The problem is to determine a shipping schedule for the furnaces (from plants to outlets) that minimizes total transportation costs. The costs for shipping a single furnace from plants to outlets are shown next (in dollars).</p>
-</section><section id="section-22" class="slide level2">
+</section>
+<section id="section-22" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/transportation1.png" /><br />
-</p>
+<p><img src="graphics/transportation1.png" style="width:90%;height:auto;" /></p>
 <p>Find the shipping schedule that minimizes costs per week.</p>
-</section><section id="section-23" class="slide level2">
+</section>
+<section id="section-23" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/transportation2.png" /><br />
-</p>
+<p><img src="graphics/transportation2.png" style="width:50%;height:auto;" /></p>
 <p><span class="math inline">\(x_{ij}\)</span> is the amount shipped from plant <span class="math inline">\(i\)</span> to outlet <span class="math inline">\(j\)</span></p>
-</section><section id="transportation-problems" class="slide level2">
+</section>
+<section id="transportation-problems" class="slide level2">
 <h2>Transportation Problems</h2>
-<p><img data-src="graphics/transportation3.png" /><br />
-</p>
-</section><section id="section-24" class="slide level2">
+<p><img src="graphics/transportation3.png" style="width:50%;height:auto;" /></p>
+</section>
+<section id="section-24" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/transportation4.png" /><br />
-</p>
-</section><section id="section-25" class="slide level2">
+<p><img src="graphics/transportation4.png" style="width:70%;height:auto;" /></p>
+</section>
+<section id="section-25" class="slide level2">
 <h2></h2>
 <p>Note: A transportation problem is feasible only if total supply exceeds total demand!</p>
-</section><section id="group-exercise" class="slide level2">
+</section>
+<section id="group-exercise" class="slide level2">
 <h2>Group Exercise</h2>
 <p>Sunco Oil produces oil at two wells in Texas. Well 1 can produce up to 150,000 barrels per day, and well 2 can produce up to 200,000 barrels per day. Oil is shipped from the wells to New York and Atlanta via three separate intermediate cities, C1, C2, and C3. NY requires 160,000 barrels per day, and ATL requires 140,000 barrels per day. The costs (in $) of shipping 1000 barrels between two points are shown below. Formulate an LP to minimize the transportation costs in meeting the oil demands of NY and ATL.</p>
-</section><section id="section-26" class="slide level2">
+</section>
+<section id="section-26" class="slide level2">
 <h2></h2>
 <table>
 <thead>
@@ -330,31 +366,35 @@
 </tr>
 </tbody>
 </table>
-</section><section id="section-27" class="slide level2">
+</section>
+<section id="section-27" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/transportation5.png" /><br />
-</p>
-</section><section id="section-28" class="slide level2">
+<p><img src="graphics/transportation5.png" style="width:80%;height:auto;" /></p>
+</section>
+<section id="section-28" class="slide level2">
 <h2></h2>
-<p><img data-src="graphics/transportation6.png" /><br />
-</p>
-</section><section id="example-4" class="slide level2">
+<p><img src="graphics/transportation6.png" style="width:80%;height:auto;" /></p>
+</section>
+<section id="example-4" class="slide level2">
 <h2>Example 4</h2>
 <ul>
 <li>This spring, you must decide how to divide your 2000 acres between corn and soybean. For fairly even crop rotation, each must be planted at least 500 acres.</li>
 </ul>
-</section><section id="section-29" class="slide level2">
+</section>
+<section id="section-29" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>If the growing season is warm, the expected profits per acre are: corn $30, soybean $20</p></li>
 <li><p>If cool: corn $23, soybean $25</p></li>
 </ul>
-</section><section id="section-30" class="slide level2">
+</section>
+<section id="section-30" class="slide level2">
 <h2></h2>
 <ul>
 <li>You are risk averse. How many acres of each crop should you plant in order to maximize profit?</li>
 </ul>
-</section><section id="section-31" class="slide level2">
+</section>
+<section id="section-31" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Variables</p>
@@ -369,7 +409,8 @@
 <li><span class="math inline">\(S \ge 500\)</span></li>
 </ul></li>
 </ul>
-</section><section id="section-32" class="slide level2">
+</section>
+<section id="section-32" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Objective functions (two of them!)</p>
@@ -379,7 +420,8 @@
 </ul></li>
 <li><p>How do we deal with two objective functions?</p></li>
 </ul>
-</section><section id="section-33" class="slide level2">
+</section>
+<section id="section-33" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>Because risk averse, consider the concept of <em>guaranteed profit</em>, or <em>worst-case profit</em></p>
@@ -389,7 +431,8 @@
 </ul></li>
 <li><p>So let’s try to choose <span class="math inline">\(C\)</span> and <span class="math inline">\(S\)</span> so that <span class="math inline">\(G\)</span> is maximized</p></li>
 </ul>
-</section><section id="section-34" class="slide level2">
+</section>
+<section id="section-34" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[\begin{align*}
 \max \ \ &amp; G \\
@@ -397,7 +440,8 @@
 &amp; C \ge 500, \ S \ge 500 \\
 &amp; G = \min \{ 30 C + 20 S,  23 C + 25 S \}
 \end{align*}\]</span></p>
-</section><section id="section-35" class="slide level2">
+</section>
+<section id="section-35" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[\begin{align*}
 \max \ \ &amp; G \\
@@ -406,20 +450,26 @@
 &amp; G \le 30 C + 20 S \\
 &amp; G \le 23 C + 25 S
 \end{align*}\]</span></p>
-</section><section id="section-36" class="slide level2">
+</section>
+<section id="section-36" class="slide level2">
 <h2></h2>
 <p>Key idea: Software will increase <span class="math inline">\(G\)</span> until it hits minimum of two profits!</p>
 </section></section>
     </div>
   </div>
 
-  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
-  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
@@ -440,12 +490,12 @@
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
-          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>
