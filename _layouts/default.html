@@ -1,11 +1,18 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>{{ page.title }}</title>
-    <link href="styles/main.css" rel="stylesheet" type="text/css">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal Website of Sam Burer, Professor of Management Sciences, Henry B. Tippie College of Business, University of Iowa"/>
+    <meta name="theme-color" content="#30466E">
+    <title>{{ page.title }}</title>
+    <link href="/styles/main.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
     {{ content }}
+    <script src="/scripts/theme-toggle.js" defer></script>
   </body>
 </html>
