@@ -1,11 +1,40 @@
-<html>
-  <head>
-    <title>{{ page.title }}</title>
-    <link href="styles/main.css" rel="stylesheet" type="text/css">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="description" content="Personal Website of Sam Burer, Professor of Management Sciences, Henry B. Tippie College of Business, University of Iowa"/>
-  </head>
-  <body>
-    {{ content }}
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }}</title>
+  <meta name="description" content="Personal website of Samuel Burer, Tippie Rollins Professor of Business Analytics, University of Iowa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="/styles/main.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a href="/index.html" class="site-name">Samuel Burer</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.closest('header').querySelector('.site-nav').classList.toggle('open')">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="19" y2="6"/>
+        <line x1="3" y1="11" x2="19" y2="11"/>
+        <line x1="3" y1="16" x2="19" y2="16"/>
+      </svg>
+    </button>
+    <ul class="site-nav">
+<li><a href="/files/cv.pdf" class="nav-cv" target="_blank">CV ↗</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  {{ content }}
+</main>
+
+<footer class="site-footer">
+  <p>Samuel Burer &middot; Tippie College of Business, University of Iowa &middot; Last updated 2026-03-20</p>
+</footer>
+
+</body>
 </html>

@@ -1,63 +1,44 @@
-<html>
-  <head>
-    <title>{{ page.title }}</title>
-    <link href="{{ site.url }}/styles/main.css" rel="stylesheet" type="text/css">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="description" content="Personal Website of Sam Burer, Professor of Management Sciences, Henry B. Tippie College of Business, University of Iowa"/>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | Samuel Burer</title>
+  <meta name="description" content="Personal website of Samuel Burer, Tippie Rollins Professor of Business Analytics, University of Iowa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="/styles/main.css" rel="stylesheet">
+</head>
+<body>
 
-<div id="frame">
-	<div id="header">
-		<div id="header-left">	
-			Sam Burer
-		</div>
-		<div id="header-right">
-			Professor of Management Sciences<br>
-            Henry B. Tippie Research Fellow<br>
-            Tippie College of Business<br>
-            University of Iowa
-		</div>
-	</div>
-	<div class="nav">
-        <div class="navbtn"><a href="{{ site.url }}/index.html">About</a></div>
-		<div id="navbtn_current">Projects and Posts</div>
-	</div>
-	<div class="content">
-		<div class="content-post">
-            <p>
-            &#8592; <em>Return to <a href="{{ site.url }}/projects.html">Projects and Posts</a></em>
-            </p>
-            {{ content }}
-            <p>
-            &#8592; <em>Return to <a href="{{ site.url }}/projects.html">Projects and Posts</a></em>
-            </p>
-        </div>
-    </div>
+<header class="site-header">
+  <div class="inner">
+    <a href="/index.html" class="site-name">Samuel Burer</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.closest('header').querySelector('.site-nav').classList.toggle('open')">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="19" y2="6"/>
+        <line x1="3" y1="11" x2="19" y2="11"/>
+        <line x1="3" y1="16" x2="19" y2="16"/>
+      </svg>
+    </button>
+    <ul class="site-nav">
+<li><a href="/files/cv.pdf" class="nav-cv" target="_blank">CV ↗</a></li>
+    </ul>
+  </div>
+</header>
 
-	<div id="footer">
-		<h6>Last updated 2015.05.10. Template from Justin Goodson.</h6>
-	</div>
+<main>
+  <div class="post-content">
+    <p class="post-back">&#8592; <a href="/projects.html">Projects and Posts</a></p>
+    {{ content }}
+    <p class="post-back" style="margin-top:2rem">&#8592; <a href="/projects.html">Projects and Posts</a></p>
+  </div>
+</main>
 
-</div>
+<footer class="site-footer">
+  <p>Samuel Burer &middot; Tippie College of Business, University of Iowa &middot; Last updated 2026-03-20</p>
+</footer>
 
-  </body>
+</body>
 </html>
-
-<!-- Start of StatCounter Code for Default Guide -->
-<script type="text/javascript">
-var sc_project=9547853; 
-var sc_invisible=1; 
-var sc_security="c1c61c74"; 
-var scJsHost = (("https:" == document.location.protocol) ?
-"https://secure." : "http://www.");
-document.write("<sc"+"ript type='text/javascript' src='" +
-scJsHost+
-"statcounter.com/counter/counter.js'></"+"script>");
-</script>
-<noscript><div class="statcounter"><a title="web analytics"
-href="http://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="http://c.statcounter.com/9547853/0/c1c61c74/1/"
-alt="web analytics"></a></div></noscript>
-<!-- End of StatCounter Code for Default Guide -->
