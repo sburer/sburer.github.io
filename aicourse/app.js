@@ -59,11 +59,3 @@ if (savedTool) {
 }
 
 $('#saveReminder')?.addEventListener('click', () => showToast('Data-responsibility reminder added to your preparation list.'));
-$('#reflectionForm')?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const goal = $('#goal').value.trim();
-  if (!goal) { showToast('Write a small starting idea first.'); return; }
-  localStorage.setItem('tocb-goal', goal);
-  showToast('Your idea is saved in this browser. Bring it to class.');
-});
-if ($('#goal')) $('#goal').value = localStorage.getItem('tocb-goal') || '';
