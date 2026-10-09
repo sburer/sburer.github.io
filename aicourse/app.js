@@ -45,7 +45,6 @@ const modal = $('#modal');
 function openModal() { if (modal) { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); } }
 function closeModal() { if (modal) { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); } }
 $('#overviewButton')?.addEventListener('click', openModal);
-$('#helpButton')?.addEventListener('click', openModal);
 $('#modalClose')?.addEventListener('click', closeModal);
 modal?.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
 
@@ -58,4 +57,3 @@ $('#reflectionForm')?.addEventListener('submit', (event) => {
   showToast('Your idea is saved in this browser. Bring it to class.');
 });
 if ($('#goal')) $('#goal').value = localStorage.getItem('tocb-goal') || '';
-$('#profileButton')?.addEventListener('click', () => showToast('Participant profile is a prototype-only interaction.'));
