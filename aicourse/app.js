@@ -41,13 +41,6 @@ if (savedTool) {
   if (savedButton) savedButton.click();
 }
 
-const modal = $('#modal');
-function openModal() { if (modal) { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); } }
-function closeModal() { if (modal) { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); } }
-$('#overviewButton')?.addEventListener('click', openModal);
-$('#modalClose')?.addEventListener('click', closeModal);
-modal?.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-
 $('#saveReminder')?.addEventListener('click', () => showToast('Data-responsibility reminder added to your preparation list.'));
 $('#reflectionForm')?.addEventListener('submit', (event) => {
   event.preventDefault();
