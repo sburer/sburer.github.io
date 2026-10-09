@@ -150,6 +150,7 @@ h1 em{font-weight:600;color:var(--yellow)}
 .readiness-callout{margin:0 clamp(2rem,7vw,7.5rem);padding:1.4rem 1.7rem;border-left:6px solid var(--yellow);background:#fff;display:flex;justify-content:space-between;align-items:center;gap:1rem}
 .readiness-callout p{margin:0;color:var(--muted);font-size:.9rem}
 .resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.support-grid{grid-template-columns:minmax(0,330px)}
 .resource-card{background:#fff;border:1px solid var(--line);padding:1.4rem;min-height:185px}
 .resource-card h3{font:600 1.35rem var(--serif);margin:.5rem 0}
 .resource-card p{font-size:.86rem;color:var(--muted)}
@@ -161,5 +162,5 @@ h1 em{font-weight:600;color:var(--yellow)}
 .instructor-card h2{font:600 1.7rem var(--serif);letter-spacing:-.035em;margin:.2rem 0 .6rem}
 .instructor-card p:last-child{margin:0;color:var(--muted);font-size:.9rem}
 .page-footer{margin-top:3rem;padding:2rem clamp(2rem,7vw,7.5rem);border-top:1px solid var(--line);color:var(--muted);font-size:.75rem}
-@media(max-width:850px){.page-head{padding:3rem 1.5rem}.readiness-callout{margin:0 1.5rem;display:grid}.resource-grid,.instructor-grid{grid-template-columns:1fr}}
+@media(max-width:850px){.page-head{padding:3rem 1.5rem}.readiness-callout{margin:0 1.5rem;display:grid}.resource-grid,.support-grid,.instructor-grid{grid-template-columns:1fr}}
 @media(max-width:500px){.instructor-card{grid-template-columns:100px 1fr}.instructor-card img{width:100px}}
