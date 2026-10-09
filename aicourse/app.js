@@ -3,7 +3,24 @@ const checks = [...document.querySelectorAll('[data-check]')];
 const progressText = $('#progressText');
 const progressBar = $('#progressBar');
 const toolName = $('#toolName');
+const toolSetupName = $('#toolSetupName');
+const planName = $('#planName');
+const desktopName = $('#desktopName');
 const toast = $('#toast');
+
+const toolDetails = {
+  'ChatGPT Work': { setup: 'ChatGPT', plan: 'ChatGPT Plus', desktop: 'ChatGPT desktop app' },
+  'Claude Cowork': { setup: 'Claude', plan: 'Claude Pro', desktop: 'Claude desktop app' },
+};
+
+function updateToolCopy(tool) {
+  const details = toolDetails[tool];
+  if (!details) return;
+  if (toolName) toolName.textContent = tool;
+  if (toolSetupName) toolSetupName.textContent = details.setup;
+  if (planName) planName.textContent = details.plan;
+  if (desktopName) desktopName.textContent = details.desktop;
+}
 
 function showToast(message) {
   toast.textContent = message;
@@ -29,7 +46,7 @@ document.querySelectorAll('.tool-option').forEach((button) => {
   button.addEventListener('click', () => {
     document.querySelectorAll('.tool-option').forEach((option) => option.classList.remove('selected'));
     button.classList.add('selected');
-    if (toolName) toolName.textContent = button.dataset.tool;
+    updateToolCopy(button.dataset.tool);
     localStorage.setItem('tocb-tool', button.dataset.tool);
     showToast(`${button.dataset.tool} selected for your course setup.`);
   });
