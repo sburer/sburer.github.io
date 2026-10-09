@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Interactive course-home prototype for Thinking Outside the Chat Box." />
+    <title>Thinking Outside the Chat Box | Course Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to course content</a>
+    <header class="topbar">
+      <a class="wordmark" href="#top" aria-label="Thinking Outside the Chat Box home">
+        <span class="mark">TO</span>
+        <span>Thinking Outside<br />the Chat Box</span>
+      </a>
+      <div class="topbar-actions">
+        <span class="course-label">Tippie Leadership Collaborative</span>
+        <button class="icon-button" id="helpButton" aria-label="Open course help">?</button>
+        <button class="avatar" id="profileButton" aria-label="Open participant profile">AP</button>
+      </div>
+    </header>
+
+    <div class="shell" id="top">
+      <aside class="sidebar" aria-label="Course navigation">
+        <p class="eyebrow">Course home</p>
+        <nav>
+          <a class="nav-link active" href="#welcome"><span>01</span> Welcome</a>
+          <a class="nav-link" href="#setup"><span>02</span> Get ready</a>
+          <a class="nav-link" href="#modules"><span>03</span> Modules</a>
+          <a class="nav-link" href="#bring"><span>04</span> What to bring</a>
+          <a class="nav-link" href="#support"><span>05</span> Help &amp; support</a>
+        </nav>
+        <div class="sidebar-note">
+          <span class="status-dot"></span>
+          <p><strong>Prototype</strong><br />A preview of your course space.</p>
+        </div>
+      </aside>
+
+      <main id="main">
+        <section class="hero" id="welcome">
+          <div class="hero-copy">
+            <p class="eyebrow yellow">Welcome to the course</p>
+            <h1>Real work.<br /><em>Better with AI.</em></h1>
+            <p class="lede">Over two hands-on sessions, you will use AI with the context only you have - your files, your responsibilities, and a goal that matters to you.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#setup">Start your setup <span>→</span></a>
+              <button class="button text-button" id="overviewButton">How this works <span>↓</span></button>
+            </div>
+          </div>
+          <div class="hero-card" aria-label="Course snapshot">
+            <div class="card-topline"><span>YOUR COURSE</span><span>FALL DRY RUN</span></div>
+            <div class="card-number">02</div>
+            <p>half-day<br />sessions</p>
+            <div class="card-footer">
+              <span>In person</span><span>Bring your laptop</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="now-card" aria-labelledby="next-heading">
+          <div class="now-copy">
+            <p class="eyebrow">Your next step</p>
+            <h2 id="next-heading">Set up your workspace</h2>
+            <p>Choose a tool, check that it runs on your laptop, and decide which permitted examples you will bring. This takes about 15 minutes.</p>
+          </div>
+          <a class="button dark" href="#setup">Begin pre-work <span>→</span></a>
+        </section>
+
+        <section class="section" id="setup" aria-labelledby="setup-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Before class</p>
+              <h2 id="setup-heading">A short setup that makes the course work.</h2>
+            </div>
+            <p class="section-note">You do not need technical experience. You do need a laptop, a paid account, and work you are allowed to use.</p>
+          </div>
+
+          <div class="setup-grid">
+            <article class="setup-card tool-card">
+              <p class="card-kicker">STEP 1</p>
+              <h3>Choose your working tool</h3>
+              <p>Select one paid account and install its desktop application before class.</p>
+              <div class="tool-options" role="group" aria-label="Choose a tool">
+                <button class="tool-option selected" data-tool="ChatGPT Work"><span class="tool-symbol openai">✦</span><span><strong>ChatGPT Plus</strong><small>Use ChatGPT Work</small></span><i>✓</i></button>
+                <button class="tool-option" data-tool="Claude Cowork"><span class="tool-symbol claude">A</span><span><strong>Claude Pro</strong><small>Use Claude Cowork</small></span><i>✓</i></button>
+              </div>
+              <p class="tiny">You will not use a terminal, Claude Code, or Codex in this course.</p>
+            </article>
+
+            <article class="setup-card checklist-card">
+              <p class="card-kicker">STEP 2</p>
+              <h3>Confirm your setup</h3>
+              <p>Check each item once it is complete. Your progress stays on this device.</p>
+              <div class="checklist" id="checklist">
+                <label><input type="checkbox" data-check="account" /><span class="checkmark"></span><span>I have a paid ChatGPT Plus or Claude Pro account.</span></label>
+                <label><input type="checkbox" data-check="desktop" /><span class="checkmark"></span><span>I installed the desktop app and signed in.</span></label>
+                <label><input type="checkbox" data-check="tool" /><span class="checkmark"></span><span>I can open <b id="toolName">ChatGPT Work</b>.</span></label>
+                <label><input type="checkbox" data-check="permission" /><span class="checkmark"></span><span>I can approve limited access to a course folder if needed.</span></label>
+              </div>
+              <div class="progress-row"><span id="progressText">0 of 4 ready</span><div class="progress-track"><span id="progressBar"></span></div></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="responsibility" aria-labelledby="responsibility-heading">
+          <div class="responsibility-label"><span>!</span> Important</div>
+          <div>
+            <h2 id="responsibility-heading">You decide what is appropriate to share.</h2>
+            <p>Your organization's rules still apply. A personal subscription does not make confidential, regulated, proprietary, or personal information permissible to upload. If you are unsure, bring a public, personal, sanitized, or fictional example.</p>
+            <button class="underlined" id="saveReminder">Add this reminder to my preparation list <span>→</span></button>
+          </div>
+        </section>
+
+        <section class="section modules" id="modules" aria-labelledby="modules-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Your course path</p>
+              <h2 id="modules-heading">Two sessions. Work you can take with you.</h2>
+            </div>
+          </div>
+          <div class="module-list">
+            <details open>
+              <summary><span class="module-count">01</span><span><small>SESSION ONE</small><strong>Breaking Free from Chat</strong></span><span class="module-time">Half day <b>+</b></span></summary>
+              <div class="module-body"><p>Move beyond the chat box. Learn what work to ask for help with, how to give useful context, and how to verify what comes back.</p><div class="tags"><span>Privacy &amp; value</span><span>Context</span><span>Better requests</span><span>Verification</span></div></div>
+            </details>
+            <details>
+              <summary><span class="module-count">02</span><span><small>SESSION TWO</small><strong>Getting Real Stuff Done</strong></span><span class="module-time">Half day <b>+</b></span></summary>
+              <div class="module-body"><p>Use AI with research, data, writing, and a concrete build. Make a personal way of working that you can continue after class.</p><div class="tags"><span>Research</span><span>Your data</span><span>Your voice</span><span>Repeatable work</span></div></div>
+            </details>
+          </div>
+        </section>
+
+        <section class="bring" id="bring" aria-labelledby="bring-heading">
+          <div class="bring-copy">
+            <p class="eyebrow yellow">Bring a starting point</p>
+            <h2 id="bring-heading">Come with one thing you would genuinely like to move forward.</h2>
+            <p>It might be a time-consuming work task, a pile of paperwork, a report you owe someone, a spreadsheet you avoid, or a personal project with a real goal.</p>
+          </div>
+          <form class="reflection" id="reflectionForm">
+            <label for="goal">What would you like to make progress on?</label>
+            <textarea id="goal" rows="4" placeholder="For example: I want a better way to prepare weekly updates..." aria-describedby="goalHelp"></textarea>
+            <div><span id="goalHelp">Saved only in this browser for the prototype.</span><button class="button primary" type="submit">Save my idea <span>→</span></button></div>
+          </form>
+        </section>
+
+        <section class="support" id="support">
+          <div><p class="eyebrow">Need help?</p><h2>We want you ready to work, not stuck on setup.</h2></div>
+          <div class="support-links"><a href="mailto:course@example.edu">Ask a setup question <span>↗</span></a><a href="#setup">Return to setup <span>↑</span></a></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-panel">
+        <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+        <p class="eyebrow">How this course works</p>
+        <h2 id="modalTitle">You will learn by working on work that matters.</h2>
+        <ol><li>Prepare a permitted example and choose a tool.</li><li>Bring your laptop and work through short, guided exercises.</li><li>Review what AI creates, improve it, and decide what belongs in your own practice.</li></ol>
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
