@@ -14,8 +14,8 @@ function showToast(message) {
 
 function updateProgress() {
   const done = checks.filter((check) => check.checked).length;
-  progressText.textContent = `${done} of ${checks.length} ready`;
-  progressBar.style.width = `${(done / checks.length) * 100}%`;
+  if (progressText) progressText.textContent = `${done} of ${checks.length} ready`;
+  if (progressBar) progressBar.style.width = `${(done / checks.length) * 100}%`;
   checks.forEach((check) => localStorage.setItem(`tocb-${check.dataset.check}`, check.checked));
 }
 
@@ -29,7 +29,7 @@ document.querySelectorAll('.tool-option').forEach((button) => {
   button.addEventListener('click', () => {
     document.querySelectorAll('.tool-option').forEach((option) => option.classList.remove('selected'));
     button.classList.add('selected');
-    toolName.textContent = button.dataset.tool;
+    if (toolName) toolName.textContent = button.dataset.tool;
     localStorage.setItem('tocb-tool', button.dataset.tool);
     showToast(`${button.dataset.tool} selected for your course setup.`);
   });
@@ -42,18 +42,20 @@ if (savedTool) {
 }
 
 const modal = $('#modal');
-$('#overviewButton').addEventListener('click', () => { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); });
-$('#helpButton').addEventListener('click', () => { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); });
-$('#modalClose').addEventListener('click', () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); });
-modal.addEventListener('click', (event) => { if (event.target === modal) { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); } });
+function openModal() { if (modal) { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); } }
+function closeModal() { if (modal) { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); } }
+$('#overviewButton')?.addEventListener('click', openModal);
+$('#helpButton')?.addEventListener('click', openModal);
+$('#modalClose')?.addEventListener('click', closeModal);
+modal?.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
 
-$('#saveReminder').addEventListener('click', () => showToast('Data-responsibility reminder added to your preparation list.'));
-$('#reflectionForm').addEventListener('submit', (event) => {
+$('#saveReminder')?.addEventListener('click', () => showToast('Data-responsibility reminder added to your preparation list.'));
+$('#reflectionForm')?.addEventListener('submit', (event) => {
   event.preventDefault();
   const goal = $('#goal').value.trim();
   if (!goal) { showToast('Write a small starting idea first.'); return; }
   localStorage.setItem('tocb-goal', goal);
   showToast('Your idea is saved in this browser. Bring it to class.');
 });
-$('#goal').value = localStorage.getItem('tocb-goal') || '';
-$('#profileButton').addEventListener('click', () => showToast('Participant profile is a prototype-only interaction.'));
+if ($('#goal')) $('#goal').value = localStorage.getItem('tocb-goal') || '';
+$('#profileButton')?.addEventListener('click', () => showToast('Participant profile is a prototype-only interaction.'));
