@@ -148,7 +148,7 @@ h1 em{font-weight:600;color:var(--yellow)}
 .instructor-section{padding-bottom:5.5rem}
 .instructor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;max-width:930px}
 .instructor-card{display:grid;grid-template-columns:150px 1fr;gap:1.35rem;align-items:start;padding:0 0 1.5rem;border-bottom:1px solid var(--line)}
-.instructor-card img{display:block;width:150px;aspect-ratio:1;object-fit:cover;background:var(--warm);filter:grayscale(100%)}
+.instructor-card img{display:block;width:150px;aspect-ratio:1;object-fit:cover;background:var(--warm);filter:grayscale(100%);border-radius:12px}
 .instructor-card h2{font:600 1.7rem var(--serif);letter-spacing:-.035em;margin:.2rem 0 .6rem}
 .instructor-card p:last-child{margin:0;color:var(--muted);font-size:.9rem}
 .page-footer{display:flex;justify-content:space-between;align-items:baseline;gap:.75rem 2rem;flex-wrap:wrap;margin-top:3rem;padding:2rem clamp(2rem,7vw,7.5rem);border-top:1px solid var(--line);color:var(--muted);font-size:.75rem}
