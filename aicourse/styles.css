@@ -65,8 +65,9 @@ h1 em{font-weight:600;color:var(--yellow)}
 .tool-option.selected{border-color:var(--ink);background:#f2f2f2}
 .tool-option>span:nth-child(2){display:grid;line-height:1.15}
 .tool-option small{color:var(--muted);font-size:.7rem}
-.tool-symbol{display:grid;place-items:center;width:30px;height:30px;border-radius:4px;background:var(--warm);font-weight:700}
-.claude{background:var(--yellow);color:var(--ink);font-family:var(--serif)}
+.tool-symbol{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px}
+.tool-symbol img{display:block;width:28px;height:28px;object-fit:contain}
+.tool-symbol.openai img{width:36px;height:36px}
 .tool-option i{margin-left:auto;font-style:normal;color:transparent}
 .tool-option.selected i{color:var(--ink)}
 .tiny{font-size:.72rem!important;border-top:1px solid var(--line);padding-top:.8rem}
