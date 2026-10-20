@@ -149,6 +149,12 @@ h1 em{font-weight:600;color:var(--yellow)}
 .resource-card h3{font:600 1.35rem var(--serif);margin:.5rem 0}
 .resource-card p{font-size:.86rem;color:var(--muted)}
 .resource-card a{font-size:.8rem;color:var(--ink);font-weight:600}
+.materials-heading{font:600 clamp(1.75rem,3vw,2.4rem) var(--serif);letter-spacing:-.035em;margin-bottom:.65rem}
+.materials-lede{max-width:780px;color:var(--muted);margin-bottom:1.5rem}
+.materials-grid .resource-card{display:flex;flex-direction:column;min-height:260px}
+.materials-grid .resource-card a{margin-top:auto;padding-top:1.2rem}
+.materials-own{border-top:1px solid var(--line);padding-top:2rem!important}
+.materials-own p{max-width:800px;color:var(--muted)}
 .instructor-section{padding-bottom:5.5rem}
 .instructor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;max-width:930px}
 .instructor-card{display:grid;grid-template-columns:150px 1fr;gap:1.35rem;align-items:start;padding:0 0 1.5rem;border-bottom:1px solid var(--line)}
